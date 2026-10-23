@@ -1,0 +1,14 @@
+run_id,order,requested_model,question_id,trial,status,raw_characters,claimed_characters,within_200_characters,claim_matches_raw_length
+20261023T142334Z-375f32,1,gemini-3.5-flash-lite,general_lora,1,ok,164,193,True,False
+20261023T142334Z-375f32,2,gemini-3.8-flash,general_lora,1,error,,,,
+20261023T142334Z-375f32,3,gemini-3.8-flash,course_ungrounded,1,error,,,,
+20261023T142334Z-375f32,4,gemini-3.5-flash-lite,course_ungrounded,1,ok,195,189,True,False
+20261023T142334Z-375f32,5,gemini-3.5-flash-lite,course_grounded,1,ok,121,175,True,False
+20261023T142334Z-375f32,8,gemini-3.5-flash-lite,general_lora,2,ok,167,197,True,False
+20261023T142334Z-375f32,9,gemini-3.5-flash-lite,course_ungrounded,2,ok,148,192,True,False
+20261023T142334Z-375f32,12,gemini-3.5-flash-lite,course_grounded,2,ok,162,171,True,False
+20261023T142334Z-375f32,13,gemini-3.5-flash-lite,course_ungrounded,3,ok,199,198,True,False
+20261023T142334Z-375f32,16,gemini-3.5-flash-lite,course_grounded,3,ok,142,190,True,False
+20261023T142334Z-375f32,17,gemini-3.5-flash-lite,general_lora,3,ok,187,185,True,False
+20261023T143720Z-f32875,1,gemini-3.8-flash,general_lora,1,error,,,,
+20261023T143720Z-f32875,2,gemini-3.8-flash,course_ungrounded,1,error,,,,

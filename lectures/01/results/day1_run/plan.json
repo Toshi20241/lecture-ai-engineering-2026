@@ -1,0 +1,128 @@
+[
+  {
+    "order": 1,
+    "trial": 1,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 2,
+    "trial": 1,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 3,
+    "trial": 1,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 4,
+    "trial": 1,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 5,
+    "trial": 1,
+    "question_id": "course_grounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。\n\n次の参考情報に基づいて回答してください。\nAIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 6,
+    "trial": 1,
+    "question_id": "course_grounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。\n\n次の参考情報に基づいて回答してください。\nAIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 7,
+    "trial": 2,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 8,
+    "trial": 2,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 9,
+    "trial": 2,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 10,
+    "trial": 2,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 11,
+    "trial": 2,
+    "question_id": "course_grounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。\n\n次の参考情報に基づいて回答してください。\nAIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 12,
+    "trial": 2,
+    "question_id": "course_grounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。\n\n次の参考情報に基づいて回答してください。\nAIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 13,
+    "trial": 3,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 14,
+    "trial": 3,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 15,
+    "trial": 3,
+    "question_id": "course_grounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。\n\n次の参考情報に基づいて回答してください。\nAIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 16,
+    "trial": 3,
+    "question_id": "course_grounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。\n\n次の参考情報に基づいて回答してください。\nAIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 17,
+    "trial": 3,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.5-flash-lite"
+  },
+  {
+    "order": 18,
+    "trial": 3,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  }
+]

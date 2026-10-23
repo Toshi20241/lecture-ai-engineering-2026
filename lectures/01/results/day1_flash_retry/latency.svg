@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="164" viewBox="0 0 1040 164" role="img" aria-label="成功応答の時間。棒は中央値、線は最小値と最大値。">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<g font-family="sans-serif" fill="#0f172a">
+<text x="24" y="30" font-size="20" font-weight="bold">Response time by model and prompt</text>
+<text x="24" y="53" font-size="13">Successful responses only; bar: median, whisker: observed min-max (seconds).</text>
+<text x="24" y="92" font-size="15">No successful latency measurements.</text>
+</g>
+</svg>

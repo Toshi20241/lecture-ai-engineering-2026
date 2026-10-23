@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="272" viewBox="0 0 1040 272" role="img" aria-label="成功応答の時間。棒は中央値、線は最小値と最大値。">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<g font-family="sans-serif" fill="#0f172a">
+<text x="24" y="30" font-size="20" font-weight="bold">Response time by model and prompt</text>
+<text x="24" y="53" font-size="13">Successful responses only; bar: median, whisker: observed min-max (seconds).</text>
+<text x="24" y="92" font-size="13">gemini-3.5-flash-lite / general_lora</text>
+<rect x="380" y="77" width="192.66" height="22" rx="3" fill="#0f766e" opacity="0.85"/>
+<line x1="400.80" x2="643.43" y1="88" y2="88" stroke="#0f172a" stroke-width="2"/>
+<line x1="400.80" x2="400.80" y1="82" y2="94" stroke="#0f172a"/>
+<line x1="643.43" x2="643.43" y1="82" y2="94" stroke="#0f172a"/>
+<text x="864" y="92" font-size="13">10.907s; n=3</text>
+<text x="24" y="146" font-size="13">gemini-3.5-flash-lite / course_ungrounded</text>
+<rect x="380" y="131" width="150.24" height="22" rx="3" fill="#0f766e" opacity="0.85"/>
+<line x1="476.02" x2="850.00" y1="142" y2="142" stroke="#0f172a" stroke-width="2"/>
+<line x1="476.02" x2="476.02" y1="136" y2="148" stroke="#0f172a"/>
+<line x1="850.00" x2="850.00" y1="136" y2="148" stroke="#0f172a"/>
+<text x="864" y="146" font-size="13">8.506s; n=3</text>
+<text x="24" y="200" font-size="13">gemini-3.5-flash-lite / course_grounded</text>
+<rect x="380" y="185" width="184.91" height="22" rx="3" fill="#0f766e" opacity="0.85"/>
+<line x1="512.32" x2="654.08" y1="196" y2="196" stroke="#0f172a" stroke-width="2"/>
+<line x1="512.32" x2="512.32" y1="190" y2="202" stroke="#0f172a"/>
+<line x1="654.08" x2="654.08" y1="190" y2="202" stroke="#0f172a"/>
+<text x="864" y="200" font-size="13">10.469s; n=3</text>
+</g>
+</svg>
