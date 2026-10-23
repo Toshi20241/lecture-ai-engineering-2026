@@ -1,0 +1,44 @@
+[
+  {
+    "order": 1,
+    "trial": 1,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 2,
+    "trial": 1,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 3,
+    "trial": 2,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 4,
+    "trial": 2,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 5,
+    "trial": 3,
+    "question_id": "course_ungrounded",
+    "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  },
+  {
+    "order": 6,
+    "trial": 3,
+    "question_id": "general_lora",
+    "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+    "requested_model": "gemini-3.8-flash"
+  }
+]

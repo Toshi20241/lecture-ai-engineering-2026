@@ -1,0 +1,24 @@
+{
+  "totals": {
+    "planned": 24,
+    "attempted": 13,
+    "ok": 9,
+    "http_503": 4,
+    "http_429": 0,
+    "skipped": 11,
+    "success_input_tokens": 504,
+    "success_input_tokens_n": 9,
+    "success_output_tokens": 842,
+    "success_output_tokens_n": 9,
+    "success_total_tokens": 1346,
+    "success_total_tokens_n": 9
+  },
+  "source_sha256": {
+    "results/day1_run/manifest.json": "791820c9a0faa4f4c81cec5778d45a2eb0fc5de470e6359323bc00f724798b28",
+    "results/day1_run/results.jsonl": "1b1700ccaffa8252ae50a0ec59317d9c90432196027387313885adced41f15b9",
+    "results/day1_flash_retry/manifest.json": "611912d05c1d7d28df8f0195973bce34ea4b2e48fba6b6b9b0cb07dd806e65f3",
+    "results/day1_flash_retry/results.jsonl": "9696651875f59b14c1e16db73411c663455c5115a17873f4aef1771149eeffa5"
+  },
+  "character_count_method": "Python len(text): 改行・Markdown記号・末尾の自己申告を含むUnicode文字列長",
+  "semantic_review": "ai_assisted_quality_review.csvはChatGPTによる参照資料との照合。数値集計とは別の評価。"
+}

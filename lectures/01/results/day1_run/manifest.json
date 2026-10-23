@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "execution_mode": "live",
+  "run_id": "20261023T142334Z-375f32",
+  "started_at_utc": "2026-10-23T14:23:34.643+00:00",
+  "models": [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash"
+  ],
+  "repeats": 3,
+  "prompts": [
+    {
+      "id": "general_lora",
+      "label": "一般知識: LoRA",
+      "question": "LoRAとは何ですか。元の重みと学習するパラメータを区別し、200字以内で説明してください。",
+      "rubric": "元の重みを固定し、更新を低ランク行列で表し、その追加パラメータを学習する。簡潔さと内容の正しさを人が確認する。"
+    },
+    {
+      "id": "course_ungrounded",
+      "label": "講座固有: 参照情報なし",
+      "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "rubric": "基礎・実装・発展の名称と、どれか1つ以上で完了という条件。根拠のない追加事項と不明表明も記録する。"
+    },
+    {
+      "id": "course_grounded",
+      "label": "講座固有: 参照情報あり",
+      "question": "AIE2026の講座の宿題にある「3レベル」の名称と、修了に必要な取り組み数を200字以内で説明してください。\n\n次の参考情報に基づいて回答してください。\nAIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "rubric": "基礎・実装・発展の名称と、どれか1つ以上で完了という条件。根拠のない追加事項と不明表明も記録する。"
+    }
+  ],
+  "planned_requests": 18,
+  "course_commit": "662cddd52724b330f3f4cd15123d1e55cb474874",
+  "course_repository": "https://github.com/matsuolab/lecture-ai-engineering-2026",
+  "versions": {
+    "python": "3.12.15",
+    "google_genai": "2.31.0"
+  },
+  "settings": {
+    "max_output_tokens": 2048,
+    "min_interval_seconds": 15.0,
+    "sdk_attempts": 1,
+    "timeout_ms": 120000,
+    "temperature": "model_default",
+    "thinking_config": "model_default",
+    "seed_for_request_order_only": 20261022,
+    "quotas": {
+      "gemini-3.5-flash-lite": {
+        "rpm": null,
+        "tpm": null,
+        "rpd": null,
+        "source": "未確認: AI Studioの当該プロジェクトで確認する"
+      },
+      "gemini-3.8-flash": {
+        "rpm": null,
+        "tpm": null,
+        "rpd": null,
+        "source": "未確認: AI Studioの当該プロジェクトで確認する"
+      }
+    }
+  },
+  "local_git_commit": "662cddd52724b330f3f4cd15123d1e55cb474874",
+  "source_sha256": {
+    "app/day1_benchmark.py": "c88ed255bdef4c7caaf700ab06b51baff40f3a13af7418d5f3baaa647f8be05d",
+    "app/day1_report.py": "05d206341e7ff9c9b85bdeee4dbae4e0be36d4bf444814d2894989638521c13e",
+    "app/ask.py": "63937e13b6289815213bea47f2597b2e09b4612f40b2ad1ee8cd13ce0cd045af",
+    "data/glossary.json": "4b614a08a754bf6cf714f905f185ad5ef22e0957c7e64434a4b418edb68c2319",
+    "uv.lock": "dd3e258db9c737f0bd5975bfe1465984ac7c831daa8076c62e34b47835d986ff"
+  },
+  "status": "completed_with_skips",
+  "completed_requests": 11,
+  "skipped": [
+    {
+      "order": 6,
+      "trial": 1,
+      "question_id": "course_grounded",
+      "requested_model": "gemini-3.8-flash",
+      "reason": "consecutive_service_unavailable"
+    },
+    {
+      "order": 7,
+      "trial": 2,
+      "question_id": "general_lora",
+      "requested_model": "gemini-3.8-flash",
+      "reason": "consecutive_service_unavailable"
+    },
+    {
+      "order": 10,
+      "trial": 2,
+      "question_id": "course_ungrounded",
+      "requested_model": "gemini-3.8-flash",
+      "reason": "consecutive_service_unavailable"
+    },
+    {
+      "order": 11,
+      "trial": 2,
+      "question_id": "course_grounded",
+      "requested_model": "gemini-3.8-flash",
+      "reason": "consecutive_service_unavailable"
+    },
+    {
+      "order": 14,
+      "trial": 3,
+      "question_id": "course_ungrounded",
+      "requested_model": "gemini-3.8-flash",
+      "reason": "consecutive_service_unavailable"
+    },
+    {
+      "order": 15,
+      "trial": 3,
+      "question_id": "course_grounded",
+      "requested_model": "gemini-3.8-flash",
+      "reason": "consecutive_service_unavailable"
+    },
+    {
+      "order": 18,
+      "trial": 3,
+      "question_id": "general_lora",
+      "requested_model": "gemini-3.8-flash",
+      "reason": "consecutive_service_unavailable"
+    }
+  ],
+  "ended_at_utc": "2026-10-23T14:26:18.092+00:00"
+}
