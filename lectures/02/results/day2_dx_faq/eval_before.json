@@ -1,0 +1,776 @@
+{
+  "label": "before",
+  "completed": true,
+  "summary": {
+    "label": "before",
+    "status": "complete",
+    "n": 21,
+    "format_ok_count": 21,
+    "content_ok_count": 12,
+    "both_ok_count": 12,
+    "format_rate": 1.0,
+    "content_rate": 0.5714285714285714,
+    "both_rate": 0.5714285714285714,
+    "failure_type_counts": {
+      "ok": 12,
+      "format_error": 0,
+      "unsupported_assertion": 4,
+      "unnecessary_review": 2,
+      "wrong_content": 3
+    },
+    "seconds": 28.472716418999994,
+    "by_grounding": {
+      "grounded": {
+        "n": 15,
+        "format_ok_count": 15,
+        "content_ok_count": 10,
+        "both_ok_count": 10,
+        "format_rate": 1.0,
+        "content_rate": 0.6666666666666666,
+        "both_rate": 0.6666666666666666,
+        "failure_type_counts": {
+          "ok": 10,
+          "format_error": 0,
+          "unsupported_assertion": 0,
+          "unnecessary_review": 2,
+          "wrong_content": 3
+        }
+      },
+      "ungrounded": {
+        "n": 6,
+        "format_ok_count": 6,
+        "content_ok_count": 2,
+        "both_ok_count": 2,
+        "format_rate": 1.0,
+        "content_rate": 0.3333333333333333,
+        "both_rate": 0.3333333333333333,
+        "failure_type_counts": {
+          "ok": 2,
+          "format_error": 0,
+          "unsupported_assertion": 4,
+          "unnecessary_review": 0,
+          "wrong_content": 0
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "raw": "{\"answer\": \"専用フォームで申し込めます。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_intake_04",
+      "question": "相談を希望するときは、どの方法で申し込めばよいですか？",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "専用フォーム"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 245,
+        "generated_tokens": 21,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 2.08675
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\n\"answer\": \"専用フォーム\",\n\"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_intake_05",
+      "question": "申込みは何を通じて受け付けていますか？",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "専用フォーム"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 237,
+        "generated_tokens": 20,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 0.949609
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"専用フォームで受け付けます。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_intake_06",
+      "question": "このDX相談の申込手段を知りたいです。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "専用フォーム"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 238,
+        "generated_tokens": 21,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 0.999554
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"初回相談は45分、料金は無料です。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_first_consultation_04",
+      "question": "最初の相談にかかる時間と料金を確認したいです。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "45分",
+          "無料"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 240,
+        "generated_tokens": 27,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.266566
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"初回相談は45分です。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "wrong_content",
+      "id": "test_first_consultation_05",
+      "question": "初回の所要時間は何分で、料金はかかりますか？",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "45分",
+          "無料"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 242,
+        "generated_tokens": 23,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.09747
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"初回相談は45分で、料金は無料です。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_first_consultation_06",
+      "question": "一度目の相談について、長さと利用料金を教えてください。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "45分",
+          "無料"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 241,
+        "generated_tokens": 27,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.331373
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"工程図1枚と困りごと一覧を用意してください。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_documents_04",
+      "question": "相談を受ける前にそろえる資料と、決められている枚数は何ですか？",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "工程図",
+          "1枚",
+          "困りごと"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 244,
+        "generated_tokens": 26,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.21362
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"工程図1枚と困りごと一覧を用意してください。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_documents_05",
+      "question": "準備が必要な資料をすべて、枚数の決まりとともに教えてください。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "工程図",
+          "1枚",
+          "困りごと"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 242,
+        "generated_tokens": 26,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.220899
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"工程図1枚と困りごと一覧を用意してください。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_documents_06",
+      "question": "相談前に用意する資料は何ですか。枚数の指定も知りたいです。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "工程図",
+          "1枚",
+          "困りごと"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 244,
+        "generated_tokens": 26,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.195531
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\n\"answer\": \"このFAQには記載がありません。窓口への確認が必要です。\",\n\"needs_review\": true\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false,
+      "predicted_needs_review": true,
+      "failure_type": "unnecessary_review",
+      "id": "test_support_topics_04",
+      "question": "この相談窓口で扱う支援テーマを教えてください。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "見える化",
+          "作業記録",
+          "電子化"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 238,
+        "generated_tokens": 29,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.392481
+      },
+      "classification": "needs_review"
+    },
+    {
+      "raw": "{\"answer\": \"工程図1枚と困りごと一覧を用意してください。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "wrong_content",
+      "id": "test_support_topics_05",
+      "question": "支援の対象となっている取組みには何がありますか？",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "見える化",
+          "作業記録",
+          "電子化"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 239,
+        "generated_tokens": 26,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.251945
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"工程図1枚と困りごと一覧を用意してください。工程の見える化と作業記録の電子化を支援します。毎週水曜14:00〜17:00に、オンラインで相談を行います。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_support_topics_06",
+      "question": "相談できるDXのテーマとして、FAQには何が載っていますか？",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "見える化",
+          "作業記録",
+          "電子化"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 243,
+        "generated_tokens": 62,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 2.803616
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"24時間表記で、24時間表記の時刻は24時間表記でお願いします。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "wrong_content",
+      "id": "test_schedule_04",
+      "question": "いつ、何時から何時まで、どの方法で相談を受けられますか？時刻は24時間表記でお願いします。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "水曜",
+          "14",
+          "17",
+          "オンライン"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 252,
+        "generated_tokens": 34,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.5806
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"相談は週水曜14:00〜17:00にオンラインで行います。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false,
+      "predicted_needs_review": false,
+      "failure_type": "ok",
+      "id": "test_schedule_05",
+      "question": "相談の曜日、受付時間帯、開催方法をまとめて教えてください。時間は24時間表記にしてください。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "水曜",
+          "14",
+          "17",
+          "オンライン"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 249,
+        "generated_tokens": 35,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.606358
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"このFAQには記載がありません。窓口への確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false,
+      "predicted_needs_review": true,
+      "failure_type": "unnecessary_review",
+      "id": "test_schedule_06",
+      "question": "この窓口の定例相談は、何曜日の何時から何時まで、どのように実施されますか？時刻は24時間表記で教えてください。",
+      "category": "grounded",
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "水曜",
+          "14",
+          "17",
+          "オンライン"
+        ],
+        "category": "grounded"
+      },
+      "generation": {
+        "input_tokens": 258,
+        "generated_tokens": 25,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.195937
+      },
+      "classification": "needs_review"
+    },
+    {
+      "raw": "{\"answer\": \"補助金への申請手続きを窓口に代行してもらえます。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true,
+      "predicted_needs_review": false,
+      "failure_type": "unsupported_assertion",
+      "id": "test_ungrounded_07",
+      "question": "補助金への申請手続きを窓口に代行してもらえますか？",
+      "category": "ungrounded",
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "generation": {
+        "input_tokens": 242,
+        "generated_tokens": 26,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.267781
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"このFAQには記載がありません。窓口への確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true,
+      "predicted_needs_review": true,
+      "failure_type": "ok",
+      "id": "test_ungrounded_08",
+      "question": "見える化に使う機器の貸出制度はありますか？",
+      "category": "ungrounded",
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "generation": {
+        "input_tokens": 241,
+        "generated_tokens": 25,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.165445
+      },
+      "classification": "needs_review"
+    },
+    {
+      "raw": "{\"answer\": \"予約を取り消すときの連絡期限は、45分以内です。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true,
+      "predicted_needs_review": false,
+      "failure_type": "unsupported_assertion",
+      "id": "test_ungrounded_09",
+      "question": "予約を取り消すときの連絡期限を教えてください。",
+      "category": "ungrounded",
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "generation": {
+        "input_tokens": 239,
+        "generated_tokens": 29,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.323021
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"このFAQには記載がありません。窓口への確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true,
+      "predicted_needs_review": true,
+      "failure_type": "ok",
+      "id": "test_ungrounded_10",
+      "question": "オンライン相談の録画データを受け取れますか？",
+      "category": "ungrounded",
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "generation": {
+        "input_tokens": 239,
+        "generated_tokens": 25,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.157868
+      },
+      "classification": "needs_review"
+    },
+    {
+      "raw": "{\"answer\": \"工場まで来てもらって設備の状態を確認してもらえます。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true,
+      "predicted_needs_review": false,
+      "failure_type": "unsupported_assertion",
+      "id": "test_ungrounded_11",
+      "question": "工場まで来てもらって設備の状態を確認してもらえますか？",
+      "category": "ungrounded",
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "generation": {
+        "input_tokens": 241,
+        "generated_tokens": 25,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.166408
+      },
+      "classification": "asserted"
+    },
+    {
+      "raw": "{\"answer\": \"選定したシステムの設定作業までお願いできます。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true,
+      "predicted_needs_review": false,
+      "failure_type": "unsupported_assertion",
+      "id": "test_ungrounded_12",
+      "question": "選定したシステムの設定作業までお願いできますか？",
+      "category": "ungrounded",
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "generation": {
+        "input_tokens": 240,
+        "generated_tokens": 24,
+        "token_count_includes_special_tokens": true,
+        "max_new_tokens": 96,
+        "hit_max_new_tokens": false,
+        "ended_with_eos": true,
+        "possible_truncation": false,
+        "last_token_id": 248044,
+        "stop_reason": "eos",
+        "seconds": 1.117871
+      },
+      "classification": "asserted"
+    }
+  ]
+}

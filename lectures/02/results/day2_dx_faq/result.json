@@ -1,0 +1,686 @@
+{
+  "config": {
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "seed": 42,
+    "num_train_epochs": 20,
+    "warmup_steps": 6,
+    "lr": 0.0002,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "max_seq_len": 512,
+    "max_new_tokens": 96,
+    "gen": {
+      "do_sample": false
+    }
+  },
+  "versions": {
+    "python": "3.13.16",
+    "transformers": "5.18.0",
+    "peft": "0.21.1",
+    "trl": "1.14.2",
+    "accelerate": "1.15.0",
+    "datasets": "5.1.0",
+    "torch": "2.11.0+cu130",
+    "tokenizers": "0.23.3",
+    "huggingface-hub": "1.33.0",
+    "safetensors": "0.8.0",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "pyarrow": "26.0.0"
+  },
+  "method": "LoRA（量子化なし、float32）",
+  "before": {
+    "label": "before",
+    "status": "complete",
+    "n": 21,
+    "format_ok_count": 21,
+    "content_ok_count": 12,
+    "both_ok_count": 12,
+    "format_rate": 1.0,
+    "content_rate": 0.5714285714285714,
+    "both_rate": 0.5714285714285714,
+    "failure_type_counts": {
+      "ok": 12,
+      "format_error": 0,
+      "unsupported_assertion": 4,
+      "unnecessary_review": 2,
+      "wrong_content": 3
+    },
+    "seconds": 28.472716418999994,
+    "by_grounding": {
+      "grounded": {
+        "n": 15,
+        "format_ok_count": 15,
+        "content_ok_count": 10,
+        "both_ok_count": 10,
+        "format_rate": 1.0,
+        "content_rate": 0.6666666666666666,
+        "both_rate": 0.6666666666666666,
+        "failure_type_counts": {
+          "ok": 10,
+          "format_error": 0,
+          "unsupported_assertion": 0,
+          "unnecessary_review": 2,
+          "wrong_content": 3
+        }
+      },
+      "ungrounded": {
+        "n": 6,
+        "format_ok_count": 6,
+        "content_ok_count": 2,
+        "both_ok_count": 2,
+        "format_rate": 1.0,
+        "content_rate": 0.3333333333333333,
+        "both_rate": 0.3333333333333333,
+        "failure_type_counts": {
+          "ok": 2,
+          "format_error": 0,
+          "unsupported_assertion": 4,
+          "unnecessary_review": 0,
+          "wrong_content": 0
+        }
+      }
+    }
+  },
+  "after": {
+    "label": "after",
+    "status": "complete",
+    "n": 21,
+    "format_ok_count": 21,
+    "content_ok_count": 18,
+    "both_ok_count": 18,
+    "format_rate": 1.0,
+    "content_rate": 0.8571428571428571,
+    "both_rate": 0.8571428571428571,
+    "failure_type_counts": {
+      "ok": 18,
+      "format_error": 0,
+      "unsupported_assertion": 3,
+      "unnecessary_review": 0,
+      "wrong_content": 0
+    },
+    "seconds": 34.407801850000055,
+    "by_grounding": {
+      "grounded": {
+        "n": 15,
+        "format_ok_count": 15,
+        "content_ok_count": 15,
+        "both_ok_count": 15,
+        "format_rate": 1.0,
+        "content_rate": 1.0,
+        "both_rate": 1.0,
+        "failure_type_counts": {
+          "ok": 15,
+          "format_error": 0,
+          "unsupported_assertion": 0,
+          "unnecessary_review": 0,
+          "wrong_content": 0
+        }
+      },
+      "ungrounded": {
+        "n": 6,
+        "format_ok_count": 6,
+        "content_ok_count": 3,
+        "both_ok_count": 3,
+        "format_rate": 1.0,
+        "content_rate": 0.5,
+        "both_rate": 0.5,
+        "failure_type_counts": {
+          "ok": 3,
+          "format_error": 0,
+          "unsupported_assertion": 3,
+          "unnecessary_review": 0,
+          "wrong_content": 0
+        }
+      }
+    }
+  },
+  "comparison": {
+    "n": 21,
+    "status": "complete",
+    "improved_ids": [
+      "test_first_consultation_05",
+      "test_support_topics_04",
+      "test_support_topics_05",
+      "test_schedule_04",
+      "test_schedule_06",
+      "test_ungrounded_07",
+      "test_ungrounded_09"
+    ],
+    "regressed_ids": [
+      "test_ungrounded_08"
+    ],
+    "persistent_failure_ids": [
+      "test_ungrounded_11",
+      "test_ungrounded_12"
+    ],
+    "unchanged_success_ids": [
+      "test_intake_04",
+      "test_intake_05",
+      "test_intake_06",
+      "test_first_consultation_04",
+      "test_first_consultation_06",
+      "test_documents_04",
+      "test_documents_05",
+      "test_documents_06",
+      "test_support_topics_06",
+      "test_schedule_05",
+      "test_ungrounded_10"
+    ],
+    "remaining_failure_ids": [
+      "test_ungrounded_08",
+      "test_ungrounded_11",
+      "test_ungrounded_12"
+    ],
+    "net_success_change": 6,
+    "rate_change": 0.2857142857142857,
+    "by_metric": {
+      "format": {
+        "improved_ids": [],
+        "regressed_ids": [],
+        "persistent_failure_ids": [],
+        "unchanged_success_ids": [
+          "test_intake_04",
+          "test_intake_05",
+          "test_intake_06",
+          "test_first_consultation_04",
+          "test_first_consultation_05",
+          "test_first_consultation_06",
+          "test_documents_04",
+          "test_documents_05",
+          "test_documents_06",
+          "test_support_topics_04",
+          "test_support_topics_05",
+          "test_support_topics_06",
+          "test_schedule_04",
+          "test_schedule_05",
+          "test_schedule_06",
+          "test_ungrounded_07",
+          "test_ungrounded_08",
+          "test_ungrounded_09",
+          "test_ungrounded_10",
+          "test_ungrounded_11",
+          "test_ungrounded_12"
+        ],
+        "remaining_failure_ids": [],
+        "net_success_change": 0,
+        "rate_change": 0.0
+      },
+      "content": {
+        "improved_ids": [
+          "test_first_consultation_05",
+          "test_support_topics_04",
+          "test_support_topics_05",
+          "test_schedule_04",
+          "test_schedule_06",
+          "test_ungrounded_07",
+          "test_ungrounded_09"
+        ],
+        "regressed_ids": [
+          "test_ungrounded_08"
+        ],
+        "persistent_failure_ids": [
+          "test_ungrounded_11",
+          "test_ungrounded_12"
+        ],
+        "unchanged_success_ids": [
+          "test_intake_04",
+          "test_intake_05",
+          "test_intake_06",
+          "test_first_consultation_04",
+          "test_first_consultation_06",
+          "test_documents_04",
+          "test_documents_05",
+          "test_documents_06",
+          "test_support_topics_06",
+          "test_schedule_05",
+          "test_ungrounded_10"
+        ],
+        "remaining_failure_ids": [
+          "test_ungrounded_08",
+          "test_ungrounded_11",
+          "test_ungrounded_12"
+        ],
+        "net_success_change": 6,
+        "rate_change": 0.2857142857142857
+      },
+      "both": {
+        "improved_ids": [
+          "test_first_consultation_05",
+          "test_support_topics_04",
+          "test_support_topics_05",
+          "test_schedule_04",
+          "test_schedule_06",
+          "test_ungrounded_07",
+          "test_ungrounded_09"
+        ],
+        "regressed_ids": [
+          "test_ungrounded_08"
+        ],
+        "persistent_failure_ids": [
+          "test_ungrounded_11",
+          "test_ungrounded_12"
+        ],
+        "unchanged_success_ids": [
+          "test_intake_04",
+          "test_intake_05",
+          "test_intake_06",
+          "test_first_consultation_04",
+          "test_first_consultation_06",
+          "test_documents_04",
+          "test_documents_05",
+          "test_documents_06",
+          "test_support_topics_06",
+          "test_schedule_05",
+          "test_ungrounded_10"
+        ],
+        "remaining_failure_ids": [
+          "test_ungrounded_08",
+          "test_ungrounded_11",
+          "test_ungrounded_12"
+        ],
+        "net_success_change": 6,
+        "rate_change": 0.2857142857142857
+      }
+    }
+  },
+  "training": {
+    "seconds": 189.120611,
+    "steps": 40,
+    "epochs": 20.0,
+    "final_logged_loss": 0.01889500468969345,
+    "mean_training_loss": 0.5086304191499949,
+    "loss_history": [
+      {
+        "loss": 1.8419448852539062,
+        "grad_norm": 2.6269261837005615,
+        "learning_rate": 0.00019618256431728194,
+        "entropy": 2.1035973012447355,
+        "num_tokens": 18780.0,
+        "mean_token_accuracy": 0.6578200206160545,
+        "epoch": 5.0,
+        "step": 10
+      },
+      {
+        "loss": 0.1414375424385071,
+        "grad_norm": 0.4781867563724518,
+        "learning_rate": 0.00013612416661871533,
+        "entropy": 0.2711647093296051,
+        "num_tokens": 37560.0,
+        "mean_token_accuracy": 0.9737757176160813,
+        "epoch": 10.0,
+        "step": 20
+      },
+      {
+        "loss": 0.03224424421787262,
+        "grad_norm": 0.40609169006347656,
+        "learning_rate": 4.735678371226441e-05,
+        "entropy": 0.074331059679389,
+        "num_tokens": 56340.0,
+        "mean_token_accuracy": 0.9933755904436111,
+        "epoch": 15.0,
+        "step": 30
+      },
+      {
+        "loss": 0.01889500468969345,
+        "grad_norm": 0.2703581154346466,
+        "learning_rate": 4.2658237049655323e-07,
+        "entropy": 0.04984187837690115,
+        "num_tokens": 75120.0,
+        "mean_token_accuracy": 0.9959314644336701,
+        "epoch": 20.0,
+        "step": 40
+      }
+    ],
+    "trainable_parameters": 6389760,
+    "total_parameters": 758782784,
+    "trainable_fraction": 0.008421066126877227,
+    "trainer_metrics": {
+      "train_runtime": 188.7375,
+      "train_samples_per_second": 1.484,
+      "train_steps_per_second": 0.212,
+      "total_flos": 234448646466048.0,
+      "train_loss": 0.5086304191499949,
+      "epoch": 20.0
+    },
+    "seconds_definition": "trainer.train() の前後をCUDA同期して計測。途中チェックポイント保存を含む。",
+    "final_logged_loss_definition": "学習ログの最後の loss。ログ区間の平均で、全学習の平均 train_loss と区別。"
+  },
+  "knowledge": [
+    {
+      "id": "probe_followup_fee",
+      "question": "初回の次に相談するときの料金はいくらですか？",
+      "category": "ungrounded",
+      "grounded": false,
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "before": {
+        "raw": "{\"answer\": \"無料です\", \"needs_review\": false}",
+        "classification": "asserted",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": false,
+          "both_ok": false,
+          "gold_needs_review": true,
+          "predicted_needs_review": false,
+          "failure_type": "unsupported_assertion"
+        },
+        "generation": {
+          "input_tokens": 240,
+          "generated_tokens": 16,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248044,
+          "stop_reason": "eos",
+          "seconds": 0.761556
+        }
+      },
+      "after": {
+        "raw": "{\"answer\": \"初回相談は45分で、料金は無料です。\", \"needs_review\": false}",
+        "classification": "asserted",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": false,
+          "both_ok": false,
+          "gold_needs_review": true,
+          "predicted_needs_review": false,
+          "failure_type": "unsupported_assertion"
+        },
+        "generation": {
+          "input_tokens": 240,
+          "generated_tokens": 25,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248046,
+          "stop_reason": "eos",
+          "seconds": 1.549941
+        }
+      }
+    },
+    {
+      "id": "probe_meeting_service",
+      "question": "オンライン相談にはどの会議サービスを使いますか？",
+      "category": "ungrounded",
+      "grounded": false,
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "before": {
+        "raw": "{\"answer\": \"オンライン相談には会議サービス「Zoom」を使用します。\", \"needs_review\": false}",
+        "classification": "asserted",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": false,
+          "both_ok": false,
+          "gold_needs_review": true,
+          "predicted_needs_review": false,
+          "failure_type": "unsupported_assertion"
+        },
+        "generation": {
+          "input_tokens": 238,
+          "generated_tokens": 25,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248044,
+          "stop_reason": "eos",
+          "seconds": 1.175974
+        }
+      },
+      "after": {
+        "raw": "{\"answer\": \"毎週水曜14:00〜17:00に、オンラインで相談を行います。\", \"needs_review\": false}",
+        "classification": "asserted",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": false,
+          "both_ok": false,
+          "gold_needs_review": true,
+          "predicted_needs_review": false,
+          "failure_type": "unsupported_assertion"
+        },
+        "generation": {
+          "input_tokens": 238,
+          "generated_tokens": 34,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248046,
+          "stop_reason": "eos",
+          "seconds": 2.066558
+        }
+      }
+    },
+    {
+      "id": "probe_document_retention",
+      "question": "相談で提出した資料は何か月間保管されますか？",
+      "category": "ungrounded",
+      "grounded": false,
+      "gold": {
+        "needs_review": true,
+        "must_include": [
+          "確認"
+        ],
+        "category": "ungrounded"
+      },
+      "before": {
+        "raw": "{\"answer\": \"工程図1枚と困りごと一覧を用意してください。\", \"needs_review\": false}",
+        "classification": "asserted",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": false,
+          "both_ok": false,
+          "gold_needs_review": true,
+          "predicted_needs_review": false,
+          "failure_type": "unsupported_assertion"
+        },
+        "generation": {
+          "input_tokens": 242,
+          "generated_tokens": 26,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248044,
+          "stop_reason": "eos",
+          "seconds": 1.221372
+        }
+      },
+      "after": {
+        "raw": "{\"answer\": \"このFAQには記載がありません。窓口への確認が必要です。\", \"needs_review\": true}",
+        "classification": "needs_review",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": true,
+          "both_ok": true,
+          "gold_needs_review": true,
+          "predicted_needs_review": true,
+          "failure_type": "ok"
+        },
+        "generation": {
+          "input_tokens": 242,
+          "generated_tokens": 23,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248046,
+          "stop_reason": "eos",
+          "seconds": 1.401427
+        }
+      }
+    },
+    {
+      "id": "probe_first_consultation",
+      "question": "初めて利用する相談について、所要時間と料金の両方を知りたいです。",
+      "category": "grounded",
+      "grounded": true,
+      "gold": {
+        "needs_review": false,
+        "must_include": [
+          "45分",
+          "無料"
+        ],
+        "category": "grounded"
+      },
+      "before": {
+        "raw": "{\"answer\": \"初回相談は45分、無料です。\", \"needs_review\": false}",
+        "classification": "asserted",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": true,
+          "both_ok": true,
+          "gold_needs_review": false,
+          "predicted_needs_review": false,
+          "failure_type": "ok"
+        },
+        "generation": {
+          "input_tokens": 245,
+          "generated_tokens": 25,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248044,
+          "stop_reason": "eos",
+          "seconds": 1.231763
+        }
+      },
+      "after": {
+        "raw": "{\"answer\": \"初回相談は45分で、料金は無料です。\", \"needs_review\": false}",
+        "classification": "asserted",
+        "score": {
+          "format_ok": true,
+          "format_reason": "",
+          "content_ok": true,
+          "both_ok": true,
+          "gold_needs_review": false,
+          "predicted_needs_review": false,
+          "failure_type": "ok"
+        },
+        "generation": {
+          "input_tokens": 245,
+          "generated_tokens": 25,
+          "token_count_includes_special_tokens": true,
+          "max_new_tokens": 96,
+          "hit_max_new_tokens": false,
+          "ended_with_eos": true,
+          "possible_truncation": false,
+          "last_token_id": 248046,
+          "stop_reason": "eos",
+          "seconds": 1.591535
+        }
+      }
+    }
+  ],
+  "executed_training_myself": true,
+  "run_id": "20261027T140210Z-5b4c3037",
+  "started_at": "2026-10-27T14:02:10+00:00",
+  "completed_at": "2026-10-27T14:08:00+00:00",
+  "environment": {
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "device": "cuda",
+    "gpu_name": "Tesla T4",
+    "gpu_total_memory_bytes": 15637086208,
+    "gpu_compute_capability": [
+      7,
+      5
+    ],
+    "torch_cuda_version": "13.0",
+    "cudnn_version": 92700,
+    "nvidia_smi": "Tesla T4, 15360 MiB, 580.82.07",
+    "model_dtype": "float32",
+    "quantization": null,
+    "fp16": false,
+    "bf16": false
+  },
+  "base_memory_bytes": 3009572352,
+  "dataset_metadata": {
+    "title": "架空の製造業向けDX相談窓口FAQによるLoRA学習実験",
+    "fictional": true,
+    "version": "day2-dx-faq-v1",
+    "faq_items": {
+      "intake": "専用フォームによる受付",
+      "first_consultation": "初回45分・無料",
+      "documents": "工程図1枚と困りごと一覧",
+      "support_topics": "工程の見える化と作業記録の電子化",
+      "schedule": "毎週水曜14:00〜17:00のオンライン相談"
+    },
+    "split_counts": {
+      "train": {
+        "total": 14,
+        "grounded": 10,
+        "ungrounded": 4
+      },
+      "valid": {
+        "total": 7,
+        "grounded": 5,
+        "ungrounded": 2
+      },
+      "test": {
+        "total": 21,
+        "grounded": 15,
+        "ungrounded": 6
+      },
+      "probes": {
+        "total": 4,
+        "grounded": 1,
+        "ungrounded": 3
+      }
+    },
+    "question_normalization": "Unicode NFKCで全半角を統一し、casefoldで大小文字を統一する。空白と句読点を除去した質問も比較し、train・valid・test・probesを通じて重複がないことを検証する。意味の完全な非重複を示す検査ではない。",
+    "grounded_question_design": "同じ5項目の事実に対する言い換えを各6問作り、2/1/3問で分けた。評価質問の文章を学習へ入れない。初回相談は時間と料金の両方、準備資料は資料と指定枚数、相談日時は曜日・開始終了時刻・方法を全て尋ね、質問が求める範囲とgoldの必須語句を合わせた。時間は24時間表記を依頼する。既知の事実に対する言い換えの評価であり、未学習の事実を獲得したかを測る設計ではない。",
+    "ungrounded_question_design": "支援テーマから連想しやすい補助金申請代行、機器貸出、現地診断、システム導入代行と、相談運用に近い取消期限・録画提供を質問にした。これらは5項目のFAQに肯定も否定も書かれていないため、外部知識や常識で補わずneeds_review=trueを正解とする。train・valid・testでは文章を分け、独立probeでは継続料金・会議サービス名・資料保管期間を問う。",
+    "probe_design": "学習・検証・通常評価に含めない4問を用意した。未知3問は初回以外の料金、オンライン会議のサービス名、提出資料の保管期間であり、FAQに記載がない。既知1問は初回相談の所要時間と料金で、根拠なしへの一律回答を確認する対照にする。",
+    "scoring_notes": "内容評価はneeds_reviewと必須語句によるルール判定で、意味理解の完全な評価ではない。相談時刻は14:00/14時などの表記に対応できるよう数字14と17を必須語にする。『困りごと一覧』と『困りごとリスト』の違いは『困りごと』で吸収する。語句を含んだままの否定・矛盾や、その他の妥当な言い換えは自動判定だけで正しく扱えない場合があるため、生の出力も保存して確認する。",
+    "dataset_sha256": "6aafcd8ca0cc38baba3af74a81800dd2745acacd10e9cce65987bbd6a0c3b532",
+    "observed_split_counts": {
+      "train": 14,
+      "valid": 7,
+      "test": 21,
+      "probes": 4
+    }
+  },
+  "sequence_length_check": {
+    "max_seq_len": 512,
+    "checked_sequences": 46,
+    "max_observed_tokens": 291,
+    "truncation_requested": false,
+    "passed": true
+  },
+  "source_sha256": {
+    "day2_runtime": "3a5c075506c23601ac7bdd6f79e45cb3f0e85d7d14aa45c22b1d680fd8361de5",
+    "day2_data": "0a6bd304a27fe652591bb30136bca8fb316467dff33dd62b750886b2b8739081",
+    "day2_evaluation": "a90c0e12232a437c0e478d2b13ed57be68d6e8e099d05d94caa9b2d443e396aa"
+  },
+  "status": "completed"
+}
