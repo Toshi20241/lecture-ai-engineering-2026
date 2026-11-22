@@ -1,0 +1,113 @@
+{
+  "case_id": "q1_memory",
+  "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+  "split": "development",
+  "mode": "rag",
+  "repeat": 1,
+  "trial_id": "q1_memory__rag__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:17:39+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料に基づき、コンパクションとセッションをまたぐメモリの違い、および日々のメモの長期メモリへの保存について解説します。\n\n### 1. コンパクションとセッションをまたぐメモリの違い\n\n* **コンパクション（コンテキストの中・同じセッション）**\n  * **仕組み：** 同じセッション（コンテキスト内）で古い履歴を要約し、圧縮して詰める機能です（第3回・PDF p.39）。\n  * **役割：** コンテキストの上限によって途中経過が落ちるのを防ぐため、ループの中の履歴を圧縮します（第3回・PDF p.38, 65）。\n* **セッションをまたぐメモリ（外の保存先）**\n  * **仕組み：** セッションやチャットが変わっても引き継がれる、ファイルやデータベースなどの外の保存先です（第3回・PDF p.13, 39）。\n  * **役割：** 新しいチャットを始めたときに過去のコンテキストを参照できるように、情報を書き出して次回のコンテキストに読み戻します（第3回・PDF p.13, 39）。\n\n---\n\n### 2. 日々のメモはすべて長期メモリに入りますか？\n\n* **すべては入りません。**\n  * OpenClawの実装例では、日々のメモ（日付ごとのファイル）は毎晩自動で「見直し（dreaming）」の処理が行われます（第3回・PDF p.40）。\n  * 重複の除外やテーマの比較を行い、**基準を超えたものだけ**が長期メモリ（`MEMORY.md`）に移されます（第3回・PDF p.40）。\n  * 一度きりの調べものなどは日々のメモに残るだけで、長期メモリが膨らまないようにすべてが移されるわけではありません（第3回・PDF p.40）。",
+  "elapsed_seconds": 12.473032339000383,
+  "input_tokens": 2500,
+  "output_tokens": 444,
+  "model_responses": 2,
+  "generation_cost_usd": 0.00186,
+  "tool_call_count": 1,
+  "tool_calls": [
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "コンパクション セッション メモリ 長期メモリ 日々のメモ"
+      },
+      "tool_call_id": "call_4212073155949016705"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_4212073155949016705",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p039",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "title": "実装例：Claude",
+            "page": 39,
+            "content": "実装例：Claude\nClaude の例。1つのセッションの中で効くものと、セッションをまたいで効くものがある\n出典）Anthropic「Compaction overview」「Memory tool」（Claude Platform Docs）、「How Claude remembers your project」（Claude Code Docs）、いずれも 2026/10/21 確認。Packer et al.（2023）\narXiv:2310.08560。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nコンテキストの中（同じセッション）\nコンパクション（履歴を要約して詰める）\n古い履歴を、要約に置き換える。\n外の保存先（セッションをまたぐ）\nメモリツール（Claude API）\n/memories のファイルを、モデルが要求し\nアプリが自分の保存先で実行する\n自動メモリ（Claude Code）\nClaude が自分でメモを書き、\n毎回先頭200行か25KBまで読む\n書き出す\n必要に応じて\nエージェントが読み戻\nす\n書いたメモリは次回のコンテキストに入る。中身を人が確かめる。 外から書き込まれる危険もある。",
+            "distance": 0.27119705080986023
+          },
+          {
+            "page_id": "lec03-main-p065",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "title": "補足：メモリと Context Engineering の最新動向",
+            "page": 65,
+            "content": "補足：メモリと Context Engineering の最新動向\n履歴の要約（コンパクション）とファイル型のメモリが、API の機能として提供されるようになった。保存と再注入である\n点は変わらない。\n何が変わったか\n項目 更新内容 時点\n自動のコンパクション サーバー側で履歴を要約する API が、ベータで提供開始 2026/2/5\n任意時点のコンパクショ\nン\n要約する時点を、アプリケーションが決められる。要約に置き換えた範囲の画像や\n文書は失われる\n2026/9/14 ベータ\nメモリツール モデルがファイル操作を要求し、アプリケーションが自分の保存先で実行する。ベ\nータ指定が不要に\n2026/2/17\n講義の内容との関係。本編の3つの範囲のうち、「ループの中の履歴\n」の圧縮がコンパクション、「セッションをまたぐ記録」がメモリツ\nールに当たる。重みは変わらない。\n使うときの注意。保存先の管理はアプリケーションの責任。文書は保\n存先の外を指すパスを検証するよう求めている。要約で落ちた途中の\n指示は、以後は効かない。\n出典）Anthropic「Claude Platform release notes」（2026/2/5、2/17、9/14）、「Memory tool」、任意時点のコンパクションの文書（後の2つは日付記載なし）。\n情報確認日：2026/10/9\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.27148526906967163
+          },
+          {
+            "page_id": "lec03-main-p038",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "title": "メモリがないと、毎回ゼロからやり直しになる",
+            "page": 38,
+            "content": "メモリがないと、毎回ゼロからやり直しになる\n「失敗しているテストを直して」を翌日また頼んだら、前回見つけた原因は使えるでしょうか？\n出典）Luo et al.「From Storage to Experience」arXiv:2605.06716（2026/5/7、ACL 2026 Findings）の§1・§3.2、Ding et al.「Always-On Agents」arXiv:2606.30306（2026/6/29）、Anthropic「Compaction \noverview」（Claude Platform Docs、2026/10/21 確認）を基に作成。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n1\n毎回ゼロから始める\n前に決めたことを\nまた説明する\n2\n同じ失敗を繰り返す\n前回突き止めた原因を\nまた探す\n3\n長い作業が途切れる\nコンテキストの上限で\n途中経過が落ちる\nすべてを蓄積すると、古い情報や誤りも一緒に戻ってくる。何を残し、何を消すかを設計する。",
+            "distance": 0.27434733510017395
+          },
+          {
+            "page_id": "lec03-main-p040",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "title": "実装例：OpenClaw",
+            "page": 40,
+            "content": "実装例：OpenClaw\n毎晩過去のやり取りを読み直し、残すものだけを長期メモリに移す。\n出典）OpenClaw Docs「Memory overview」「Memory architecture」。2026/10 時点。各段階の説明は要約。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n日々のメモ（memory/日付.md）\n10/24 のメモ 10/25 のメモ 10/26 のメモ\n毎晩、自動で\n見直し（dreaming）\n1 集める：重複を除いて、候補を並べる\n2 見比べる：何度も出てくるテーマを探す\n3 移す：基準を超えたものだけ残す\nMEMORY.md（長期メモリ） 次の会話の最初に読み込む\n人が手で整理しなくていい\n全部は残さない\n一度きりの調べものは、日々のメモに残るだけ。長期メ\nモリが膨らまない。",
+            "distance": 0.2945256233215332
+          },
+          {
+            "page_id": "lec03-main-p013",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "title": "メモリ",
+            "page": 13,
+            "content": "メモリ\nコンテキストは有限である。新しいチャットで始めたときに、過去のコンテキストを参照するシステムが欲しい。\n出典）説明用の模式図。保存先（ファイル、データベースなど）と探し方（全件、検索など）は実装により異なる。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n過去のチャット\n昨日：テストの修正を依頼\n・pytest で実行したい\n・原因は range の範囲だった\n・「コメントは日本語で」と\n言われた\n①\n書き出す\nメモリ（外の保存先）\nテストは pytest で実行する\nrange の境界に注意\nコメントは日本語で書く\n②\n戻す\n新しいコンテキスト\nメモリ：pytest で実行／\nコメントは日本語\nメッセージ：別のテストも\n落ちたので直して\n覚えている ≠ 学習。",
+            "distance": 0.30804893374443054
+          }
+        ]
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec03-main-p013",
+    "lec03-main-p038",
+    "lec03-main-p039",
+    "lec03-main-p040",
+    "lec03-main-p065"
+  ],
+  "preview_page_ids": [],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:17:54+00:00",
+  "attempt_wall_seconds": 15.163785289999396,
+  "process_return_code": 0
+}

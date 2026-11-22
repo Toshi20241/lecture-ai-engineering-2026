@@ -1,0 +1,11 @@
+{
+  "case_id": "q2_lora",
+  "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+  "split": "validation",
+  "mode": "tree_improved",
+  "repeat": 1,
+  "trial_id": "q2_lora__tree_improved__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:19:06+00:00"
+}

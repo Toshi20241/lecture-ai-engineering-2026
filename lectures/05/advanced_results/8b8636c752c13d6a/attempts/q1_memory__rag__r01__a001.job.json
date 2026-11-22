@@ -1,0 +1,11 @@
+{
+  "case_id": "q1_memory",
+  "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+  "split": "development",
+  "mode": "rag",
+  "repeat": 1,
+  "trial_id": "q1_memory__rag__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:17:39+00:00"
+}

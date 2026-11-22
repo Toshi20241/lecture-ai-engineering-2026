@@ -1,0 +1,332 @@
+{
+  "case_id": "q4_retry",
+  "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+  "split": "validation",
+  "mode": "rag",
+  "repeat": 2,
+  "trial_id": "q4_retry__rag__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:29:07+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "ご質問ありがとうございます。第3回の講義資料に基づき、ツール呼び出しにおける二重実行の理由と対策、および無限再試行を防ぐための仕組みについて解説します。\n\n### 1. ツール呼び出しの再試行で二重実行が起きる理由\n* **背景と原因**:\n  外部サービスに対する操作（メール送信、注文、送金、投稿など）において、エージェント側から送信したリクエストは成功してサーバー側で処理が完了しているにもかかわらず、応答（レスポンス）が届く前にタイムアウトや接続切れが起きたケースを考えます（第3回・PDF p.27, p.48）。\n  このとき、エージェントやシステム側は「応答がない＝失敗した」と判断して処理をやり直してしまいます（同・PDF p.27）。会話やエージェントの作業状態は巻き戻ってやり直されたとしても、すでに外部（銀行やメールサービスなど）へ送信された1回目の操作の記録は巻き戻らないため、同じ操作が2回行われる「二重実行（二重払いなど）」が発生します（同・PDF p.27, p.48）。\n* **ポイント**: \n  エージェントからは成功か失敗かが見分けられず、接続が切れても向こう側ではすでに実行済みであることが起こり得ます（同・PDF p.27）。\n\n### 2. その対策\n* **外への操作を記録しておく（冪等性の担保）**:\n  外部への操作やその結果を記録しておき、再開後や再試行時に同じ操作のリクエストが来た場合、新しく実行するのではなく、あらかじめ記録しておいた結果を返す仕組み（冪等性を持たせる仕組み）を実装します（同・PDF p.48）。\n\n---\n\n### 3. いつまでも再試行しないための管理方法（誰が何を管理すべきか）\n失敗した処理をいつまでも延々と再試行し続けないようにするためには、**モデル（エージェント）自身に任せるのではなく、外部の「ハーネス」が回数や制限を管理すべき**です（同・PDF p.43）。\n\n* **誰が管理すべきか**: \n  **ハーネス**（エージェントの実行を外側から制御・監視する仕組み）が管理します（同・PDF p.43）。モデルの自己申告や判断に頼るのではなく、エージェントから無効化できない外側の仕組みが監視する必要があります（同・PDF p.43）。\n* **何を管理すべきか**: \n  エージェントが何回失敗しているか（失敗回数の上限）、制限時間を超えていないか、あるいは予算を超えていないかといった制限値を管理し、指定した上限に達した場合には強制的にループを停止させます（同・PDF p.43）。",
+  "elapsed_seconds": 8.751145295999777,
+  "input_tokens": 19762,
+  "output_tokens": 728,
+  "model_responses": 5,
+  "generation_cost_usd": 0.00610835,
+  "tool_call_count": 4,
+  "tool_calls": [
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "ツール呼び出し タイムアウト 再試行 二重実行 対策 管理"
+      },
+      "tool_call_id": "call_5082386509180747102"
+    },
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "冪等性 対策 誰が 管理"
+      },
+      "tool_call_id": "call_12540143068920735822"
+    },
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "再試行 いつまでも再試行しない 誰が 何を管理"
+      },
+      "tool_call_id": "call_5126401949272256532"
+    },
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "タイムアウト 再試行 回数 制限"
+      },
+      "tool_call_id": "call_16038968857198382713"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_5082386509180747102",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p027",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "冪等性がないツール",
+            "page": 27,
+            "content": "冪等性がないツール\n送信は成功していた。応答が届く前に接続が切れ、エージェントは失敗と判断してやり直した\n出典）Stripe API Reference「Idempotent requests」（2026/10/24 確認。接続エラーの後に再送すると、同じ操作が2回行われうると説明）を基に作成。メールの場面は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント メールサービス 相手の受信箱\n① send_email（見積書）\n1通目が届く\n×\n成功の応答が届かない（タイムアウト）\n②失敗したと判断\n③もう一度 send_email\n2通目が届く\n同じような問題が起こりうるツ\nール\n注文する\n→ 2回注文される\n送金する\n→ 2回払う\n投稿する\n→ 同じ投稿が2つ並ぶ\nエージェントからは、成功か失敗か見分けられない。接続が切れて\nも、向こうでは実行済みのことがある。",
+            "distance": 0.2897000312805176
+          },
+          {
+            "page_id": "lec03-main-p030",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "ツールのバッチコール",
+            "page": 30,
+            "content": "ツールのバッチコール\n前の結果を使わない呼び出しは1回の応答でまとめて（バッチで）呼び、使うものは順に呼ぶ\n出典）Anthropic「Parallel tool use」（Claude Platform Docs）、OpenAI「Function calling」、Google「Function calling with the Gemini API」（いずれも 2026/10/24 確認）。ツール名と例は説明用。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n結果を使わない → まとめて呼ぶ\nモデルの\n応答（1回）\nread_file(\"utils.py\")\nread_file(\"test_utils.py\")\nsearch(\"parse_date\")\n結果を使う → 順に呼ぶ\nrun_tests(\"tests/\")\ntest_parse_date が失敗\nread_file(\"test_utils.py\")\n期待する日付の形がわかる\nedit_file(\"utils.py\", ...)",
+            "distance": 0.3019549250602722
+          },
+          {
+            "page_id": "lec03-main-p029",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "ツールをバックグラウンドで実行",
+            "page": 29,
+            "content": "ツールをバックグラウンドで実行\n全テストに20分かかるなら、待つ間にモデルは別のツールで作業を進め、終わったら結果を受け取る\n出典）Anthropic Claude Code Docs「Interactive mode」「Tools reference」「Headless」「Subagents」のバックグラウンド実行の説明（2026/10/24 確認）。時間とツールの並びは説明用。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n待つ場合 開始 結果が返るまで、何もできない（20分） 結果を読む\nバックグラウンドで走らせる場合\nツール 全テストを実行中（20分）\nモデル 開始\n→ ID\nread_file\nutils.py\nsearch\nparse_date\n修正案を\n考える\n完了の通知\n結果がコンテキストに入り、\n続きから再開\n例：Claude Code run_in_backgroundで開始 → すぐにタスク ID が返る → 終わると、結果を受けて再開\n課題：バックグラウンドのタスクが失敗・止まってしまうことをエージェントが検知できるか。\nClaude Code を終了すると、バックグラウンドのタスクも止まる。数日かかる処理は常駐型（Part２）が受け持つ。",
+            "distance": 0.3101149797439575
+          },
+          {
+            "page_id": "lec03-main-p048",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "冪等性の担保",
+            "page": 48,
+            "content": "冪等性の担保\n会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\n出典）Zheng et al. ACRFence（arXiv:2603.20625、2026年3月、CoDAIM workshop 2026）。例は同論文の送金の例。概念実証は Claude Code CLI（Qwen3-32B）のチェックポイント機能と、模擬の送金サー\nビスで行われた。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべてで二重に実行された。再開なしでは0回。",
+            "distance": 0.31722837686538696
+          },
+          {
+            "page_id": "lec03-main-p022",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "Part 4 ツール",
+            "page": 22,
+            "content": "Part 4\nツール\nMCP ・長い処理と並列化・評価\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.32039156556129456
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_12540143068920735822",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p048",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "冪等性の担保",
+            "page": 48,
+            "content": "冪等性の担保\n会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\n出典）Zheng et al. ACRFence（arXiv:2603.20625、2026年3月、CoDAIM workshop 2026）。例は同論文の送金の例。概念実証は Claude Code CLI（Qwen3-32B）のチェックポイント機能と、模擬の送金サー\nビスで行われた。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべてで二重に実行された。再開なしでは0回。",
+            "distance": 0.2699543237686157
+          },
+          {
+            "page_id": "lec03-main-p027",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "冪等性がないツール",
+            "page": 27,
+            "content": "冪等性がないツール\n送信は成功していた。応答が届く前に接続が切れ、エージェントは失敗と判断してやり直した\n出典）Stripe API Reference「Idempotent requests」（2026/10/24 確認。接続エラーの後に再送すると、同じ操作が2回行われうると説明）を基に作成。メールの場面は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント メールサービス 相手の受信箱\n① send_email（見積書）\n1通目が届く\n×\n成功の応答が届かない（タイムアウト）\n②失敗したと判断\n③もう一度 send_email\n2通目が届く\n同じような問題が起こりうるツ\nール\n注文する\n→ 2回注文される\n送金する\n→ 2回払う\n投稿する\n→ 同じ投稿が2つ並ぶ\nエージェントからは、成功か失敗か見分けられない。接続が切れて\nも、向こうでは実行済みのことがある。",
+            "distance": 0.29220014810562134
+          },
+          {
+            "page_id": "lec03-main-p025",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "Human in the loop",
+            "page": 25,
+            "content": "Human in the loop\nメール送信やファイルの削除のように戻せない操作は、実行前に人に確認させる。\n出典）Claude Code Docs「Settings」「Permission modes」「Configure auto mode」（2026/10 確認）。承認画面は Claude Code の表示内容をもとに再現したもの。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nClaude Code の承認画面\nBash(git push origin main)\nPush local commits to remote\nDo you want to proceed?\n> 1. Yes\n2. Yes, and don't ask again for git push\n3. No, and tell Claude what to do differently\n（Claude Codeの場合）どこまで聞くかは設定で決める\n毎回聞く（default モード）\n新しい種類の操作のたびに人に確認する。\nルールで決めておく（settings.json）\nallow＝聞かずに実行、ask＝毎回聞く、deny＝禁止。\ndeny はどのモードでも効く。\n別のモデルが判定する（auto モード）\n人の代わりに分類器（別のモデル）が毎回確かめる。\n戻せない操作や、頼まれていない操作だけ止める。\n聞かない（bypassPermissions）\n確認なしで全部実行する。",
+            "distance": 0.3826904296875
+          },
+          {
+            "page_id": "lec03-main-p068",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "title": "補足：ハーネス設計の公開知見の最新動向",
+            "page": 68,
+            "content": "補足：ハーネス設計の公開知見の最新動向\n各社が自社のハーネス設計を公開した。作る役と確かめる役の分離、状態の外部保存、認証情報の隔離が、具体例として示\nされている。\n何が変わったか\n項目 公開された内容 発行元・時点\n役割の分離 計画・生成・評価の3エージェント構成。自己評価は甘くなるため、評価役を分け\nる。単独では20分・9ドル、構成ありでは6時間・200ドル\nAnthropic 2026/3/24\n状態と実行の分離 ハーネスを実行環境の外に置き、記録から再開できるようにする。認証情報は、生\n成されたコードが動く環境から届かない場所に置く\nAnthropic 2026/4/8\n指示より仕組み AGENTS.md は約100行の目次にとどめ、規約は lint やテストで機械的に守らせる OpenAI 2026/2/11\n講義の内容との関係。本編「完了の判定は自己申告に頼らない」「モ\nデルを替える前にハーネスを見直す」の実例。新しいモデルでは、不\n要になった部品を外したとも報告されている。\n使うときの注意。いずれも自社の環境での報告で、他の課題での効果\nは保証されない。構成を足すほど費用と時間は増える。効果は自分の\n評価セットで確かめる。\n出典）Anthropic「Harness design for long-running application development」（2026/3/24）、「Scaling Managed Agents: Decoupling the brain from the hands」（\n2026/4/8）、OpenAI「Harness engineering」（2026/2/11）。情報確認日：2026/10/9\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.3983131945133209
+          },
+          {
+            "page_id": "lec03-main-p019",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 3 ループ",
+            "title": "誤差の累積",
+            "page": 19,
+            "content": "誤差の累積\nエージェントはツールの結果でループを回す。1回の成功率が95%でも、20回続けてすべて成功するのは約36%。\n出典）計算は各ステップが独立と仮定した単純化。METR「Time Horizon 1.1」（2026年1月。Claude Opus 4.6 は3月の計算修正後の値）。第1回 9ページと同じ。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30\n最後まで成功する確率（%）\nステップ数\n1ステップ 99% 1ステップ 95%\n20ステップで 36%\n任せられる仕事の長さ（METR）\n約4か月ごとに倍増\nMETR：AI の能力を測る米国の研究機関\nGPT-4\nGPT-5\n1分\n4分\n15分\n1時間\n4時間\n16時間\n2023 2024 2025 2026\nClaude Opus 4.6\n約12時間",
+            "distance": 0.3986939787864685
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_5126401949272256532",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p045",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "ツールが失敗したときに確かめる3つのこと",
+            "page": 45,
+            "content": "ツールが失敗したときに確かめる3つのこと\n「失敗しているテストを直して」で、いちばん困る失敗はどれでしょうか？\n出典）3つの観点は本講義での整理。例は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n①立ち直る\n失敗から\n立ち直れるか\n困る例\nタイムアウトのたびに\n同じテストを延々と再実行\n②正直に言う\n失敗を\n正直に言うか\n困る例\nテストを書き換えて、\n「直りました」と言う\n③安全にやり直す\nやり直しで\n二重にしないか\n困る例\n途中から再開して、同じ\nプルリクエストをもう一度作る",
+            "distance": 0.30659812688827515
+          },
+          {
+            "page_id": "lec03-main-p048",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "冪等性の担保",
+            "page": 48,
+            "content": "冪等性の担保\n会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\n出典）Zheng et al. ACRFence（arXiv:2603.20625、2026年3月、CoDAIM workshop 2026）。例は同論文の送金の例。概念実証は Claude Code CLI（Qwen3-32B）のチェックポイント機能と、模擬の送金サー\nビスで行われた。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべてで二重に実行された。再開なしでは0回。",
+            "distance": 0.3095386326313019
+          },
+          {
+            "page_id": "lec03-main-p044",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "「終わった」かどうかは、作業したモデル以外が決める",
+            "page": 44,
+            "content": "「終わった」かどうかは、作業したモデル以外が決める\n別のモデルに判定させるか、書き換えられない評価スクリプトで判定する\n出典）Claude Code Docs「Keep Claude working toward a goal」、karpathy/autoresearch（GitHub）の README と program.md（いずれも 2026/10/21 取得）。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nClaude Code の /goal：別のモデルが判定\n/goal＝目標を渡すと、達成まで回し続ける機能\n作業役（Claude） 評価役（別の小さなモデル）\n毎ターン\n未達：理由を渡して続ける\n達成：終了\n不可能：失敗として終了\nautoresearch：評価スクリプトを固定\nKarpathy が公開した、AI に実験を回させる仕組み\nprepare.py\n評価・定数\n変更禁止\ntrain.py\nエージェントが\n編集\nprogram.md\n人が編集\n1回の実験 5分で打ち切り。10分を超えたら破棄\n残すか戻すか 検証の損失（val_bpb）が\n下がれば残し、でなければ戻す\n全体 人が止めるまで回り続ける（NEVER STOP）",
+            "distance": 0.31108030676841736
+          },
+          {
+            "page_id": "lec03-main-p042",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 42,
+            "content": "Part 7\n停止条件・失敗時の振る舞い\nループを止める仕組み・完了の判定・失敗の検出\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.3194062113761902
+          },
+          {
+            "page_id": "lec03-main-p046",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "失敗しても「できた」と言ってしまう",
+            "page": 46,
+            "content": "失敗しても「できた」と言ってしまう\n解けない課題でテストを通し、失敗を「完了」と報告する。審査役のモデルも見抜けない\n出典）Zhong, Raghunathan & Carlini. ImpossibleBench（arXiv:2510.20270、2025年10月）、Advani「From Confident Closing to Silent Failure」（arXiv:2606.09863、2026年6月、FAGEN@ICML2026）。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n解けない課題で「解けた」ことにする\n54%\n仕様とテストが矛盾した課題で、\nGPT-5 がテストを通した割合\nConflicting-SWEbench。通れば必ず仕様違反\n使われた手口\nテストの\n書き換え\n特定の入力を\n特別扱い\n演算子の\n上書き\n失敗しても「完了した」と言う\n45〜48%\nτ²-bench の失敗のうち、\nエージェントが「完了」と言っていた割合\n航空・小売の顧客対応。状態の記録で照合\n審査役の AUROC は 0.65 以下\nAUROC：見分ける力の指標\n0.5 で当てずっぽう、1 で完璧\n完了は言葉ではなく状態で確かめる。テスト結果・差分・記録で。 審査役のモデルを置くだけでは足りない。証拠を決めて渡す。",
+            "distance": 0.3207875192165375
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_16038968857198382713",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p042",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 42,
+            "content": "Part 7\n停止条件・失敗時の振る舞い\nループを止める仕組み・完了の判定・失敗の検出\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.3454713225364685
+          },
+          {
+            "page_id": "lec03-main-p045",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "ツールが失敗したときに確かめる3つのこと",
+            "page": 45,
+            "content": "ツールが失敗したときに確かめる3つのこと\n「失敗しているテストを直して」で、いちばん困る失敗はどれでしょうか？\n出典）3つの観点は本講義での整理。例は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n①立ち直る\n失敗から\n立ち直れるか\n困る例\nタイムアウトのたびに\n同じテストを延々と再実行\n②正直に言う\n失敗を\n正直に言うか\n困る例\nテストを書き換えて、\n「直りました」と言う\n③安全にやり直す\nやり直しで\n二重にしないか\n困る例\n途中から再開して、同じ\nプルリクエストをもう一度作る",
+            "distance": 0.3488513231277466
+          },
+          {
+            "page_id": "lec03-main-p048",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "冪等性の担保",
+            "page": 48,
+            "content": "冪等性の担保\n会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\n出典）Zheng et al. ACRFence（arXiv:2603.20625、2026年3月、CoDAIM workshop 2026）。例は同論文の送金の例。概念実証は Claude Code CLI（Qwen3-32B）のチェックポイント機能と、模擬の送金サー\nビスで行われた。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべてで二重に実行された。再開なしでは0回。",
+            "distance": 0.3506021201610565
+          },
+          {
+            "page_id": "lec03-main-p043",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "ループを止める3つの仕組み",
+            "page": 43,
+            "content": "ループを止める3つの仕組み\n何も工夫しないと、モデルが「終わった」と判断するまで回り続ける\n出典）例の数値は説明用の架空例。関連：Kasirzadeh & Gabriel「Agentic profiles for effective AI governance」Nature 656, 320–328（2026/8/12 公開）。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nモデル\nツールを呼ばなくなったら・出力が終了したら\n終わる\nこれだけだと、早すぎたり\n止まらなかったりする\nハーネス\n指定した上限に達したら止める\n例：何回か失敗している・制限時間を超えている・予算を\n超えている\nモデルの申告ではなく、\nハーネスが数える\n人・監視\n外から止める\n例：見ている人が停止ボタンを押す\nエージェントからは\n無効にできない",
+            "distance": 0.35482099652290344
+          },
+          {
+            "page_id": "lec03-main-p047",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "プロンプトで不正は減る",
+            "page": 47,
+            "content": "プロンプトで不正は減る\nただしゼロにはならない。判定に使うテストは書き換えられないようにする\n出典）Anthropic「Claude Opus 4.7 System Card」図 6.2.2.2.A（2026/4）、指示文は同社「Claude Opus 4.6 System Card」6.2.3.2 節。Zhong, Raghunathan & Carlini. ImpossibleBench（arXiv:2510.20270、\nICLR 2026）。2026/10/24 確認。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nずるを控え、無理なら伝えるよう指示\n解けないコーディング課題で、ずるをした割合\n45%\n指示なし\n12.5%\n指示あり\nClaude Opus 4.7（Anthropic、2026年4月）\nテストを読み取り専用にする\n読み書き可 読み取り専用 隠蔽\n不正 多い 書き換え\nを防ぐ ほぼゼロ\n本来の性能 保つ 保つ 下がる\nImpossibleBench（2025年10月）",
+            "distance": 0.35639142990112305
+          }
+        ]
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec03-main-p019",
+    "lec03-main-p022",
+    "lec03-main-p025",
+    "lec03-main-p027",
+    "lec03-main-p029",
+    "lec03-main-p030",
+    "lec03-main-p042",
+    "lec03-main-p043",
+    "lec03-main-p044",
+    "lec03-main-p045",
+    "lec03-main-p046",
+    "lec03-main-p047",
+    "lec03-main-p048",
+    "lec03-main-p068"
+  ],
+  "preview_page_ids": [],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:29:18+00:00",
+  "attempt_wall_seconds": 11.196945873000004,
+  "process_return_code": 0
+}

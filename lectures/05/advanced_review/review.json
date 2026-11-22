@@ -1,0 +1,1400 @@
+{
+  "experiment_id": "8b8636c752c13d6a",
+  "review_date_jst": "2026-11-22",
+  "review_method": "実行前に固定したcases.jsonの要点を、実行後の回答・完全なツール返却値・教材JSONと照合したChatGPTによるAI補助レビュー。講師の採点ではない。",
+  "rules": {
+    "criterion_scores": "事前の3要点を意味で判定。各0または1。複合要件の一部不足は0とし、理由を記録。表現やページIDの完全一致は要求しない。",
+    "core_correct": "事前の3要点をすべて満たす。",
+    "correct": "3要点を満たし、重要な資料未支持の追加断定がないという事後レビュー基準。公式の点数・正答率ではない。",
+    "citation_validity": "実際に述べた主張を引用先本文が支えるか。回答に必要な要点の欠落はcriterion_scoresで別に評価。valid/partial/invalid。",
+    "grounding_retrieved": "質問の要点を支える本文が全文でツールから返ったか。回答への利用や引用妥当性とは別評価。Treeの候補一覧だけならfalse。",
+    "q5": "不明な実測値を創作せず資料からは確認できないと示すかを別評価。引用と全文取得はnull（適用外）。"
+  },
+  "cases": [
+    {
+      "id": "q1_memory",
+      "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+      "kind": "multiple_pages",
+      "split": "development",
+      "criteria": [
+        "コンパクションを、同一セッション内の古い履歴を要約に置き換えてコンテキストを圧縮する処理として説明している。",
+        "セッションをまたぐメモリを、情報を外部の保存先に記録し、後のセッションのコンテキストへ読み戻す仕組みとして説明している。",
+        "OpenClawの例では日々のメモを全部長期メモリにせず、重複除去や繰り返し現れるテーマなどを見直し、基準を満たす内容を選別して残すと説明している。"
+      ],
+      "supporting_pages": [
+        "lec03-main-p039",
+        "lec03-main-p040"
+      ],
+      "acceptable_alternatives": [
+        "lec03-main-p013は、外部保存と新しいコンテキストへの再注入を裏付ける代替根拠として認める。p039でも同じ要点を説明できるため、p013の取得・引用を必須にしない。",
+        "lec03-main-p065は、コンパクションとメモリツールの区別を裏付ける代替根拠として認める。要約に置き換えた範囲の画像・文書が失われるという追加説明をする場合にも、このページが根拠となる。",
+        "日々のメモから長期メモリへの選別はp040で確認する。別のページを用いた場合も、本文がその選別の仕組みを実際に裏付けていれば認める。",
+        "正解ページとの完全一致や参照ページ数ではなく、各要点を支える本文を取得し、その主張に適切な引用を付けているかを判定する。"
+      ],
+      "abstention": false
+    },
+    {
+      "id": "q2_lora",
+      "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+      "kind": "single_page",
+      "split": "validation",
+      "criteria": [
+        "LoRAでは元のモデルの重みを固定して学習しないと説明している。",
+        "LoRAでは小さな差分、低ランク行列A・Bなどの追加部分を学習すると説明している。",
+        "QLoRAでは元の重みを4bitに量子化・圧縮して、さらに少ないメモリで調整できるようにすると説明している。"
+      ],
+      "supporting_pages": [
+        "lec02-main-p052"
+      ],
+      "acceptable_alternatives": [
+        "lec02-main-p051にも、本体の固定、小さな追加部分の学習、QLoRAによる本体の4bit圧縮の説明があり、3要点を裏付ける根拠として認める。",
+        "p052とp051の両方を取得することは必須ではない。別ページでも本文が各要点を裏付けていれば認める。"
+      ],
+      "abstention": false
+    },
+    {
+      "id": "q3_tool_skill",
+      "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+      "kind": "cross_section",
+      "split": "validation",
+      "criteria": [
+        "ツール検索は、多数のツール定義を最初からすべて入力せず、必要なツールを検索して、その定義をコンテキストへ入れると説明している。",
+        "Skillは、名前と説明を先に入れ、使う必要が生じたときに手順の本文を読み込むと説明している。",
+        "両者の共通点を、不要な定義や手順でコンテキストを圧迫せず、必要な情報を必要なときに渡すこととして説明している。"
+      ],
+      "supporting_pages": [
+        "lec03-main-p032",
+        "lec03-main-p041"
+      ],
+      "acceptable_alternatives": [
+        "lec03-main-p063にはツール定義の読み込みを後回しにして必要な定義だけ入力する説明があり、p032に代わる根拠として認める。",
+        "lec03-main-p066にはSkillの名前と説明を先に読み、必要なときに本文を読む説明があり、p041に代わる根拠として認める。",
+        "p032またはp063と、p041またはp066の組合せに限定せず、実際の本文が必要な要点を裏付ける別ページも認める。"
+      ],
+      "abstention": false
+    },
+    {
+      "id": "q4_retry",
+      "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+      "kind": "cross_section",
+      "split": "validation",
+      "criteria": [
+        "外部側では処理が実行済みでも成功応答だけが届かない場合があり、失敗と判断して再試行すると同じ操作が重複し得ると説明している。",
+        "外部操作と結果を記録し、同じ操作が再び要求されても重複実行せず記録済みの結果を返すなど、冪等性を確保する具体策を説明している。",
+        "ハーネスが試行・失敗回数、時間、予算などの上限を管理して停止し、モデルの自己申告だけに委ねないと説明している。"
+      ],
+      "supporting_pages": [
+        "lec03-main-p027",
+        "lec03-main-p048",
+        "lec03-main-p043"
+      ],
+      "acceptable_alternatives": [
+        "lec03-main-p045は、安全にやり直して二重実行を防ぐことや、延々と同じ処理を再試行する問題の補助根拠として認める。ただし、このページだけで具体的な冪等性の実装やハーネスの上限管理まで裏付けたとは扱わない。",
+        "p027は応答が失われるタイムアウトの例、p048は外部の操作結果が巻き戻らないことと記録済み結果の再利用を示す。別のページで同じ仕組みを十分説明できていれば、その要点の根拠として認める。",
+        "3ページすべての取得を機械的に必須とせず、3要点を裏付ける本文が実際に取得されているか、引用が各主張を支えているかで判定する。"
+      ],
+      "abstention": false
+    },
+    {
+      "id": "q5_unanswerable",
+      "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+      "kind": "unanswerable",
+      "split": "validation",
+      "criteria": [
+        "講義資料だけからは、この環境で実行した改良版Treeの実測平均応答時間を確認できないと扱い、数値を創作しない。",
+        "講義資料だけからは、この環境で実行した改良版Treeの実測正答率を確認できないと扱い、数値を創作しない。",
+        "教材中の例示値や他の実験の結果を現在の実測値と取り違えず、実行ログや評価結果が必要である旨、または資料からは判断できない旨を明示している。"
+      ],
+      "supporting_pages": [],
+      "acceptable_alternatives": [
+        "現在の環境の実測値は資料にないため確認できない、という簡潔な回答でよい。計測手順の詳しい提案は必須ではない。",
+        "未知の実測値について回答を控える場合、引用がないこと自体は減点しない。",
+        "説明のために仮の数値を使う場合でも、現在の実測値と誤認させてはならない。教材の別条件の数値を引用していても、現在の環境の実測値として提示した場合は不適切と判定する。"
+      ],
+      "abstention": true
+    }
+  ],
+  "source_hashes": {
+    "results.json": "2536bab938d7811839436d797b55848a44e280f33c836957ebfbdf597ae46928",
+    "lectures.json": "f6022c177ec1b5575b56d21307a5ae2aa09c586047398a17e1e4b86a56e99dce",
+    "manifest_fingerprint": "8b8636c752c13d6a22cefbd9fe6ffa85fb4d850baabb84ebcaa09b371271678e"
+  },
+  "reviews": [
+    {
+      "trial_id": "q1_memory__rag__r01",
+      "case_id": "q1_memory",
+      "mode": "rag",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p013",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p065"
+      ],
+      "full_page_ids": [
+        "lec03-main-p013",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p065"
+      ],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。コンパクションの同一セッション内要約、外部保存と次の会話への引継ぎ、OpenClawによる選別を区別している。核心の根拠ページを全文で取得している。",
+      "split": "development",
+      "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+      "source_result": "attempts/q1_memory__rag__r01__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q1_memory__tree_original__r01",
+      "case_id": "q1_memory",
+      "mode": "tree_original",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": false,
+      "citation_validity": "partial",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p039",
+        "lec03-main-p040"
+      ],
+      "full_page_ids": [
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ],
+      "additional_claim_issues": [
+        {
+          "claim": "セッションが終了するとこの履歴は消えます。",
+          "type": "unsupported_inference",
+          "severity": "material",
+          "source_page": "lec03-main-p039",
+          "reason": "p39はコンパクションの適用範囲が同じセッション内であると説明するが、セッション終了による履歴データの削除を述べていない。適用範囲の説明からデータ消滅を導く断定は根拠を超える。資料に反するとまでは断定せず、資料未支持の重要な追加断定として扱う。"
+        }
+      ],
+      "notes": "核心3要点を満たす。コンパクションの同一セッション内要約、外部保存と次の会話への引継ぎ、OpenClawによる選別を区別している。核心の根拠ページを全文で取得している。「セッション終了で履歴が消える」は、履歴の適用範囲と保存・削除を混同しかねない資料未支持の断定なので、回答全体の厳格判定では不合格にした。3要点充足は維持する。",
+      "split": "development",
+      "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+      "source_result": "attempts/q1_memory__tree_original__r01__a001.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p037",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ]
+    },
+    {
+      "trial_id": "q1_memory__tree_improved__r01",
+      "case_id": "q1_memory",
+      "mode": "tree_improved",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040"
+      ],
+      "full_page_ids": [],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。コンパクションの同一セッション内要約、外部保存と次の会話への引継ぎ、OpenClawによる選別を区別している。メモリの読み戻しをその語では述べていないが、外部保存先と別セッションでの情報の引継ぎを対応させており、意味として第2要点を満たす。候補の抜粋だけを読み、ページIDで全文を取得していない。引用先の実際の本文が説明を支持することと、実行時に全文取得指示を守ったことは区別する。",
+      "split": "development",
+      "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+      "source_result": "attempts/q1_memory__tree_improved__r01__a001.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p037",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ]
+    },
+    {
+      "trial_id": "q2_lora__tree_original__r01",
+      "case_id": "q2_lora",
+      "mode": "tree_original",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec02-main-p052"
+      ],
+      "full_page_ids": [
+        "lec02-main-p052"
+      ],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。元の重みの固定、低ランク差分の学習、QLoRAの4bit圧縮を正しく説明している。核心の根拠ページを全文で取得している。",
+      "split": "validation",
+      "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+      "source_result": "attempts/q2_lora__tree_original__r01__a002.json",
+      "preview_page_ids": [
+        "lec02-main-p001",
+        "lec02-main-p002",
+        "lec02-main-p003",
+        "lec02-main-p004",
+        "lec02-main-p005",
+        "lec02-main-p006",
+        "lec02-main-p045",
+        "lec02-main-p046",
+        "lec02-main-p047",
+        "lec02-main-p048",
+        "lec02-main-p049",
+        "lec02-main-p050",
+        "lec02-main-p051",
+        "lec02-main-p052",
+        "lec02-main-p053",
+        "lec02-main-p054",
+        "lec02-main-p055",
+        "lec02-main-p056",
+        "lec02-main-p057",
+        "lec02-main-p058",
+        "lec02-main-p059",
+        "lec02-main-p060",
+        "lec02-main-p061",
+        "lec02-main-p062"
+      ]
+    },
+    {
+      "trial_id": "q2_lora__tree_improved__r01",
+      "case_id": "q2_lora",
+      "mode": "tree_improved",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec02-main-p051",
+        "lec02-main-p052"
+      ],
+      "full_page_ids": [],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。元の重みの固定、低ランク差分の学習、QLoRAの4bit圧縮を正しく説明している。候補の抜粋だけを読み、ページIDで全文を取得していない。引用先の実際の本文が説明を支持することと、実行時に全文取得指示を守ったことは区別する。",
+      "split": "validation",
+      "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+      "source_result": "attempts/q2_lora__tree_improved__r01__a001.json",
+      "preview_page_ids": [
+        "lec02-main-p001",
+        "lec02-main-p002",
+        "lec02-main-p003",
+        "lec02-main-p004",
+        "lec02-main-p005",
+        "lec02-main-p006",
+        "lec02-main-p045",
+        "lec02-main-p046",
+        "lec02-main-p047",
+        "lec02-main-p048",
+        "lec02-main-p049",
+        "lec02-main-p050",
+        "lec02-main-p051",
+        "lec02-main-p052",
+        "lec02-main-p053",
+        "lec02-main-p054",
+        "lec02-main-p055",
+        "lec02-main-p056",
+        "lec02-main-p057",
+        "lec02-main-p058",
+        "lec02-main-p059",
+        "lec02-main-p060",
+        "lec02-main-p061",
+        "lec02-main-p062"
+      ]
+    },
+    {
+      "trial_id": "q2_lora__rag__r01",
+      "case_id": "q2_lora",
+      "mode": "rag",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec02-main-p051",
+        "lec02-main-p052"
+      ],
+      "full_page_ids": [
+        "lec02-main-p047",
+        "lec02-main-p051",
+        "lec02-main-p052",
+        "lec02-main-p060",
+        "lec02-main-p061"
+      ],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。元の重みの固定、低ランク差分の学習、QLoRAの4bit圧縮を正しく説明している。核心の根拠ページを全文で取得している。",
+      "split": "validation",
+      "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+      "source_result": "attempts/q2_lora__rag__r01__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q3_tool_skill__tree_improved__r01",
+      "case_id": "q3_tool_skill",
+      "mode": "tree_improved",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p041"
+      ],
+      "full_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p033",
+        "lec03-main-p034",
+        "lec03-main-p041",
+        "lec03-main-p042"
+      ],
+      "notes": "ツール定義の検索後読み込み、Skillの名前・説明先読みと本文後読み、共通目的をすべて説明。p32・p41を全文取得。加えてp33・p34・p42も全文取得しており、今回の要点には不要。",
+      "split": "validation",
+      "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+      "source_result": "attempts/q3_tool_skill__tree_improved__r01__a002.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p022",
+        "lec03-main-p023",
+        "lec03-main-p024",
+        "lec03-main-p025",
+        "lec03-main-p026",
+        "lec03-main-p027",
+        "lec03-main-p028",
+        "lec03-main-p029",
+        "lec03-main-p030",
+        "lec03-main-p031",
+        "lec03-main-p032",
+        "lec03-main-p037",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ]
+    },
+    {
+      "trial_id": "q3_tool_skill__rag__r01",
+      "case_id": "q3_tool_skill",
+      "mode": "rag",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        0,
+        1
+      ],
+      "core_correct": false,
+      "correct": false,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p041"
+      ],
+      "full_page_ids": [
+        "lec03-main-p011",
+        "lec03-main-p030",
+        "lec03-main-p032",
+        "lec03-main-p041",
+        "lec03-main-p063"
+      ],
+      "notes": "Skillの本文を必要時に読むことは正しいが、事前基準②の「名前と説明だけを先に入れる」を省略。誤った断定ではなく必要要点の不足。p41全文は取得済みなので、検索漏れではなく生成時の省略。",
+      "split": "validation",
+      "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+      "source_result": "attempts/q3_tool_skill__rag__r01__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q3_tool_skill__tree_original__r01",
+      "case_id": "q3_tool_skill",
+      "mode": "tree_original",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p066"
+      ],
+      "full_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p066"
+      ],
+      "notes": "3要点を満たす。Skillの根拠はp41の代わりにp66を全文取得・引用しており、事前に認めた同等根拠。",
+      "split": "validation",
+      "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+      "source_result": "attempts/q3_tool_skill__tree_original__r01__a001.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p022",
+        "lec03-main-p023",
+        "lec03-main-p024",
+        "lec03-main-p025",
+        "lec03-main-p026",
+        "lec03-main-p027",
+        "lec03-main-p028",
+        "lec03-main-p029",
+        "lec03-main-p030",
+        "lec03-main-p031",
+        "lec03-main-p032",
+        "lec03-main-p060",
+        "lec03-main-p061",
+        "lec03-main-p062",
+        "lec03-main-p063",
+        "lec03-main-p064",
+        "lec03-main-p065",
+        "lec03-main-p066",
+        "lec03-main-p067",
+        "lec03-main-p068",
+        "lec03-main-p069",
+        "lec03-main-p070",
+        "lec03-main-p071"
+      ]
+    },
+    {
+      "trial_id": "q4_retry__rag__r01",
+      "case_id": "q4_retry",
+      "mode": "rag",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        0
+      ],
+      "core_correct": false,
+      "correct": false,
+      "citation_validity": "valid",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec03-main-p027",
+        "lec03-main-p048"
+      ],
+      "full_page_ids": [
+        "lec02-main-p018",
+        "lec03-main-p022",
+        "lec03-main-p025",
+        "lec03-main-p027",
+        "lec03-main-p029",
+        "lec03-main-p030",
+        "lec03-main-p047",
+        "lec03-main-p048"
+      ],
+      "notes": "応答だけが失われるタイムアウトと外部操作の重複、記録済み結果の再利用は正確。最後は「回数や時間をどこで管理すべきか考える」というヒントに留まり、管理主体をハーネスと答えていない。上限到達時の停止も説明しない。p43全文を取得しておらず、要点③の根拠も不足。既存のp27・p48の引用は妥当。",
+      "split": "validation",
+      "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+      "source_result": "attempts/q4_retry__rag__r01__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q4_retry__tree_original__r01",
+      "case_id": "q4_retry",
+      "mode": "tree_original",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "partial",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec03-main-p048",
+        "lec03-main-p046"
+      ],
+      "full_page_ids": [
+        "lec03-main-p045",
+        "lec03-main-p048"
+      ],
+      "notes": "p48の「内部状態を巻き戻しても外部操作は戻らない」という同等機序を得点対象とする。ハーネス等がリトライ回数・タイムアウト閾値を外から管理する説明は、上限管理の同義として要点③を満たす。ただし③自体の引用がなく、p43を全文取得していない。p46は失敗を正直に報告しない問題の引用として正しいが、候補の題名しか取得していない。",
+      "split": "validation",
+      "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+      "source_result": "attempts/q4_retry__tree_original__r01__a001.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p033",
+        "lec03-main-p034",
+        "lec03-main-p035",
+        "lec03-main-p036",
+        "lec03-main-p042",
+        "lec03-main-p043",
+        "lec03-main-p044",
+        "lec03-main-p045",
+        "lec03-main-p046",
+        "lec03-main-p047",
+        "lec03-main-p048"
+      ]
+    },
+    {
+      "trial_id": "q4_retry__tree_improved__r01",
+      "case_id": "q4_retry",
+      "mode": "tree_improved",
+      "repeat": 1,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec03-main-p048",
+        "lec03-main-p043"
+      ],
+      "full_page_ids": [],
+      "notes": "3要点を満たす。p43の上限・時間・予算・ハーネスの計数、p48の外部副作用と結果再利用が200文字の候補文内に現れ、回答と対応する。全文を一度も取得していないため、正答・引用妥当性とは別に全文取得の指示に不適合。タイムアウト一般で必ず内部状態が自動巻き戻りするとは限らず、本文のチェックポイント再開例に限定して解釈する。",
+      "split": "validation",
+      "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+      "source_result": "attempts/q4_retry__tree_improved__r01__a002.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p042",
+        "lec03-main-p043",
+        "lec03-main-p044",
+        "lec03-main-p045",
+        "lec03-main-p046",
+        "lec03-main-p047",
+        "lec03-main-p048"
+      ]
+    },
+    {
+      "trial_id": "q5_unanswerable__tree_original__r01",
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "correct": true,
+      "citation_validity": null,
+      "grounding_retrieved": null,
+      "cited_page_ids": [],
+      "abstention_appropriate": true,
+      "fabricated_current_measurement": false,
+      "notes": "この環境の平均応答時間・正答率は講義資料から確認できないと明示し、実測値を創作していない。事前基準3項目を満たす。答えなし問なので引用・根拠全文取得はN/A。資料全体を網羅して読んだ証明ではない。",
+      "review_method": "生成済みの回答全文を事前評価基準と照合したChatGPTによる事後レビュー。講師採点ではない。",
+      "case_id": "q5_unanswerable",
+      "mode": "tree_original",
+      "repeat": 1,
+      "split": "validation",
+      "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+      "source_result": "attempts/q5_unanswerable__tree_original__r01__a001.json",
+      "full_page_ids": [],
+      "preview_page_ids": [
+        "lec01-main-p001",
+        "lec01-main-p002",
+        "lec02-main-p001",
+        "lec02-main-p002",
+        "lec02-main-p003",
+        "lec02-main-p004",
+        "lec02-main-p005",
+        "lec02-main-p006",
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004"
+      ],
+      "core_correct": true
+    },
+    {
+      "trial_id": "q5_unanswerable__tree_improved__r01",
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "correct": true,
+      "citation_validity": null,
+      "grounding_retrieved": null,
+      "cited_page_ids": [],
+      "abstention_appropriate": true,
+      "fabricated_current_measurement": false,
+      "notes": "この環境の平均応答時間・正答率は講義資料から確認できないと明示し、実測値を創作していない。事前基準3項目を満たす。答えなし問なので引用・根拠全文取得はN/A。資料全体を網羅して読んだ証明ではない。",
+      "review_method": "生成済みの回答全文を事前評価基準と照合したChatGPTによる事後レビュー。講師採点ではない。",
+      "case_id": "q5_unanswerable",
+      "mode": "tree_improved",
+      "repeat": 1,
+      "split": "validation",
+      "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+      "source_result": "attempts/q5_unanswerable__tree_improved__r01__a001.json",
+      "full_page_ids": [],
+      "preview_page_ids": [
+        "lec01-main-p001",
+        "lec01-main-p002",
+        "lec02-main-p001",
+        "lec02-main-p002",
+        "lec02-main-p003",
+        "lec02-main-p004",
+        "lec02-main-p005",
+        "lec02-main-p006",
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004"
+      ],
+      "core_correct": true
+    },
+    {
+      "trial_id": "q5_unanswerable__rag__r01",
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "correct": true,
+      "citation_validity": null,
+      "grounding_retrieved": null,
+      "cited_page_ids": [],
+      "abstention_appropriate": true,
+      "fabricated_current_measurement": false,
+      "notes": "この環境の平均応答時間・正答率は講義資料から確認できないと明示し、実測値を創作していない。事前基準3項目を満たす。答えなし問なので引用・根拠全文取得はN/A。資料全体を網羅して読んだ証明ではない。",
+      "review_method": "生成済みの回答全文を事前評価基準と照合したChatGPTによる事後レビュー。講師採点ではない。",
+      "case_id": "q5_unanswerable",
+      "mode": "rag",
+      "repeat": 1,
+      "split": "validation",
+      "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+      "source_result": "attempts/q5_unanswerable__rag__r01__a001.json",
+      "full_page_ids": [
+        "lec02-main-p013",
+        "lec02-main-p025",
+        "lec02-main-p027",
+        "lec02-main-p043",
+        "lec02-main-p061",
+        "lec03-main-p019",
+        "lec03-main-p064"
+      ],
+      "preview_page_ids": [],
+      "core_correct": true
+    },
+    {
+      "trial_id": "q1_memory__tree_improved__r02",
+      "case_id": "q1_memory",
+      "mode": "tree_improved",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040"
+      ],
+      "full_page_ids": [],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。コンパクションの同一セッション内要約、外部保存と次の会話への引継ぎ、OpenClawによる選別を区別している。候補の抜粋だけを読み、ページIDで全文を取得していない。引用先の実際の本文が説明を支持することと、実行時に全文取得指示を守ったことは区別する。",
+      "split": "development",
+      "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+      "source_result": "attempts/q1_memory__tree_improved__r02__a001.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p037",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ]
+    },
+    {
+      "trial_id": "q1_memory__tree_original__r02",
+      "case_id": "q1_memory",
+      "mode": "tree_original",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "partial",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p039",
+        "lec03-main-p040"
+      ],
+      "full_page_ids": [
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ],
+      "additional_claim_issues": [
+        {
+          "claim": "その日のやり取りや一度きりの調べものなども含め、日々の記録としていったんすべて残ります。",
+          "type": "unsupported_overgeneralization",
+          "severity": "minor",
+          "source_page": "lec03-main-p040",
+          "reason": "p40は一度きりの調べものが日々のメモに残ることを示すが、会話内容を漏れなくすべて記録するとは明記していない。質問の主要論点である長期メモリへの選別の説明は正しい。"
+        }
+      ],
+      "notes": "核心3要点を満たす。コンパクションの同一セッション内要約、外部保存と次の会話への引継ぎ、OpenClawによる選別を区別している。核心の根拠ページを全文で取得している。日々の記録に「すべて残る」とする表現はp40より広い一般化であり、引用の完全性は部分的。ただし主要な区別・選別条件を損なわない軽微な追加表現として、回答全体の判定は維持した。",
+      "split": "development",
+      "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+      "source_result": "attempts/q1_memory__tree_original__r02__a002.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p037",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ]
+    },
+    {
+      "trial_id": "q1_memory__rag__r02",
+      "case_id": "q1_memory",
+      "mode": "rag",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p013",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p065"
+      ],
+      "full_page_ids": [
+        "lec03-main-p013",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p065"
+      ],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。コンパクションの同一セッション内要約、外部保存と次の会話への引継ぎ、OpenClawによる選別を区別している。核心の根拠ページを全文で取得している。",
+      "split": "development",
+      "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+      "source_result": "attempts/q1_memory__rag__r02__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q2_lora__rag__r02",
+      "case_id": "q2_lora",
+      "mode": "rag",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec02-main-p051",
+        "lec02-main-p052"
+      ],
+      "full_page_ids": [
+        "lec02-main-p047",
+        "lec02-main-p051",
+        "lec02-main-p052",
+        "lec02-main-p060",
+        "lec02-main-p061"
+      ],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。元の重みの固定、低ランク差分の学習、QLoRAの4bit圧縮を正しく説明している。核心の根拠ページを全文で取得している。",
+      "split": "validation",
+      "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+      "source_result": "attempts/q2_lora__rag__r02__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q2_lora__tree_improved__r02",
+      "case_id": "q2_lora",
+      "mode": "tree_improved",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": false,
+      "citation_validity": "partial",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec02-main-p051",
+        "lec02-main-p052"
+      ],
+      "full_page_ids": [],
+      "additional_claim_issues": [
+        {
+          "claim": "数千億パラメータクラスの大きなモデルであっても、比較的小規模なGPU（GPU 1台など）でファインチューニングを行える。",
+          "type": "unsupported_scale_expansion",
+          "severity": "material",
+          "source_page": "lec02-main-p052",
+          "reason": "p52の実例は650億パラメータを48GB GPU 1台、Colab等の16GB GPUでは数十億級。数千億クラス・比較的小規模GPUへの拡大は本文にない。GPU容量という重要な条件も失われている。"
+        }
+      ],
+      "notes": "核心3要点を満たす。元の重みの固定、低ランク差分の学習、QLoRAの4bit圧縮を正しく説明している。候補の抜粋だけを読み、ページIDで全文を取得していない。引用先の実際の本文が説明を支持することと、実行時に全文取得指示を守ったことは区別する。「数千億・比較的小規模GPU1台」という規模と条件の説明がp52を超えるため、回答全体の厳格判定では不合格にした。p52の当該数値・GPU容量は200字の候補抜粋に含まれず、全文未取得時に数値を補ってしまった事例である。",
+      "split": "validation",
+      "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+      "source_result": "attempts/q2_lora__tree_improved__r02__a001.json",
+      "preview_page_ids": [
+        "lec02-main-p001",
+        "lec02-main-p002",
+        "lec02-main-p003",
+        "lec02-main-p004",
+        "lec02-main-p005",
+        "lec02-main-p006",
+        "lec02-main-p045",
+        "lec02-main-p046",
+        "lec02-main-p047",
+        "lec02-main-p048",
+        "lec02-main-p049",
+        "lec02-main-p050",
+        "lec02-main-p051",
+        "lec02-main-p052",
+        "lec02-main-p053",
+        "lec02-main-p054",
+        "lec02-main-p055",
+        "lec02-main-p056",
+        "lec02-main-p057",
+        "lec02-main-p058",
+        "lec02-main-p059",
+        "lec02-main-p060",
+        "lec02-main-p061",
+        "lec02-main-p062"
+      ]
+    },
+    {
+      "trial_id": "q2_lora__tree_original__r02",
+      "case_id": "q2_lora",
+      "mode": "tree_original",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec02-main-p052"
+      ],
+      "full_page_ids": [
+        "lec02-main-p052"
+      ],
+      "additional_claim_issues": [],
+      "notes": "核心3要点を満たす。元の重みの固定、低ランク差分の学習、QLoRAの4bit圧縮を正しく説明している。核心の根拠ページを全文で取得している。",
+      "split": "validation",
+      "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+      "source_result": "attempts/q2_lora__tree_original__r02__a001.json",
+      "preview_page_ids": [
+        "lec02-main-p001",
+        "lec02-main-p002",
+        "lec02-main-p003",
+        "lec02-main-p004",
+        "lec02-main-p005",
+        "lec02-main-p006",
+        "lec02-main-p045",
+        "lec02-main-p046",
+        "lec02-main-p047",
+        "lec02-main-p048",
+        "lec02-main-p049",
+        "lec02-main-p050",
+        "lec02-main-p051",
+        "lec02-main-p052",
+        "lec02-main-p053",
+        "lec02-main-p054",
+        "lec02-main-p055",
+        "lec02-main-p056",
+        "lec02-main-p057",
+        "lec02-main-p058",
+        "lec02-main-p059",
+        "lec02-main-p060",
+        "lec02-main-p061",
+        "lec02-main-p062"
+      ]
+    },
+    {
+      "trial_id": "q3_tool_skill__tree_original__r02",
+      "case_id": "q3_tool_skill",
+      "mode": "tree_original",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p066"
+      ],
+      "full_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p066"
+      ],
+      "notes": "ツール検索という方式名を前提に、定義を必要時に読む説明は同義として要点①を満たす。検索で見つかったという字面の省略だけでは減点しない。Skillの名前・説明と本文を区別。共通目的はヒント形式だがコンテキスト圧迫・トークン増加を避ける内容を実質的に述べる。p32・p66の全文で裏付けられる。",
+      "split": "validation",
+      "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+      "source_result": "attempts/q3_tool_skill__tree_original__r02__a003.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p005",
+        "lec03-main-p006",
+        "lec03-main-p007",
+        "lec03-main-p008",
+        "lec03-main-p009",
+        "lec03-main-p010",
+        "lec03-main-p011",
+        "lec03-main-p012",
+        "lec03-main-p013",
+        "lec03-main-p014",
+        "lec03-main-p015",
+        "lec03-main-p016",
+        "lec03-main-p017",
+        "lec03-main-p018",
+        "lec03-main-p019",
+        "lec03-main-p020",
+        "lec03-main-p021",
+        "lec03-main-p022",
+        "lec03-main-p023",
+        "lec03-main-p024",
+        "lec03-main-p025",
+        "lec03-main-p026",
+        "lec03-main-p027",
+        "lec03-main-p028",
+        "lec03-main-p029",
+        "lec03-main-p030",
+        "lec03-main-p031",
+        "lec03-main-p032",
+        "lec03-main-p033",
+        "lec03-main-p034",
+        "lec03-main-p035",
+        "lec03-main-p036",
+        "lec03-main-p060",
+        "lec03-main-p061",
+        "lec03-main-p062",
+        "lec03-main-p063",
+        "lec03-main-p064",
+        "lec03-main-p065",
+        "lec03-main-p066",
+        "lec03-main-p067",
+        "lec03-main-p068",
+        "lec03-main-p069",
+        "lec03-main-p070",
+        "lec03-main-p071"
+      ]
+    },
+    {
+      "trial_id": "q3_tool_skill__rag__r02",
+      "case_id": "q3_tool_skill",
+      "mode": "rag",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        0,
+        1
+      ],
+      "core_correct": false,
+      "correct": false,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p041"
+      ],
+      "full_page_ids": [
+        "lec03-main-p009",
+        "lec03-main-p010",
+        "lec03-main-p011",
+        "lec03-main-p013",
+        "lec03-main-p030",
+        "lec03-main-p032",
+        "lec03-main-p041",
+        "lec03-main-p063",
+        "lec03-main-p066"
+      ],
+      "notes": "r01と同様、Skillの本文後読みと共通目的は正確だが、名前・説明の先読みを省略。事前基準②を完全に満たさない。p41・p66の全文は取得済みで、取得ではなく回答生成時の省略。",
+      "split": "validation",
+      "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+      "source_result": "attempts/q3_tool_skill__rag__r02__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q3_tool_skill__tree_improved__r02",
+      "case_id": "q3_tool_skill",
+      "mode": "tree_improved",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p041"
+      ],
+      "full_page_ids": [
+        "lec03-main-p032",
+        "lec03-main-p033",
+        "lec03-main-p034",
+        "lec03-main-p041",
+        "lec03-main-p042"
+      ],
+      "notes": "3要点を満たし、p32・p41を全文取得して引用。r01と同じくp33・p34・p42を追加で読む経路で、候補の情報増加によって不要な全文取得が解消されたとはいえない。",
+      "split": "validation",
+      "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+      "source_result": "attempts/q3_tool_skill__tree_improved__r02__a001.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p022",
+        "lec03-main-p023",
+        "lec03-main-p024",
+        "lec03-main-p025",
+        "lec03-main-p026",
+        "lec03-main-p027",
+        "lec03-main-p028",
+        "lec03-main-p029",
+        "lec03-main-p030",
+        "lec03-main-p031",
+        "lec03-main-p032",
+        "lec03-main-p037",
+        "lec03-main-p038",
+        "lec03-main-p039",
+        "lec03-main-p040",
+        "lec03-main-p041"
+      ]
+    },
+    {
+      "trial_id": "q4_retry__tree_improved__r02",
+      "case_id": "q4_retry",
+      "mode": "tree_improved",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec03-main-p048",
+        "lec03-main-p043"
+      ],
+      "full_page_ids": [],
+      "notes": "外部操作は内部状態を戻しても消えず、失敗と誤認した再送で重複すること、結果記録、ハーネスによる回数・時間・予算上限と停止を明確に説明。引用先本文も裏付ける。ただし実際にモデルへ渡ったのはp43・p48の候補抜粋のみで、全文取得0。",
+      "split": "validation",
+      "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+      "source_result": "attempts/q4_retry__tree_improved__r02__a001.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p042",
+        "lec03-main-p043",
+        "lec03-main-p044",
+        "lec03-main-p045",
+        "lec03-main-p046",
+        "lec03-main-p047",
+        "lec03-main-p048"
+      ]
+    },
+    {
+      "trial_id": "q4_retry__tree_original__r02",
+      "case_id": "q4_retry",
+      "mode": "tree_original",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        0
+      ],
+      "core_correct": false,
+      "correct": false,
+      "citation_validity": "partial",
+      "grounding_retrieved": false,
+      "cited_page_ids": [
+        "lec03-main-p048",
+        "lec03-main-p045"
+      ],
+      "full_page_ids": [
+        "lec03-main-p045",
+        "lec03-main-p048"
+      ],
+      "notes": "外部操作の非巻き戻りと結果再利用は正確。ハーネス等が回数・履歴を管理することは述べるが、具体的な上限・到達時の停止条件を示さず、要点③は未充足。③の根拠に挙げたp45は延々再試行という問題例であり、管理主体や上限による停止という対策までは裏付けない。p43全文も未取得。",
+      "split": "validation",
+      "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+      "source_result": "attempts/q4_retry__tree_original__r02__a002.json",
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p042",
+        "lec03-main-p043",
+        "lec03-main-p044",
+        "lec03-main-p045",
+        "lec03-main-p046",
+        "lec03-main-p047",
+        "lec03-main-p048"
+      ]
+    },
+    {
+      "trial_id": "q4_retry__rag__r02",
+      "case_id": "q4_retry",
+      "mode": "rag",
+      "repeat": 2,
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "core_correct": true,
+      "correct": true,
+      "citation_validity": "valid",
+      "grounding_retrieved": true,
+      "cited_page_ids": [
+        "lec03-main-p027",
+        "lec03-main-p048",
+        "lec03-main-p043"
+      ],
+      "full_page_ids": [
+        "lec03-main-p019",
+        "lec03-main-p022",
+        "lec03-main-p025",
+        "lec03-main-p027",
+        "lec03-main-p029",
+        "lec03-main-p030",
+        "lec03-main-p042",
+        "lec03-main-p043",
+        "lec03-main-p044",
+        "lec03-main-p045",
+        "lec03-main-p046",
+        "lec03-main-p047",
+        "lec03-main-p048",
+        "lec03-main-p068"
+      ],
+      "notes": "3要点が明示され、必要なp27・p48・p43を全文取得・引用している。モデル自身に任せずハーネスが回数・時間・予算を管理して上限で停止すると説明。",
+      "split": "validation",
+      "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+      "source_result": "attempts/q4_retry__rag__r02__a001.json",
+      "preview_page_ids": []
+    },
+    {
+      "trial_id": "q5_unanswerable__rag__r02",
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "correct": true,
+      "citation_validity": null,
+      "grounding_retrieved": null,
+      "cited_page_ids": [],
+      "abstention_appropriate": true,
+      "fabricated_current_measurement": false,
+      "notes": "この環境の平均応答時間・正答率は講義資料から確認できないと明示し、実測値を創作していない。事前基準3項目を満たす。答えなし問なので引用・根拠全文取得はN/A。資料全体を網羅して読んだ証明ではない。",
+      "review_method": "生成済みの回答全文を事前評価基準と照合したChatGPTによる事後レビュー。講師採点ではない。",
+      "case_id": "q5_unanswerable",
+      "mode": "rag",
+      "repeat": 2,
+      "split": "validation",
+      "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+      "source_result": "attempts/q5_unanswerable__rag__r02__a001.json",
+      "full_page_ids": [
+        "lec02-main-p013",
+        "lec02-main-p025",
+        "lec02-main-p027",
+        "lec02-main-p043",
+        "lec02-main-p061",
+        "lec03-main-p019",
+        "lec03-main-p064"
+      ],
+      "preview_page_ids": [],
+      "core_correct": true
+    },
+    {
+      "trial_id": "q5_unanswerable__tree_improved__r02",
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "correct": true,
+      "citation_validity": null,
+      "grounding_retrieved": null,
+      "cited_page_ids": [],
+      "abstention_appropriate": true,
+      "fabricated_current_measurement": false,
+      "notes": "この環境の平均応答時間・正答率は講義資料から確認できないと明示し、実測値を創作していない。事前基準3項目を満たす。答えなし問なので引用・根拠全文取得はN/A。資料全体を網羅して読んだ証明ではない。",
+      "review_method": "生成済みの回答全文を事前評価基準と照合したChatGPTによる事後レビュー。講師採点ではない。",
+      "case_id": "q5_unanswerable",
+      "mode": "tree_improved",
+      "repeat": 2,
+      "split": "validation",
+      "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+      "source_result": "attempts/q5_unanswerable__tree_improved__r02__a001.json",
+      "full_page_ids": [],
+      "preview_page_ids": [
+        "lec01-main-p001",
+        "lec01-main-p002",
+        "lec02-main-p001",
+        "lec02-main-p002",
+        "lec02-main-p003",
+        "lec02-main-p004",
+        "lec02-main-p005",
+        "lec02-main-p006",
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004"
+      ],
+      "core_correct": true
+    },
+    {
+      "trial_id": "q5_unanswerable__tree_original__r02",
+      "criterion_scores": [
+        1,
+        1,
+        1
+      ],
+      "correct": true,
+      "citation_validity": null,
+      "grounding_retrieved": null,
+      "cited_page_ids": [],
+      "abstention_appropriate": true,
+      "fabricated_current_measurement": false,
+      "notes": "この環境の平均応答時間・正答率は講義資料から確認できないと明示し、実測値を創作していない。事前基準3項目を満たす。答えなし問なので引用・根拠全文取得はN/A。資料全体を網羅して読んだ証明ではない。",
+      "review_method": "生成済みの回答全文を事前評価基準と照合したChatGPTによる事後レビュー。講師採点ではない。",
+      "case_id": "q5_unanswerable",
+      "mode": "tree_original",
+      "repeat": 2,
+      "split": "validation",
+      "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+      "source_result": "attempts/q5_unanswerable__tree_original__r02__a001.json",
+      "full_page_ids": [],
+      "preview_page_ids": [
+        "lec03-main-p001",
+        "lec03-main-p002",
+        "lec03-main-p003",
+        "lec03-main-p004",
+        "lec03-main-p060",
+        "lec03-main-p061",
+        "lec03-main-p062",
+        "lec03-main-p063",
+        "lec03-main-p064",
+        "lec03-main-p065",
+        "lec03-main-p066",
+        "lec03-main-p067",
+        "lec03-main-p068",
+        "lec03-main-p069",
+        "lec03-main-p070",
+        "lec03-main-p071"
+      ],
+      "core_correct": true
+    }
+  ]
+}

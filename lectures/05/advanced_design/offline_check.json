@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "status": "passed",
+  "api_calls": 0,
+  "pages_checked": 214,
+  "tree_nodes_checked": 236,
+  "checks": [
+    "配布版候補の完全再現",
+    "改良候補が1〜200文字",
+    "全文・階層・出典情報の同一性",
+    "本文の分数保持",
+    "不正モード検知"
+  ],
+  "character_counts_not_tokens": {
+    "original_preview_chars": 2852,
+    "improved_preview_chars": 37680
+  },
+  "examples": [
+    {
+      "page_id": "lec02-main-p052",
+      "title": "LoRA と QLoRA ：大きなモデルも GPU 1 台で調整できる",
+      "original": "4/4 　選んだモデルを、いつ・どう直すか",
+      "improved": "元の重みは固定し、小さな「差分」だけを学習する（ LoRA ）。さらに元の重みを 4bit に圧縮する（ QLoRA ）\nLoRA （ Hu et al. Fig.1 ）： A と B だけを学習する\n青：元の重み W\n固定して学習しない。 QLoRA では\n4bit （数値を粗く保存）にして\n約 1/4 。 7B なら約 4GB\n橙：小さな行列 A ・ B\nこれだけを学習。細長い 2 つの\n行…"
+    },
+    {
+      "page_id": "lec03-main-p039",
+      "title": "実装例：Claude",
+      "original": "実装例：Claude",
+      "improved": "Claude の例。1つのセッションの中で効くものと、セッションをまたいで効くものがある\nコンテキストの中（同じセッション）\nコンパクション（履歴を要約して詰める）\n古い履歴を、要約に置き換える。\n外の保存先（セッションをまたぐ）\nメモリツール（Claude API）\n/memories のファイルを、モデルが要求し\nアプリが自分の保存先で実行する\n自動メモリ（Claude Code）\nClau…"
+    },
+    {
+      "page_id": "lec03-main-p040",
+      "title": "実装例：OpenClaw",
+      "original": "実装例：OpenClaw",
+      "improved": "毎晩過去のやり取りを読み直し、残すものだけを長期メモリに移す。\n日々のメモ（memory/日付.md）\n10/24 のメモ 10/25 のメモ 10/26 のメモ\n毎晩、自動で\n見直し（dreaming）\n1 集める：重複を除いて、候補を並べる\n2 見比べる：何度も出てくるテーマを探す\n3 移す：基準を超えたものだけ残す\nMEMORY.md（長期メモリ） 次の会話の最初に読み込む\n人が手で整理し…"
+    },
+    {
+      "page_id": "lec03-main-p041",
+      "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+      "original": "Skill：繰り返す作業の手順をファイルに保存しておく",
+      "improved": "メモリは「何があったか」を残す。Skillは「どうやるか」を残す。\nSkill の中身（例：週報を作る）\nweekly-report/\nSKILL.md ← 手順を書く\ntemplate.docx ← ひな形\nscripts/collect.py ← 集計する\n---\nname: weekly-report\ndescription: 週報を作るときに使う\n---\n1. 今週のチケットを集める\n2…"
+    }
+  ]
+}

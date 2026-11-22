@@ -1,0 +1,19 @@
+[model] gemini-3.5-flash-lite
+[mode] rag
+第3回の講義資料によると、ツール検索とSkillは、それぞれ以下のものを最初から全部読み込まず、必要なときに読み込む仕組みになっています。
+
+* **ツール検索**：ツールの説明（定義）を最初から全部入れず、検索で見つかった定義だけを読み込みます。（第3回・PDF p.32）
+* **Skill**：作業手順の本文（中身）を最初から全部入れず、そのSkillを使う依頼が来てから初めて本文を読み込みます。（第3回・PDF p.41）
+
+### 両者に共通する目的
+ツールや手順の詳しい内容を最初からすべてコンテキストに入れると、コンテキスト（またはトークン）が圧迫されてしまうため、**コンテキストの圧迫を防ぐこと**（またはコンテキストの節約）にあります。（第3回・PDF p.32, p.41）
+
+--- trace ---
+[tool call]   search_materials({'query': 'ツール検索 Skill 最初から全部読み込まず 必要なとき 共通する目的'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p032", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[tool call]   search_materials({'query': 'Skill コンテキスト 共通 目的'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p041", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[time] 回答完了まで 6.52 秒（検索・埋め込みを含む）
+[usage] 入力 6,486 tokens / 出力 243 tokens / モデル応答 3 回
+[cost] 生成APIの推定コスト: $0.002553 USD（埋め込み・索引構築分は含まない）
+[full-pages] lec03-main-p009, lec03-main-p010, lec03-main-p011, lec03-main-p013, lec03-main-p030, lec03-main-p032, lec03-main-p041, lec03-main-p063, lec03-main-p066

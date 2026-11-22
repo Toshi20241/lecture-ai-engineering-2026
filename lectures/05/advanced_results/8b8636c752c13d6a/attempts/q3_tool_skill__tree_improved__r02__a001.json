@@ -1,0 +1,547 @@
+{
+  "case_id": "q3_tool_skill",
+  "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+  "split": "validation",
+  "mode": "tree_improved",
+  "repeat": 2,
+  "trial_id": "q3_tool_skill__tree_improved__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:27:29+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料では、ツール検索とSkillについて、それぞれ次のような仕組みが紹介されています。\n\n* **ツール検索**：\n  大量の**ツールの定義や説明**を最初からすべて読み込まず、必要なときに検索して見つかったものだけをコンテキストに読み込む仕組みです（第3回・PDF p.32）。\n* **Skill**：\n  繰り返す作業の**手順（本文）**を最初からすべて読み込まず、コンテキストには名前と説明だけを入れておき、その作業をする必要があるときに初めて本文を読み込む仕組みです（第3回・PDF p.41）。\n\n### 両者に共通する目的\nツールや作業手順（Skill）が大量にある場合、それらを最初からすべてコンテキストに入れてしまうと、コンテキストの大部分が埋まってしまい、依頼内容を読む前にトークンを圧迫したり、モデルが選び間違えたりする原因になります（第3回・PDF p.32, 41）。\n\nそのため、両者に共通する目的は、**「必要なものだけを後から呼び出すことで、コンテキストの圧迫を防ぎ、限られたコンテキストを効率よく使うこと」**と言えます。\n\nより詳細な仕組みや具体的な実装方法については、該当ページの図解もあわせて確認してみてください。",
+  "elapsed_seconds": 31.746816504999515,
+  "input_tokens": 34518,
+  "output_tokens": 497,
+  "model_responses": 10,
+  "generation_cost_usd": 0.00889007,
+  "tool_call_count": 9,
+  "tool_calls": [
+    {
+      "tool_name": "browse_tree",
+      "args": {},
+      "tool_call_id": "call_3825475236655299416"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main"
+      },
+      "tool_call_id": "call_11630646362154711603"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s037"
+      },
+      "tool_call_id": "call_16896938611981923609"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p042"
+      },
+      "tool_call_id": "call_9442137628801337550"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s022"
+      },
+      "tool_call_id": "call_14748100060851165915"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p033"
+      },
+      "tool_call_id": "call_18281369502263847339"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p034"
+      },
+      "tool_call_id": "call_14989390003981328438"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p032"
+      },
+      "tool_call_id": "call_11758533300815955085"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p041"
+      },
+      "tool_call_id": "call_3170310090333705675"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_3825475236655299416",
+      "content": {
+        "node": {
+          "id": "aie2026-materials",
+          "kind": "collection",
+          "title": "AIエンジニアリング実践講座2026 資料"
+        },
+        "children": [
+          {
+            "id": "lec01-main",
+            "kind": "document",
+            "title": "AIエンジニアリング概論とAIコーディング"
+          },
+          {
+            "id": "lec02-main",
+            "kind": "document",
+            "title": "基盤モデルの仕組み"
+          },
+          {
+            "id": "lec03-main",
+            "kind": "document",
+            "title": "AIエージェント"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_11630646362154711603",
+      "content": {
+        "node": {
+          "id": "lec03-main",
+          "kind": "document",
+          "title": "AIエージェント"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p001",
+            "kind": "page",
+            "title": "AIエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 1,
+            "content": "第3回\n2026年11月2日 渡辺倫世\n許諾なく撮影や第三者への開示\nを禁止します\nロゴ：松尾・岩澤研究室 / MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO"
+          },
+          {
+            "id": "lec03-main-p002",
+            "kind": "page",
+            "title": "自己紹介",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 2,
+            "content": "渡辺 倫世（わたなべ りんぜ）\n東京大学大学院 工学系研究科 松尾・岩澤研究室\n業務・活動\nAX推進、計算基盤・インフラ\n普段使っているエージェント\nDots・Openclaw的な自作エージェント\n[ 写真・画面 ]"
+          },
+          {
+            "id": "lec03-main-p003",
+            "kind": "page",
+            "title": "第2回で見たモデルの性質が、今日の設計の前提になる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 3,
+            "content": "エージェントは、モデルにツール・ループ・メモリを付けたもの。モデルの性質は、そのまま残る。\n第2回で見た性質 エージェントで起きること 今日の Part\n① 同じ質問でも、答えは毎回変わる 同じ依頼でも毎回ちがう手順になり、誤りが積み重なる Part 3 ループ\n② 知らないことも、それらしく答える ない関数を呼ぶ。ツールの結果を読み違える Part 8 失敗時\n③ 知識には締め切りがある 新し…"
+          },
+          {
+            "id": "lec03-main-p004",
+            "kind": "page",
+            "title": "アジェンダ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 4,
+            "content": "エージェントの構成\nPart 2 エージェントを組み立てる\nゼロから作る AI エージェント\n部品を設計する\nPart 3 ループ\n誤差の累積と戻れるループ\nPart 4 ツール\nMCP・実行前の承認・並列化\nPart 5 構造化出力とツール呼び出し\n形式に合う出力だけを作る・Jev\nPart 6 メモリ\n長期記録・Skill\n安全性\nPart 7 停止条件\n止める仕組みをループの外側に置く\nP…"
+          },
+          {
+            "id": "lec03-main-s005",
+            "kind": "section",
+            "title": "Part 2 エージェントを組み立てる"
+          },
+          {
+            "id": "lec03-main-s018",
+            "kind": "section",
+            "title": "Part 3 ループ"
+          },
+          {
+            "id": "lec03-main-s022",
+            "kind": "section",
+            "title": "Part 4 ツール"
+          },
+          {
+            "id": "lec03-main-s033",
+            "kind": "section",
+            "title": "Part 5 構造化出力とツール呼び出し"
+          },
+          {
+            "id": "lec03-main-s037",
+            "kind": "section",
+            "title": "Part 6 メモリ"
+          },
+          {
+            "id": "lec03-main-s042",
+            "kind": "section",
+            "title": "Part 7 停止条件・失敗時の振る舞い"
+          },
+          {
+            "id": "lec03-main-s049",
+            "kind": "section",
+            "title": "Part 9 信頼境界とハーネス"
+          },
+          {
+            "id": "lec03-main-s054",
+            "kind": "section",
+            "title": "Part 10 RSI とエージェント"
+          },
+          {
+            "id": "lec03-main-s060",
+            "kind": "section",
+            "title": "Appendix"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_16896938611981923609",
+      "content": {
+        "node": {
+          "id": "lec03-main-s037",
+          "kind": "section",
+          "title": "Part 6 メモリ"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p037",
+            "kind": "page",
+            "title": "Part 6 メモリ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 37,
+            "content": "メモリ\n実装例・ Skill"
+          },
+          {
+            "id": "lec03-main-p038",
+            "kind": "page",
+            "title": "メモリがないと、毎回ゼロからやり直しになる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 38,
+            "content": "「失敗しているテストを直して」を翌日また頼んだら、前回見つけた原因は使えるでしょうか？\n1\n毎回ゼロから始める\n前に決めたことを\nまた説明する\n2\n同じ失敗を繰り返す\n前回突き止めた原因を\nまた探す\n3\n長い作業が途切れる\nコンテキストの上限で\n途中経過が落ちる\nすべてを蓄積すると、古い情報や誤りも一緒に戻ってくる。何を残し、何を消すかを設計する。"
+          },
+          {
+            "id": "lec03-main-p039",
+            "kind": "page",
+            "title": "実装例：Claude",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 39,
+            "content": "Claude の例。1つのセッションの中で効くものと、セッションをまたいで効くものがある\nコンテキストの中（同じセッション）\nコンパクション（履歴を要約して詰める）\n古い履歴を、要約に置き換える。\n外の保存先（セッションをまたぐ）\nメモリツール（Claude API）\n/memories のファイルを、モデルが要求し\nアプリが自分の保存先で実行する\n自動メモリ（Claude Code）\nClau…"
+          },
+          {
+            "id": "lec03-main-p040",
+            "kind": "page",
+            "title": "実装例：OpenClaw",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 40,
+            "content": "毎晩過去のやり取りを読み直し、残すものだけを長期メモリに移す。\n日々のメモ（memory/日付.md）\n10/24 のメモ 10/25 のメモ 10/26 のメモ\n毎晩、自動で\n見直し（dreaming）\n1 集める：重複を除いて、候補を並べる\n2 見比べる：何度も出てくるテーマを探す\n3 移す：基準を超えたものだけ残す\nMEMORY.md（長期メモリ） 次の会話の最初に読み込む\n人が手で整理し…"
+          },
+          {
+            "id": "lec03-main-p041",
+            "kind": "page",
+            "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 41,
+            "content": "メモリは「何があったか」を残す。Skillは「どうやるか」を残す。\nSkill の中身（例：週報を作る）\nweekly-report/\nSKILL.md ← 手順を書く\ntemplate.docx ← ひな形\nscripts/collect.py ← 集計する\n---\nname: weekly-report\ndescription: 週報を作るときに使う\n---\n1. 今週のチケットを集める\n2…"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_9442137628801337550",
+      "content": {
+        "node": {
+          "id": "lec03-main-p042",
+          "kind": "page",
+          "title": "Part 7 停止条件・失敗時の振る舞い",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 7 停止条件・失敗時の振る舞い",
+          "page": 42,
+          "content": "Part 7\n停止条件・失敗時の振る舞い\nループを止める仕組み・完了の判定・失敗の検出\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_14748100060851165915",
+      "content": {
+        "node": {
+          "id": "lec03-main-s022",
+          "kind": "section",
+          "title": "Part 4 ツール"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p022",
+            "kind": "page",
+            "title": "Part 4 ツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 22,
+            "content": "ツール\nMCP ・長い処理と並列化・評価"
+          },
+          {
+            "id": "lec03-main-p023",
+            "kind": "page",
+            "title": "ツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 23,
+            "content": "モデルは呼び出しを出力し、実行はハーネスが行う\nコンテキスト（上から順に積み上がる）\nユーザー 失敗しているテストを直して\nモデル run_tests(\"tests/\")\n結果 2件失敗：test_parse_date ほか\nモデル read_file(\"utils.py\")\n結果 def parse_date(s): ...\nモデル edit_file(\"utils.py\", ...)\nツール…"
+          },
+          {
+            "id": "lec03-main-p024",
+            "kind": "page",
+            "title": "MCP（モデルコンテキストプロトコル）：権限をサーバー側で管理できる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 24,
+            "content": "MCP（ツールやデータをつなぐ共通の接続方式）と、CLI（コマンドで動かす道具）を比べる\nシェルツールでCLI を直接使う\nエージェント\n資格情報\nCLI サービス\n・資格情報（APIキーなど）はエージェントから読める\n・できることはそのアカウントの権限すべて\nMCP サーバーを通す\nエージェント MCP サーバー\n資格情報\nサービス\n・公開する操作と対象をサーバー側で絞れる（認可ができ\nる）…"
+          },
+          {
+            "id": "lec03-main-p025",
+            "kind": "page",
+            "title": "Human in the loop",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 25,
+            "content": "メール送信やファイルの削除のように戻せない操作は、実行前に人に確認させる。\nClaude Code の承認画面\nBash(git push origin main)\nPush local commits to remote\nDo you want to proceed?\n> 1. Yes\n2. Yes, and don't ask again for git push\n3. No, and te…"
+          },
+          {
+            "id": "lec03-main-p026",
+            "kind": "page",
+            "title": "Human in the loop",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 26,
+            "content": "human-in / on / out-of-the-loop のどれにするかで、承認と停止の作り方が変わる。\n便利さとセキュアさのトレードオフになる。\nin：毎回承認する\nエージェント 操作\n毎回の承認\n操作のたびに人が許可する。\n承認が形だけになりやすい。\non：見ていて、止められる\nエージェント 操作\n見て、止める\n任せて動かし、人は監視して必要なら\n介入する。\n止める手段がエージェントの…"
+          },
+          {
+            "id": "lec03-main-p027",
+            "kind": "page",
+            "title": "冪等性がないツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 27,
+            "content": "送信は成功していた。応答が届く前に接続が切れ、エージェントは失敗と判断してやり直した\nエージェント メールサービス 相手の受信箱\n① send_email（見積書）\n1通目が届く\n×\n成功の応答が届かない（タイムアウト）\n②失敗したと判断\n③もう一度 send_email\n2通目が届く\n同じような問題が起こりうるツ\nール\n注文する\n→ 2回注文される\n送金する\n→ 2回払う\n投稿する\n→ 同じ投…"
+          },
+          {
+            "id": "lec03-main-p028",
+            "kind": "page",
+            "title": "情報漏えい",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 28,
+            "content": "機微なデータ・信頼できない入力・外への送信手段。この3つがそろうと、情報漏えいが起こりうる\n機微なデータ\n社内の文書・メール・顧\n客データ\n信頼できない入力\n外部からのメール・ウェ\nブサイト\n外への送信手段"
+          },
+          {
+            "id": "lec03-main-p029",
+            "kind": "page",
+            "title": "ツールをバックグラウンドで実行",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 29,
+            "content": "全テストに20分かかるなら、待つ間にモデルは別のツールで作業を進め、終わったら結果を受け取る\n待つ場合 開始 結果が返るまで、何もできない（20分） 結果を読む\nバックグラウンドで走らせる場合\nツール 全テストを実行中（20分）\nモデル 開始\n→ ID\nread_file\nutils.py\nsearch\nparse_date\n修正案を\n考える\n完了の通知\n結果がコンテキストに入り、\n続きから再開…"
+          },
+          {
+            "id": "lec03-main-p030",
+            "kind": "page",
+            "title": "ツールのバッチコール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 30,
+            "content": "前の結果を使わない呼び出しは1回の応答でまとめて（バッチで）呼び、使うものは順に呼ぶ\n結果を使わない → まとめて呼ぶ\nモデルの\n応答（1回）\nread_file(\"utils.py\")\nread_file(\"test_utils.py\")\nsearch(\"parse_date\")\n結果を使う → 順に呼ぶ\nrun_tests(\"tests/\")\ntest_parse_date が失敗\nread…"
+          },
+          {
+            "id": "lec03-main-p031",
+            "kind": "page",
+            "title": "サブエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 31,
+            "content": "サブエージェントは、エージェントが呼び出す別のエージェント。コンテキストを切り分けられ、親エージェントのコン\nテキストを節約できる。\n親エージェントが調べる場合\n親エージェントのコンテキスト（上から順にたまる）\n依頼：parse_date の不具合を直して\n調べものの記録\nsearch の結果×6\nread_file で読んだファイルの中身×14\nrun_tests のログ\n修正の前に、コンテキ…"
+          },
+          {
+            "id": "lec03-main-p032",
+            "kind": "page",
+            "title": "ツール検索：ツールの説明も、必要なときだけ読み込む",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 32,
+            "content": "ツールが増えると、説明だけでコンテキストが埋まってしまう\n全部の定義を最初から入れる\nコンテキスト（上から順にたまる）\nシステムプロンプト\nツールの定義 ×50（MCP を含む）\nread_file, run_tests, slack_search, calendar_add, …\n約5.5万トークン\n依頼：Slack の未読をまとめて\n依頼を読む前に、ツールの定義がコンテキストを占める\nツール…"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_18281369502263847339",
+      "content": {
+        "node": {
+          "id": "lec03-main-p033",
+          "kind": "page",
+          "title": "Part 5 構造化出力とツール呼び出し",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 5 構造化出力とツール呼び出し",
+          "page": 33,
+          "content": "Part 5\n構造化出力とツール呼び出し\n形式を決める・形式に合う出力だけを生成する\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_14989390003981328438",
+      "content": {
+        "node": {
+          "id": "lec03-main-p034",
+          "kind": "page",
+          "title": "構造化出力",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 5 構造化出力とツール呼び出し",
+          "page": 34,
+          "content": "構造化出力\n先にスキーマ（項目と型の決まり）を決め、JSON（データを書く形式の1つ）などで返させる\n出典）スキーマと出力は説明用の架空例。実際には JSON Schema などで定義する。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n自由な文章で返す\n原因はおそらく、\n境界値の扱いだと思います。\nutils.py を確認すると\nよいでしょう。\nスキーマに沿って返す\n決めた型\n原因 境界値の扱い 文字列\n対象ファイル utils.py 文字列\n確信度 中 高・中・低のどれか\n修正が必要か はい 真偽値\n使う場面 文書から項目を抜き出す 選択肢から分類・判定する ツールを呼び出す\nツール呼び出しも構造化出力。ツール名と引数を決まった形で書く"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_11758533300815955085",
+      "content": {
+        "node": {
+          "id": "lec03-main-p032",
+          "kind": "page",
+          "title": "ツール検索：ツールの説明も、必要なときだけ読み込む",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 4 ツール",
+          "page": 32,
+          "content": "ツール検索：ツールの説明も、必要なときだけ読み込む\nツールが増えると、説明だけでコンテキストが埋まってしまう\n出典）Anthropic「Tool search tool」（2026/2/17）、OpenAI「Function calling」（2026/10/9 確認）。トークン数は文書の例。やりとりは説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n全部の定義を最初から入れる\nコンテキスト（上から順にたまる）\nシステムプロンプト\nツールの定義 ×50（MCP を含む）\nread_file, run_tests, slack_search, calendar_add, …\n約5.5万トークン\n依頼：Slack の未読をまとめて\n依頼を読む前に、ツールの定義がコンテキストを占める\nツール検索で探す\nコンテキスト（上から順にたまる）\nシステムプロンプト\ntool_search：ツールを探すツール（これだけ常に入れる）\n依頼：Slack の未読をまとめて\ntool_search(\"slack\")\n見つかった定義だけ入る：slack_search\nツールが多いと選び間違える。"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_3170310090333705675",
+      "content": {
+        "node": {
+          "id": "lec03-main-p041",
+          "kind": "page",
+          "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 6 メモリ",
+          "page": 41,
+          "content": "Skill：繰り返す作業の手順をファイルに保存しておく\nメモリは「何があったか」を残す。Skillは「どうやるか」を残す。\n出典）Anthropic「Agent Skills」「Skill authoring best practices」（Claude Platform Docs）。トークン数は目安。例の Skill は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nSkill の中身（例：週報を作る）\nweekly-report/\nSKILL.md ← 手順を書く\ntemplate.docx ← ひな形\nscripts/collect.py ← 集計する\n---\nname: weekly-report\ndescription: 週報を作るときに使う\n---\n1. 今週のチケットを集める\n2. template.docx に沿って書く\n①コンテキストには名前と説明だけを入れる\n1つあたり約100トークン。本文を入れないので、コンテキス\nトを圧迫しない\n② Skillを使う依頼が来たら読み込む\n手順の本文がここで初めてコンテキストに入る。"
+        },
+        "children": []
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec03-main-p032",
+    "lec03-main-p033",
+    "lec03-main-p034",
+    "lec03-main-p041",
+    "lec03-main-p042"
+  ],
+  "preview_page_ids": [
+    "lec03-main-p001",
+    "lec03-main-p002",
+    "lec03-main-p003",
+    "lec03-main-p004",
+    "lec03-main-p022",
+    "lec03-main-p023",
+    "lec03-main-p024",
+    "lec03-main-p025",
+    "lec03-main-p026",
+    "lec03-main-p027",
+    "lec03-main-p028",
+    "lec03-main-p029",
+    "lec03-main-p030",
+    "lec03-main-p031",
+    "lec03-main-p032",
+    "lec03-main-p037",
+    "lec03-main-p038",
+    "lec03-main-p039",
+    "lec03-main-p040",
+    "lec03-main-p041"
+  ],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:28:03+00:00",
+  "attempt_wall_seconds": 34.19572779699956,
+  "process_return_code": 0
+}

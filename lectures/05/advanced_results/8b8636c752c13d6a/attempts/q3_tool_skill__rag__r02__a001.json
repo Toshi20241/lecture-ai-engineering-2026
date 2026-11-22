@@ -1,0 +1,187 @@
+{
+  "case_id": "q3_tool_skill",
+  "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+  "split": "validation",
+  "mode": "rag",
+  "repeat": 2,
+  "trial_id": "q3_tool_skill__rag__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:27:18+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料によると、ツール検索とSkillは、それぞれ以下のものを最初から全部読み込まず、必要なときに読み込む仕組みになっています。\n\n* **ツール検索**：ツールの説明（定義）を最初から全部入れず、検索で見つかった定義だけを読み込みます。（第3回・PDF p.32）\n* **Skill**：作業手順の本文（中身）を最初から全部入れず、そのSkillを使う依頼が来てから初めて本文を読み込みます。（第3回・PDF p.41）\n\n### 両者に共通する目的\nツールや手順の詳しい内容を最初からすべてコンテキストに入れると、コンテキスト（またはトークン）が圧迫されてしまうため、**コンテキストの圧迫を防ぐこと**（またはコンテキストの節約）にあります。（第3回・PDF p.32, p.41）",
+  "elapsed_seconds": 6.524368117999984,
+  "input_tokens": 6486,
+  "output_tokens": 243,
+  "model_responses": 3,
+  "generation_cost_usd": 0.0025533,
+  "tool_call_count": 2,
+  "tool_calls": [
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "ツール検索 Skill 最初から全部読み込まず 必要なとき 共通する目的"
+      },
+      "tool_call_id": "call_4941939173972645979"
+    },
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "Skill コンテキスト 共通 目的"
+      },
+      "tool_call_id": "call_5539797315624158873"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_4941939173972645979",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p032",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "ツール検索：ツールの説明も、必要なときだけ読み込む",
+            "page": 32,
+            "content": "ツール検索：ツールの説明も、必要なときだけ読み込む\nツールが増えると、説明だけでコンテキストが埋まってしまう\n出典）Anthropic「Tool search tool」（2026/2/17）、OpenAI「Function calling」（2026/10/9 確認）。トークン数は文書の例。やりとりは説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n全部の定義を最初から入れる\nコンテキスト（上から順にたまる）\nシステムプロンプト\nツールの定義 ×50（MCP を含む）\nread_file, run_tests, slack_search, calendar_add, …\n約5.5万トークン\n依頼：Slack の未読をまとめて\n依頼を読む前に、ツールの定義がコンテキストを占める\nツール検索で探す\nコンテキスト（上から順にたまる）\nシステムプロンプト\ntool_search：ツールを探すツール（これだけ常に入れる）\n依頼：Slack の未読をまとめて\ntool_search(\"slack\")\n見つかった定義だけ入る：slack_search\nツールが多いと選び間違える。",
+            "distance": 0.2596282362937927
+          },
+          {
+            "page_id": "lec03-main-p041",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+            "page": 41,
+            "content": "Skill：繰り返す作業の手順をファイルに保存しておく\nメモリは「何があったか」を残す。Skillは「どうやるか」を残す。\n出典）Anthropic「Agent Skills」「Skill authoring best practices」（Claude Platform Docs）。トークン数は目安。例の Skill は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nSkill の中身（例：週報を作る）\nweekly-report/\nSKILL.md ← 手順を書く\ntemplate.docx ← ひな形\nscripts/collect.py ← 集計する\n---\nname: weekly-report\ndescription: 週報を作るときに使う\n---\n1. 今週のチケットを集める\n2. template.docx に沿って書く\n①コンテキストには名前と説明だけを入れる\n1つあたり約100トークン。本文を入れないので、コンテキス\nトを圧迫しない\n② Skillを使う依頼が来たら読み込む\n手順の本文がここで初めてコンテキストに入る。",
+            "distance": 0.2801116108894348
+          },
+          {
+            "page_id": "lec03-main-p030",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "ツールのバッチコール",
+            "page": 30,
+            "content": "ツールのバッチコール\n前の結果を使わない呼び出しは1回の応答でまとめて（バッチで）呼び、使うものは順に呼ぶ\n出典）Anthropic「Parallel tool use」（Claude Platform Docs）、OpenAI「Function calling」、Google「Function calling with the Gemini API」（いずれも 2026/10/24 確認）。ツール名と例は説明用。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n結果を使わない → まとめて呼ぶ\nモデルの\n応答（1回）\nread_file(\"utils.py\")\nread_file(\"test_utils.py\")\nsearch(\"parse_date\")\n結果を使う → 順に呼ぶ\nrun_tests(\"tests/\")\ntest_parse_date が失敗\nread_file(\"test_utils.py\")\n期待する日付の形がわかる\nedit_file(\"utils.py\", ...)",
+            "distance": 0.2923765182495117
+          },
+          {
+            "page_id": "lec03-main-p063",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "title": "補足：ツール呼び出しの最新動向",
+            "page": 63,
+            "content": "補足：ツール呼び出しの最新動向\nツール定義を必要なときだけ読み込む機能と、コードからまとめてツールを呼ぶ機能が、Claude API でベータ指定なしに使\nえるようになった。\n何が変わったか\n項目 更新内容 時点\nツール検索 定義の読み込みを後回しにし、モデルが検索して必要な分だけ入力に入れる。文書\nの例では、約5.5万トークンの定義が85%超減る\n2026/2/17\nコード経由の呼び出し モデルが書いたコードがツールを続けて呼び、最終の出力だけが入力に戻る。検索\n系の評価で、入力トークンが24%減\n2026/2/17\nOpenAI API 定義の後回し（defer_loading）と tool_search に対応。gpt-5.4 以降のモデルが対象 2026/10 時点の文書\n講義の内容との関係。本編では、使えるツールの一覧をコンテキストに入れた。\nツールが多いと一覧だけでコンテキストを使うため、必要なときだけ読み込む。\n文書は、30〜50個を超えるとツール選択の精度が下がるとしている。\n使うときの注意。1つずつ順に呼ぶ作業では効果がなく、費用が約8%\n増えた評価もある。呼び出し元の指定は安全上の境界ではないと明記\nされている。権限はハーネスで確かめる。\n出典）Anthropic「Tool search tool」「Programmatic tool calling」「Claude Platform release notes」（2026/2/17）、OpenAI「Function calling」（日付記載なし）\n。情報確認日：2026/10/9\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.29558801651000977
+          },
+          {
+            "page_id": "lec03-main-p011",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "title": "一般的なツール",
+            "page": 11,
+            "content": "一般的なツール\nシェル/Bash（コマンド実行）はたいていのことができる。\n出典）Claude Code Docs「Tools reference」、openai/codex（v0.164.0）のツール定義、いずれも 2026/10/26 確認。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n種類 何をする Claude Code Codex\nファイル ファイルを読む・\n書く・編集 Read / Write / Edit シェル＋\napply_patch\n検索 ファイルを探す Glob / Grep シェル（rg など）\nコマンド実行 テストやビルド Bash exec_command\nWeb 検索、ページ取得 WebSearch / WebFetch web_search\nサブエージェント 仕事を任せる Agent spawn_agent\n計画 手順を管理する TaskCreate など update_plan",
+            "distance": 0.298850953578949
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_5539797315624158873",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p041",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+            "page": 41,
+            "content": "Skill：繰り返す作業の手順をファイルに保存しておく\nメモリは「何があったか」を残す。Skillは「どうやるか」を残す。\n出典）Anthropic「Agent Skills」「Skill authoring best practices」（Claude Platform Docs）。トークン数は目安。例の Skill は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nSkill の中身（例：週報を作る）\nweekly-report/\nSKILL.md ← 手順を書く\ntemplate.docx ← ひな形\nscripts/collect.py ← 集計する\n---\nname: weekly-report\ndescription: 週報を作るときに使う\n---\n1. 今週のチケットを集める\n2. template.docx に沿って書く\n①コンテキストには名前と説明だけを入れる\n1つあたり約100トークン。本文を入れないので、コンテキス\nトを圧迫しない\n② Skillを使う依頼が来たら読み込む\n手順の本文がここで初めてコンテキストに入る。",
+            "distance": 0.2693941295146942
+          },
+          {
+            "page_id": "lec03-main-p013",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "title": "メモリ",
+            "page": 13,
+            "content": "メモリ\nコンテキストは有限である。新しいチャットで始めたときに、過去のコンテキストを参照するシステムが欲しい。\n出典）説明用の模式図。保存先（ファイル、データベースなど）と探し方（全件、検索など）は実装により異なる。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n過去のチャット\n昨日：テストの修正を依頼\n・pytest で実行したい\n・原因は range の範囲だった\n・「コメントは日本語で」と\n言われた\n①\n書き出す\nメモリ（外の保存先）\nテストは pytest で実行する\nrange の境界に注意\nコメントは日本語で書く\n②\n戻す\n新しいコンテキスト\nメモリ：pytest で実行／\nコメントは日本語\nメッセージ：別のテストも\n落ちたので直して\n覚えている ≠ 学習。",
+            "distance": 0.3055729568004608
+          },
+          {
+            "page_id": "lec03-main-p066",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "title": "補足：設定ファイルの標準化（AGENTS.md・Skills）の最新動向",
+            "page": 66,
+            "content": "補足：設定ファイルの標準化（AGENTS.md・Skills）の最新動向\n指示ファイルは AGENTS.md、手順のまとまりは Agent Skills として、ツールをまたぐ共通形式が広がった。\n何が変わったか\n項目 更新内容 時点\nAGENTS.md OpenAI が Linux Foundation 傘下の Agentic AI Foundation に寄贈。6万を超える公\n開プロジェクトが採用\n2025/12/9\nClaude Code の対応 CLAUDE.md がないリポジトリでは、AGENTS.md を指示として直接読む（\nv2.1.277 以降）\n2026/10 時点の文書\nAgent Skills SKILL.md を置いたフォルダの形式。名前と説明だけを先に読み、必要なときに本\n文を読む。Claude API では Skills API がベータを終了\n2026/8/19\n講義の内容との関係。本編「設定ファイルもモデルへの指示になる」\nへの補足。同じ役割のファイルは AGENTS.md として共通化が進み\n、Claude Code も読めるようになった。\n使うときの注意。共通形式になるほど、外で書かれた指示を取り込み\nやすくなる。他者の AGENTS.md や Skill は、境界の内側に入れる前\nに中身を読む。\n出典）Linux Foundation の Agentic AI Foundation 設立発表（2025/12/9）、AGENTS.md・Agent Skills の各公式サイト、Anthropic「Claude Platform release notes\n」（2026/8/19）、「How Claude remembers your project」。情報確認日：2026/10/9\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.308626651763916
+          },
+          {
+            "page_id": "lec03-main-p009",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "title": "システムプロンプト：ユーザーに見えない指示も毎回一緒に送っている",
+            "page": 9,
+            "content": "システムプロンプト：ユーザーに見えない指示も毎回一緒に送っている\nコンテキストには会話だけでなく、サービス側が用意した指示文やツールの説明も入っている。\n出典）Anthropic「System Prompts」（Claude Docs リリースノート、2026/10/25 確認）。システムプロンプトの例は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nシステムプロンプト ツール・スキルの\n説明 メッセージ1 返答1 メッセージ2 LLM 返答2\nサービス側が入れる（ユーザーには見えない） これまでの会話（前のスライド）\nシステムプロンプトの例\n<system>\nあなたはA社のサポート担当です。\n今日の日付は 2026年10月25日。\n日本語で、簡潔に答える。\n社外秘の情報は答えない。\n</system>\nClaude は中身を公開している\nAnthropic が公式ドキュメントのリリースノートに載せている。",
+            "distance": 0.3149797022342682
+          },
+          {
+            "page_id": "lec03-main-p010",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "title": "ツール",
+            "page": 10,
+            "content": "ツール\n使えるツールの一覧をコンテキストに入れると、モデルは「どれを、どの引数で」呼ぶかを必要に応じて出力する。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n① 使えるツールを伝える\nコンテキストに追加\nrun_tests：テストを実行\nread_file：ファイルを読む\nedit_file：ファイルを直す\n② モデルが呼び出しを書く\nLLMの出力は、ただのテキスト\n{\"tool\": \"run_tests\", \"path\": \n\"test.py\"}\n③ ハーネスのプログラムが実行する\n結果を出力し、コンテキストに追\n加する",
+            "distance": 0.31658947467803955
+          }
+        ]
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec03-main-p009",
+    "lec03-main-p010",
+    "lec03-main-p011",
+    "lec03-main-p013",
+    "lec03-main-p030",
+    "lec03-main-p032",
+    "lec03-main-p041",
+    "lec03-main-p063",
+    "lec03-main-p066"
+  ],
+  "preview_page_ids": [],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:27:27+00:00",
+  "attempt_wall_seconds": 9.057097211999462,
+  "process_return_code": 0
+}

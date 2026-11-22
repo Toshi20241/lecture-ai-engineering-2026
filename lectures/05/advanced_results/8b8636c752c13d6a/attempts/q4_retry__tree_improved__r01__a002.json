@@ -1,0 +1,288 @@
+{
+  "case_id": "q4_retry",
+  "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+  "split": "validation",
+  "mode": "tree_improved",
+  "repeat": 1,
+  "trial_id": "q4_retry__tree_improved__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 2,
+  "started_utc": "2026-11-22T08:22:16+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料に基づき、ご質問の内容について解説します。\n\n---\n\n### 1. ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由とその対策\n* **理由:**\n  エージェントが外部（銀行システムやAPIなど）に対して操作（例：「送金する」など）を行った際、途中でネットワークのタイムアウトやエラーが発生すると、会話や作業状態（内部のメモリ）はエラー発生前の時点まで巻き戻されて再開されます。しかし、**外に送った実際の操作やその副作用は巻き戻らない**ため、再試行時に同じ操作が再び実行されてしまい、二重実行（二重払いなど）が起きます（第3回・PDF p.48）。\n* **対策:**\n  外への操作を記録しておき、再開後に同じ操作が再び来た場合には実際に実行せず、**記録した結果を返す仕組み（冪等性・アイデムポテンシーの担保）**を設けることが対策となります（第3回・PDF p.48）。\n\n---\n\n### 2. 失敗した処理をいつまでも再試行しないための管理\n失敗した処理が延々と再試行されるのを防ぐためには、モデル自身ではなく、ループの外側にある**「ハーネス」**が試行回数や制限時間、予算などの上限を管理する必要があります（第3回・PDF p.43）。\n\n* **誰が管理すべきか:** エージェント（モデル）ではなく、外側の**ハーネス**\n* **何を管理すべきか:** \n  * 失敗した回数（失敗回数の上限）\n  * 制限時間\n  * 予算（コスト）の制限\n\nこれにより、モデルが「終わった」と判断しなくても、指定した上限に達した時点で安全にループを停止させることができます（第3回・PDF p.43）。",
+  "elapsed_seconds": 5.820526016000258,
+  "input_tokens": 5442,
+  "output_tokens": 469,
+  "model_responses": 4,
+  "generation_cost_usd": 0.0028051,
+  "tool_call_count": 3,
+  "tool_calls": [
+    {
+      "tool_name": "browse_tree",
+      "args": {},
+      "tool_call_id": "call_8983165778705927276"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main"
+      },
+      "tool_call_id": "call_14806422722807974157"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s042"
+      },
+      "tool_call_id": "call_2616521252835137055"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_8983165778705927276",
+      "content": {
+        "node": {
+          "id": "aie2026-materials",
+          "kind": "collection",
+          "title": "AIエンジニアリング実践講座2026 資料"
+        },
+        "children": [
+          {
+            "id": "lec01-main",
+            "kind": "document",
+            "title": "AIエンジニアリング概論とAIコーディング"
+          },
+          {
+            "id": "lec02-main",
+            "kind": "document",
+            "title": "基盤モデルの仕組み"
+          },
+          {
+            "id": "lec03-main",
+            "kind": "document",
+            "title": "AIエージェント"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_14806422722807974157",
+      "content": {
+        "node": {
+          "id": "lec03-main",
+          "kind": "document",
+          "title": "AIエージェント"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p001",
+            "kind": "page",
+            "title": "AIエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 1,
+            "content": "第3回\n2026年11月2日 渡辺倫世\n許諾なく撮影や第三者への開示\nを禁止します\nロゴ：松尾・岩澤研究室 / MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO"
+          },
+          {
+            "id": "lec03-main-p002",
+            "kind": "page",
+            "title": "自己紹介",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 2,
+            "content": "渡辺 倫世（わたなべ りんぜ）\n東京大学大学院 工学系研究科 松尾・岩澤研究室\n業務・活動\nAX推進、計算基盤・インフラ\n普段使っているエージェント\nDots・Openclaw的な自作エージェント\n[ 写真・画面 ]"
+          },
+          {
+            "id": "lec03-main-p003",
+            "kind": "page",
+            "title": "第2回で見たモデルの性質が、今日の設計の前提になる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 3,
+            "content": "エージェントは、モデルにツール・ループ・メモリを付けたもの。モデルの性質は、そのまま残る。\n第2回で見た性質 エージェントで起きること 今日の Part\n① 同じ質問でも、答えは毎回変わる 同じ依頼でも毎回ちがう手順になり、誤りが積み重なる Part 3 ループ\n② 知らないことも、それらしく答える ない関数を呼ぶ。ツールの結果を読み違える Part 8 失敗時\n③ 知識には締め切りがある 新し…"
+          },
+          {
+            "id": "lec03-main-p004",
+            "kind": "page",
+            "title": "アジェンダ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 4,
+            "content": "エージェントの構成\nPart 2 エージェントを組み立てる\nゼロから作る AI エージェント\n部品を設計する\nPart 3 ループ\n誤差の累積と戻れるループ\nPart 4 ツール\nMCP・実行前の承認・並列化\nPart 5 構造化出力とツール呼び出し\n形式に合う出力だけを作る・Jev\nPart 6 メモリ\n長期記録・Skill\n安全性\nPart 7 停止条件\n止める仕組みをループの外側に置く\nP…"
+          },
+          {
+            "id": "lec03-main-s005",
+            "kind": "section",
+            "title": "Part 2 エージェントを組み立てる"
+          },
+          {
+            "id": "lec03-main-s018",
+            "kind": "section",
+            "title": "Part 3 ループ"
+          },
+          {
+            "id": "lec03-main-s022",
+            "kind": "section",
+            "title": "Part 4 ツール"
+          },
+          {
+            "id": "lec03-main-s033",
+            "kind": "section",
+            "title": "Part 5 構造化出力とツール呼び出し"
+          },
+          {
+            "id": "lec03-main-s037",
+            "kind": "section",
+            "title": "Part 6 メモリ"
+          },
+          {
+            "id": "lec03-main-s042",
+            "kind": "section",
+            "title": "Part 7 停止条件・失敗時の振る舞い"
+          },
+          {
+            "id": "lec03-main-s049",
+            "kind": "section",
+            "title": "Part 9 信頼境界とハーネス"
+          },
+          {
+            "id": "lec03-main-s054",
+            "kind": "section",
+            "title": "Part 10 RSI とエージェント"
+          },
+          {
+            "id": "lec03-main-s060",
+            "kind": "section",
+            "title": "Appendix"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_2616521252835137055",
+      "content": {
+        "node": {
+          "id": "lec03-main-s042",
+          "kind": "section",
+          "title": "Part 7 停止条件・失敗時の振る舞い"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p042",
+            "kind": "page",
+            "title": "Part 7 停止条件・失敗時の振る舞い",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 42,
+            "content": "停止条件・失敗時の振る舞い\nループを止める仕組み・完了の判定・失敗の検出"
+          },
+          {
+            "id": "lec03-main-p043",
+            "kind": "page",
+            "title": "ループを止める3つの仕組み",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 43,
+            "content": "何も工夫しないと、モデルが「終わった」と判断するまで回り続ける\nモデル\nツールを呼ばなくなったら・出力が終了したら\n終わる\nこれだけだと、早すぎたり\n止まらなかったりする\nハーネス\n指定した上限に達したら止める\n例：何回か失敗している・制限時間を超えている・予算を\n超えている\nモデルの申告ではなく、\nハーネスが数える\n人・監視\n外から止める\n例：見ている人が停止ボタンを押す\nエージェントからは…"
+          },
+          {
+            "id": "lec03-main-p044",
+            "kind": "page",
+            "title": "「終わった」かどうかは、作業したモデル以外が決める",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 44,
+            "content": "別のモデルに判定させるか、書き換えられない評価スクリプトで判定する\nClaude Code の /goal：別のモデルが判定\n/goal＝目標を渡すと、達成まで回し続ける機能\n作業役（Claude） 評価役（別の小さなモデル）\n毎ターン\n未達：理由を渡して続ける\n達成：終了\n不可能：失敗として終了\nautoresearch：評価スクリプトを固定\nKarpathy が公開した、AI に実験を回させ…"
+          },
+          {
+            "id": "lec03-main-p045",
+            "kind": "page",
+            "title": "ツールが失敗したときに確かめる3つのこと",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 45,
+            "content": "「失敗しているテストを直して」で、いちばん困る失敗はどれでしょうか？\n①立ち直る\n失敗から\n立ち直れるか\n困る例\nタイムアウトのたびに\n同じテストを延々と再実行\n②正直に言う\n失敗を\n正直に言うか\n困る例\nテストを書き換えて、\n「直りました」と言う\n③安全にやり直す\nやり直しで\n二重にしないか\n困る例\n途中から再開して、同じ\nプルリクエストをもう一度作る"
+          },
+          {
+            "id": "lec03-main-p046",
+            "kind": "page",
+            "title": "失敗しても「できた」と言ってしまう",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 46,
+            "content": "解けない課題でテストを通し、失敗を「完了」と報告する。審査役のモデルも見抜けない\n解けない課題で「解けた」ことにする\n54%\n仕様とテストが矛盾した課題で、\nGPT-5 がテストを通した割合\nConflicting-SWEbench。通れば必ず仕様違反\n使われた手口\nテストの\n書き換え\n特定の入力を\n特別扱い\n演算子の\n上書き\n失敗しても「完了した」と言う\n45〜48%\nτ²-bench の失敗…"
+          },
+          {
+            "id": "lec03-main-p047",
+            "kind": "page",
+            "title": "プロンプトで不正は減る",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 47,
+            "content": "ただしゼロにはならない。判定に使うテストは書き換えられないようにする\nずるを控え、無理なら伝えるよう指示\n解けないコーディング課題で、ずるをした割合\n45%\n指示なし\n12.5%\n指示あり\nClaude Opus 4.7（Anthropic、2026年4月）\nテストを読み取り専用にする\n読み書き可 読み取り専用 隠蔽\n不正 多い 書き換え\nを防ぐ ほぼゼロ\n本来の性能 保つ 保つ 下がる\nImp…"
+          },
+          {
+            "id": "lec03-main-p048",
+            "kind": "page",
+            "title": "冪等性の担保",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 48,
+            "content": "会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべて…"
+          }
+        ]
+      }
+    }
+  ],
+  "full_page_ids": [],
+  "preview_page_ids": [
+    "lec03-main-p001",
+    "lec03-main-p002",
+    "lec03-main-p003",
+    "lec03-main-p004",
+    "lec03-main-p042",
+    "lec03-main-p043",
+    "lec03-main-p044",
+    "lec03-main-p045",
+    "lec03-main-p046",
+    "lec03-main-p047",
+    "lec03-main-p048"
+  ],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:22:24+00:00",
+  "attempt_wall_seconds": 8.39261126600013,
+  "process_return_code": 0
+}

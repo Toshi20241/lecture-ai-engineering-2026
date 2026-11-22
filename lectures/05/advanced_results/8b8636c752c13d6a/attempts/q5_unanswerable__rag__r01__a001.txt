@@ -1,0 +1,15 @@
+[model] gemini-3.5-flash-lite
+[mode] rag
+ご提示いただいた環境やプログラムにおける「改良版Tree」の実測した平均応答時間および正答率については、第1〜3回の講義資料内には記載がありませんでした。そのため、この場でお答えすることはできません。
+
+お使いのコードや実験環境における実際の計測結果をご確認ください。
+
+--- trace ---
+[tool call]   search_materials({'query': '改良版Tree 平均応答時間 正答率'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p064", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[tool call]   search_materials({'query': 'Tree 平均応答時間 正答率'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p064", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[time] 回答完了まで 4.23 秒（検索・埋め込みを含む）
+[usage] 入力 8,804 tokens / 出力 109 tokens / モデル応答 3 回
+[cost] 生成APIの推定コスト: $0.002914 USD（埋め込み・索引構築分は含まない）
+[full-pages] lec02-main-p013, lec02-main-p025, lec02-main-p027, lec02-main-p043, lec02-main-p061, lec03-main-p019, lec03-main-p064
