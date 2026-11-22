@@ -1,0 +1,451 @@
+{
+  "case_id": "q2_lora",
+  "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+  "split": "validation",
+  "mode": "tree_original",
+  "repeat": 1,
+  "trial_id": "q2_lora__tree_original__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 2,
+  "started_utc": "2026-11-22T08:18:56+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第2回の講義資料によると、LoRAおよびQLoRAの仕組みは以下のようになっています。\n\n* **LoRAが固定するものと学習するもの**\n  * **固定するもの：** 元のモデルの重み（$W$）は固定し、学習は行いません（第2回・PDF p.52）。\n  * **学習するもの：** 追加した小さめの行列（図中の橙色の行列 $A$ や $B$ など、変化分を表す低ランクのパラメータ）のみを学習します（第2回・PDF p.52）。本体に薄い付箋を書き足すようなイメージで、全体の1%未満に抑えることも可能です（第2回・PDF p.52）。\n\n* **QLoRAがLoRAに加えるもの**\n  * LoRAの仕組みに加え、**元の重みを 4bit に量子化（圧縮）すること**を加えます（第2回・PDF p.52）。これにより、数値を粗く保存してメモリを大幅に節約し、GPU 1台（Google Colabなど）でも大きなモデルの微調整が可能になります（第2回・PDF p.52）。",
+  "elapsed_seconds": 5.597035088000666,
+  "input_tokens": 9249,
+  "output_tokens": 339,
+  "model_responses": 5,
+  "generation_cost_usd": 0.0036222,
+  "tool_call_count": 4,
+  "tool_calls": [
+    {
+      "tool_name": "browse_tree",
+      "args": {},
+      "tool_call_id": "call_16554963059383461969"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec02-main"
+      },
+      "tool_call_id": "call_1062777622868935559"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec02-main-s045"
+      },
+      "tool_call_id": "call_15066347023004387532"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec02-main-p052"
+      },
+      "tool_call_id": "call_14269733455634822118"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_16554963059383461969",
+      "content": {
+        "node": {
+          "id": "aie2026-materials",
+          "kind": "collection",
+          "title": "AIエンジニアリング実践講座2026 資料"
+        },
+        "children": [
+          {
+            "id": "lec01-main",
+            "kind": "document",
+            "title": "AIエンジニアリング概論とAIコーディング"
+          },
+          {
+            "id": "lec02-main",
+            "kind": "document",
+            "title": "基盤モデルの仕組み"
+          },
+          {
+            "id": "lec03-main",
+            "kind": "document",
+            "title": "AIエージェント"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_1062777622868935559",
+      "content": {
+        "node": {
+          "id": "lec02-main",
+          "kind": "document",
+          "title": "基盤モデルの仕組み"
+        },
+        "children": [
+          {
+            "id": "lec02-main-p001",
+            "kind": "page",
+            "title": "基盤モデルの仕組み",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "冒頭",
+            "page": 1,
+            "content": "AI エンジニアリング講座 第 2 回"
+          },
+          {
+            "id": "lec02-main-p002",
+            "kind": "page",
+            "title": "今日は「 [3] モデル学習」の中身、基盤モデルそのものを扱う",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "冒頭",
+            "page": 2,
+            "content": "前回の振り返り"
+          },
+          {
+            "id": "lec02-main-p003",
+            "kind": "page",
+            "title": "チャットボットを作ると、すぐにこんな「厄介さ」に出会う",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "冒頭",
+            "page": 3,
+            "content": "今日の問い"
+          },
+          {
+            "id": "lec02-main-p004",
+            "kind": "page",
+            "title": "今日の 4 つの問い（各 15 分）",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "冒頭",
+            "page": 4,
+            "content": "今日の構成"
+          },
+          {
+            "id": "lec02-main-p005",
+            "kind": "page",
+            "title": "今日扱うのは「モデル」そのもの",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "冒頭",
+            "page": 5,
+            "content": "今日の構成"
+          },
+          {
+            "id": "lec02-main-p006",
+            "kind": "page",
+            "title": "今日の用語：先に 6 つだけ押さえる",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "冒頭",
+            "page": 6,
+            "content": "今日の構成"
+          },
+          {
+            "id": "lec02-main-s007",
+            "kind": "section",
+            "title": "LLM は、確率で次の言葉を選ぶ"
+          },
+          {
+            "id": "lec02-main-s019",
+            "kind": "section",
+            "title": "渡す・選ぶ／直す／考えさせる"
+          },
+          {
+            "id": "lec02-main-s030",
+            "kind": "section",
+            "title": "基盤モデルの地図と選び方"
+          },
+          {
+            "id": "lec02-main-s045",
+            "kind": "section",
+            "title": "選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-s063",
+            "kind": "section",
+            "title": "補足：最新動向と詳しい説明"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_15066347023004387532",
+      "content": {
+        "node": {
+          "id": "lec02-main-s045",
+          "kind": "section",
+          "title": "選んだモデルを、いつ・どう直すか"
+        },
+        "children": [
+          {
+            "id": "lec02-main-p045",
+            "kind": "page",
+            "title": "選んだモデルを、いつ・どう直すか",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 45,
+            "content": "第 2 回　 4/4 （約 15 分）"
+          },
+          {
+            "id": "lec02-main-p046",
+            "kind": "page",
+            "title": "小規模な FT は振る舞いに強く、知識の追加は苦手",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 46,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p047",
+            "kind": "page",
+            "title": "根拠と諸説：知識の追加は RAG が効きやすい",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 47,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p048",
+            "kind": "page",
+            "title": "継続事前学習（ CPT ）：知識・言語を足す追加学習",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 48,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p049",
+            "kind": "page",
+            "title": "FT は「コストを下げる」ためにも使う",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 49,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p050",
+            "kind": "page",
+            "title": "判断の順番：測る → 分ける → プロンプト → Fine-Tuning",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 50,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p051",
+            "kind": "page",
+            "title": "PEFT ：モデル全体ではなく、一部だけを学習する",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 51,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p052",
+            "kind": "page",
+            "title": "LoRA と QLoRA ：大きなモデルも GPU 1 台で調整できる",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 52,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p053",
+            "kind": "page",
+            "title": "チャットボットの場合：何を FT し、何を FT しないか",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 53,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p054",
+            "kind": "page",
+            "title": "手本データの作り方：質問と、理想の回答の組を用意する",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 54,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p055",
+            "kind": "page",
+            "title": "FT の落とし穴：直したところ以外が、壊れていないか",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 55,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p056",
+            "kind": "page",
+            "title": "クイズ 4 ： Fine-Tuning が一番向いているのは？",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 56,
+            "content": "クイズ 4/4"
+          },
+          {
+            "id": "lec02-main-p057",
+            "kind": "page",
+            "title": "クイズ 4 ： Fine-Tuning が一番向いているのは？（答え）",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 57,
+            "content": "クイズ 4/4"
+          },
+          {
+            "id": "lec02-main-p058",
+            "kind": "page",
+            "title": "Fine-Tuning する前のチェックリスト",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 58,
+            "content": "4/4 　選んだモデルを、いつ・どう直すか"
+          },
+          {
+            "id": "lec02-main-p059",
+            "kind": "page",
+            "title": "第 2 回のまとめ： 4 つの芯と、明日やること",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 59,
+            "content": "まとめ"
+          },
+          {
+            "id": "lec02-main-p060",
+            "kind": "page",
+            "title": "今日の演習： QLoRA で出力形式を矯正し、効果を測る",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 60,
+            "content": "演習"
+          },
+          {
+            "id": "lec02-main-p061",
+            "kind": "page",
+            "title": "演習の進め方と提出物（仮）",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 61,
+            "content": "演習"
+          },
+          {
+            "id": "lec02-main-p062",
+            "kind": "page",
+            "title": "次回： AI エージェント。今日の性質が設計の前提になる",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "page": 62,
+            "content": "次回予告"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_14269733455634822118",
+      "content": {
+        "node": {
+          "id": "lec02-main-p052",
+          "kind": "page",
+          "title": "LoRA と QLoRA ：大きなモデルも GPU 1 台で調整できる",
+          "document_id": "lec02-main",
+          "lecture": 2,
+          "document_title": "基盤モデルの仕組み",
+          "section": "選んだモデルを、いつ・どう直すか",
+          "page": 52,
+          "content": "4/4 　選んだモデルを、いつ・どう直すか\nLoRA と QLoRA ：大きなモデルも GPU 1 台で調整できる\n元の重みは固定し、小さな「差分」だけを学習する（ LoRA ）。さらに元の重みを 4bit に圧縮する（ QLoRA ）\n出典： E. J. Hu et al. 「 LoRA 」（ ICLR 2022 ）／ T. Dettmers et al. 「 QLoRA 」（ NeurIPS 2023 ）。演習では transformers ・ peft ・ bitsandbytes ・ TRL を使用\nLoRA （ Hu et al. Fig.1 ）： A と B だけを学習する\n青：元の重み W\n固定して学習しない。 QLoRA では\n4bit （数値を粗く保存）にして\n約 1/4 。 7B なら約 4GB\n橙：小さな行列 A ・ B\nこれだけを学習。細長い 2 つの\n行列の積で、変化分を表す（低ランク）\nイメージ\n本体はそのままに、薄い「付箋」を\n書き足す。学習するのは全体の\n1% 未満にもできる\n650 億\nパラメータのモデルを\n48GB GPU 1 台\nで微調整（ QLoRA 論文）\n• Colab の GPU （例： 16GB ）でも、\n数十億パラメータ級なら調整できる。今日の\n演習はこれ\n• データの準備・評価・運用の手間は別にかかる\n© Matsuo-Iwasawa Lab, The University of Tokyo 52\n\n【図表・画像内の補足文字起こし】\nLoRA図：Pretrained Weights W ∈ R^(d×d)、x、h、A ~ N(0, σ²)、B = 0、d、r。"
+        },
+        "children": []
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec02-main-p052"
+  ],
+  "preview_page_ids": [
+    "lec02-main-p001",
+    "lec02-main-p002",
+    "lec02-main-p003",
+    "lec02-main-p004",
+    "lec02-main-p005",
+    "lec02-main-p006",
+    "lec02-main-p045",
+    "lec02-main-p046",
+    "lec02-main-p047",
+    "lec02-main-p048",
+    "lec02-main-p049",
+    "lec02-main-p050",
+    "lec02-main-p051",
+    "lec02-main-p052",
+    "lec02-main-p053",
+    "lec02-main-p054",
+    "lec02-main-p055",
+    "lec02-main-p056",
+    "lec02-main-p057",
+    "lec02-main-p058",
+    "lec02-main-p059",
+    "lec02-main-p060",
+    "lec02-main-p061",
+    "lec02-main-p062"
+  ],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:19:04+00:00",
+  "attempt_wall_seconds": 8.194313506000071,
+  "process_return_code": 0
+}

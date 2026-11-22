@@ -1,0 +1,865 @@
+{
+  "case_id": "q3_tool_skill",
+  "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+  "split": "validation",
+  "mode": "tree_original",
+  "repeat": 2,
+  "trial_id": "q3_tool_skill__tree_original__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 3,
+  "started_utc": "2026-11-22T08:27:02+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料では、ツール検索とSkill（Agent Skills）についてそれぞれ以下のように説明されています。\n\n* **ツール検索**: **「ツールの説明（定義）」**を最初から全部読み込まず、必要なときだけ読み込みます（第3回・PDF p.32）。\n* **Skill**: **「手順のまとまりの本文（SKILL.md）」**を最初から全部読み込まず、名前と説明だけを先に読んで、必要なときだけに本文を読み込みます（第3回・PDF p.66）。\n\n### 両者に共通する目的のヒント\nAIエージェントにおいて、これらが必要とされる背景には、コンテキストウィンドウの制限やモデルの認知コストがあります。\n* すべてのツール定義や長大な手順書を最初からコンテキストに詰め込んでしまうと、何が起きるでしょうか？（コンテキストが圧迫され、本当に必要な情報や依頼文が埋もれてしまいます）\n* その結果、モデルが情報を探し間違えたり、トークン消費が増大したりするのを防ぐために、どのような状態を目指しているか考えてみてください。",
+  "elapsed_seconds": 10.892814524999267,
+  "input_tokens": 33079,
+  "output_tokens": 458,
+  "model_responses": 10,
+  "generation_cost_usd": 0.00781763,
+  "tool_call_count": 9,
+  "tool_calls": [
+    {
+      "tool_name": "browse_tree",
+      "args": {},
+      "tool_call_id": "call_7763694021841127383"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main"
+      },
+      "tool_call_id": "call_14846191925734468442"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s022"
+      },
+      "tool_call_id": "call_1932411140101041784"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p032"
+      },
+      "tool_call_id": "call_17642862375108440037"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s005"
+      },
+      "tool_call_id": "call_2329598174502488600"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s018"
+      },
+      "tool_call_id": "call_17615651439480914429"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s033"
+      },
+      "tool_call_id": "call_8206175407222207008"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s060"
+      },
+      "tool_call_id": "call_12354858423632664284"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p066"
+      },
+      "tool_call_id": "call_2670253308658749877"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_7763694021841127383",
+      "content": {
+        "node": {
+          "id": "aie2026-materials",
+          "kind": "collection",
+          "title": "AIエンジニアリング実践講座2026 資料"
+        },
+        "children": [
+          {
+            "id": "lec01-main",
+            "kind": "document",
+            "title": "AIエンジニアリング概論とAIコーディング"
+          },
+          {
+            "id": "lec02-main",
+            "kind": "document",
+            "title": "基盤モデルの仕組み"
+          },
+          {
+            "id": "lec03-main",
+            "kind": "document",
+            "title": "AIエージェント"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_14846191925734468442",
+      "content": {
+        "node": {
+          "id": "lec03-main",
+          "kind": "document",
+          "title": "AIエージェント"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p001",
+            "kind": "page",
+            "title": "AIエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 1,
+            "content": "AIエンジニアリング実践講座 2026"
+          },
+          {
+            "id": "lec03-main-p002",
+            "kind": "page",
+            "title": "自己紹介",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 2,
+            "content": "自己紹介"
+          },
+          {
+            "id": "lec03-main-p003",
+            "kind": "page",
+            "title": "第2回で見たモデルの性質が、今日の設計の前提になる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 3,
+            "content": "第2回で見たモデルの性質が、今日の設計の前提になる"
+          },
+          {
+            "id": "lec03-main-p004",
+            "kind": "page",
+            "title": "アジェンダ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 4,
+            "content": "アジェンダ"
+          },
+          {
+            "id": "lec03-main-s005",
+            "kind": "section",
+            "title": "Part 2 エージェントを組み立てる"
+          },
+          {
+            "id": "lec03-main-s018",
+            "kind": "section",
+            "title": "Part 3 ループ"
+          },
+          {
+            "id": "lec03-main-s022",
+            "kind": "section",
+            "title": "Part 4 ツール"
+          },
+          {
+            "id": "lec03-main-s033",
+            "kind": "section",
+            "title": "Part 5 構造化出力とツール呼び出し"
+          },
+          {
+            "id": "lec03-main-s037",
+            "kind": "section",
+            "title": "Part 6 メモリ"
+          },
+          {
+            "id": "lec03-main-s042",
+            "kind": "section",
+            "title": "Part 7 停止条件・失敗時の振る舞い"
+          },
+          {
+            "id": "lec03-main-s049",
+            "kind": "section",
+            "title": "Part 9 信頼境界とハーネス"
+          },
+          {
+            "id": "lec03-main-s054",
+            "kind": "section",
+            "title": "Part 10 RSI とエージェント"
+          },
+          {
+            "id": "lec03-main-s060",
+            "kind": "section",
+            "title": "Appendix"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_1932411140101041784",
+      "content": {
+        "node": {
+          "id": "lec03-main-s022",
+          "kind": "section",
+          "title": "Part 4 ツール"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p022",
+            "kind": "page",
+            "title": "Part 4 ツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 22,
+            "content": "Part 4"
+          },
+          {
+            "id": "lec03-main-p023",
+            "kind": "page",
+            "title": "ツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 23,
+            "content": "ツール"
+          },
+          {
+            "id": "lec03-main-p024",
+            "kind": "page",
+            "title": "MCP（モデルコンテキストプロトコル）：権限をサーバー側で管理できる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 24,
+            "content": "MCP（モデルコンテキストプロトコル）：権限をサーバー側で管理できる"
+          },
+          {
+            "id": "lec03-main-p025",
+            "kind": "page",
+            "title": "Human in the loop",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 25,
+            "content": "Human in the loop"
+          },
+          {
+            "id": "lec03-main-p026",
+            "kind": "page",
+            "title": "Human in the loop",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 26,
+            "content": "Human in the loop"
+          },
+          {
+            "id": "lec03-main-p027",
+            "kind": "page",
+            "title": "冪等性がないツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 27,
+            "content": "冪等性がないツール"
+          },
+          {
+            "id": "lec03-main-p028",
+            "kind": "page",
+            "title": "情報漏えい",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 28,
+            "content": "情報漏えい"
+          },
+          {
+            "id": "lec03-main-p029",
+            "kind": "page",
+            "title": "ツールをバックグラウンドで実行",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 29,
+            "content": "ツールをバックグラウンドで実行"
+          },
+          {
+            "id": "lec03-main-p030",
+            "kind": "page",
+            "title": "ツールのバッチコール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 30,
+            "content": "ツールのバッチコール"
+          },
+          {
+            "id": "lec03-main-p031",
+            "kind": "page",
+            "title": "サブエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 31,
+            "content": "サブエージェント"
+          },
+          {
+            "id": "lec03-main-p032",
+            "kind": "page",
+            "title": "ツール検索：ツールの説明も、必要なときだけ読み込む",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "page": 32,
+            "content": "ツール検索：ツールの説明も、必要なときだけ読み込む"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_17642862375108440037",
+      "content": {
+        "node": {
+          "id": "lec03-main-p032",
+          "kind": "page",
+          "title": "ツール検索：ツールの説明も、必要なときだけ読み込む",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 4 ツール",
+          "page": 32,
+          "content": "ツール検索：ツールの説明も、必要なときだけ読み込む\nツールが増えると、説明だけでコンテキストが埋まってしまう\n出典）Anthropic「Tool search tool」（2026/2/17）、OpenAI「Function calling」（2026/10/9 確認）。トークン数は文書の例。やりとりは説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n全部の定義を最初から入れる\nコンテキスト（上から順にたまる）\nシステムプロンプト\nツールの定義 ×50（MCP を含む）\nread_file, run_tests, slack_search, calendar_add, …\n約5.5万トークン\n依頼：Slack の未読をまとめて\n依頼を読む前に、ツールの定義がコンテキストを占める\nツール検索で探す\nコンテキスト（上から順にたまる）\nシステムプロンプト\ntool_search：ツールを探すツール（これだけ常に入れる）\n依頼：Slack の未読をまとめて\ntool_search(\"slack\")\n見つかった定義だけ入る：slack_search\nツールが多いと選び間違える。"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_2329598174502488600",
+      "content": {
+        "node": {
+          "id": "lec03-main-s005",
+          "kind": "section",
+          "title": "Part 2 エージェントを組み立てる"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p005",
+            "kind": "page",
+            "title": "Part 2 エージェントを組み立てる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 5,
+            "content": "Part 2"
+          },
+          {
+            "id": "lec03-main-p006",
+            "kind": "page",
+            "title": "LLM：受け取ったメッセージの続き・返事を書くだけ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 6,
+            "content": "LLM：受け取ったメッセージの続き・返事を書くだけ"
+          },
+          {
+            "id": "lec03-main-p007",
+            "kind": "page",
+            "title": "LLMへの入出力",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 7,
+            "content": "LLMへの入出力"
+          },
+          {
+            "id": "lec03-main-p008",
+            "kind": "page",
+            "title": "チャット：これまでのやり取りを毎回すべて送り直している",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 8,
+            "content": "チャット：これまでのやり取りを毎回すべて送り直している"
+          },
+          {
+            "id": "lec03-main-p009",
+            "kind": "page",
+            "title": "システムプロンプト：ユーザーに見えない指示も毎回一緒に送っている",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 9,
+            "content": "システムプロンプト：ユーザーに見えない指示も毎回一緒に送っている"
+          },
+          {
+            "id": "lec03-main-p010",
+            "kind": "page",
+            "title": "ツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 10,
+            "content": "ツール"
+          },
+          {
+            "id": "lec03-main-p011",
+            "kind": "page",
+            "title": "一般的なツール",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 11,
+            "content": "一般的なツール"
+          },
+          {
+            "id": "lec03-main-p012",
+            "kind": "page",
+            "title": "ループ：ツールの結果を自動的にモデルに入力する",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 12,
+            "content": "ループ：ツールの結果を自動的にモデルに入力する"
+          },
+          {
+            "id": "lec03-main-p013",
+            "kind": "page",
+            "title": "メモリ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 13,
+            "content": "メモリ"
+          },
+          {
+            "id": "lec03-main-p014",
+            "kind": "page",
+            "title": "エージェント＝モデル＋ハーネス",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 14,
+            "content": "エージェント＝モデル＋ハーネス"
+          },
+          {
+            "id": "lec03-main-p015",
+            "kind": "page",
+            "title": "様々なエージェントハーネス",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 15,
+            "content": "様々なエージェントハーネス"
+          },
+          {
+            "id": "lec03-main-p016",
+            "kind": "page",
+            "title": "キャッシュ：毎回送る先頭部分は安く速く読める",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 16,
+            "content": "キャッシュ：毎回送る先頭部分は安く速く読める"
+          },
+          {
+            "id": "lec03-main-p017",
+            "kind": "page",
+            "title": "ハーネスで費用と速さも変わる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 2 エージェントを組み立てる",
+            "page": 17,
+            "content": "ハーネスで費用と速さも変わる"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_17615651439480914429",
+      "content": {
+        "node": {
+          "id": "lec03-main-s018",
+          "kind": "section",
+          "title": "Part 3 ループ"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p018",
+            "kind": "page",
+            "title": "Part 3 ループ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 3 ループ",
+            "page": 18,
+            "content": "Part 3"
+          },
+          {
+            "id": "lec03-main-p019",
+            "kind": "page",
+            "title": "誤差の累積",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 3 ループ",
+            "page": 19,
+            "content": "誤差の累積"
+          },
+          {
+            "id": "lec03-main-p020",
+            "kind": "page",
+            "title": "定量的な目標設定の重要性",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 3 ループ",
+            "page": 20,
+            "content": "定量的な目標設定の重要性"
+          },
+          {
+            "id": "lec03-main-p021",
+            "kind": "page",
+            "title": "autoresearch",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 3 ループ",
+            "page": 21,
+            "content": "autoresearch"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_8206175407222207008",
+      "content": {
+        "node": {
+          "id": "lec03-main-s033",
+          "kind": "section",
+          "title": "Part 5 構造化出力とツール呼び出し"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p033",
+            "kind": "page",
+            "title": "Part 5 構造化出力とツール呼び出し",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 5 構造化出力とツール呼び出し",
+            "page": 33,
+            "content": "Part 5"
+          },
+          {
+            "id": "lec03-main-p034",
+            "kind": "page",
+            "title": "構造化出力",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 5 構造化出力とツール呼び出し",
+            "page": 34,
+            "content": "構造化出力"
+          },
+          {
+            "id": "lec03-main-p035",
+            "kind": "page",
+            "title": "制約付きデコーディング：形式に合わない文字は出させない",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 5 構造化出力とツール呼び出し",
+            "page": 35,
+            "content": "制約付きデコーディング：形式に合わない文字は出させない"
+          },
+          {
+            "id": "lec03-main-p036",
+            "kind": "page",
+            "title": "判断モデル：文章を書かず、答えの候補ごとの確率を1回で返すモデル",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 5 構造化出力とツール呼び出し",
+            "page": 36,
+            "content": "判断モデル：文章を書かず、答えの候補ごとの確率を1回で返すモデル"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_12354858423632664284",
+      "content": {
+        "node": {
+          "id": "lec03-main-s060",
+          "kind": "section",
+          "title": "Appendix"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p060",
+            "kind": "page",
+            "title": "Appendix",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 60,
+            "content": "Appendix"
+          },
+          {
+            "id": "lec03-main-p061",
+            "kind": "page",
+            "title": "補足：エージェント SDK／フレームワークの最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 61,
+            "content": "補足：エージェント SDK／フレームワークの最新動向"
+          },
+          {
+            "id": "lec03-main-p062",
+            "kind": "page",
+            "title": "補足：構造化出力の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 62,
+            "content": "補足：構造化出力の最新動向"
+          },
+          {
+            "id": "lec03-main-p063",
+            "kind": "page",
+            "title": "補足：ツール呼び出しの最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 63,
+            "content": "補足：ツール呼び出しの最新動向"
+          },
+          {
+            "id": "lec03-main-p064",
+            "kind": "page",
+            "title": "補足：長時間タスクの実行能力の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 64,
+            "content": "補足：長時間タスクの実行能力の最新動向"
+          },
+          {
+            "id": "lec03-main-p065",
+            "kind": "page",
+            "title": "補足：メモリと Context Engineering の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 65,
+            "content": "補足：メモリと Context Engineering の最新動向"
+          },
+          {
+            "id": "lec03-main-p066",
+            "kind": "page",
+            "title": "補足：設定ファイルの標準化（AGENTS.md・Skills）の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 66,
+            "content": "補足：設定ファイルの標準化（AGENTS.md・Skills）の最新動向"
+          },
+          {
+            "id": "lec03-main-p067",
+            "kind": "page",
+            "title": "補足：サンドボックスと権限・承認の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 67,
+            "content": "補足：サンドボックスと権限・承認の最新動向"
+          },
+          {
+            "id": "lec03-main-p068",
+            "kind": "page",
+            "title": "補足：ハーネス設計の公開知見の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 68,
+            "content": "補足：ハーネス設計の公開知見の最新動向"
+          },
+          {
+            "id": "lec03-main-p069",
+            "kind": "page",
+            "title": "補足：RSI／AI による AI 開発の加速の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 69,
+            "content": "補足：RSI／AI による AI 開発の加速の最新動向"
+          },
+          {
+            "id": "lec03-main-p070",
+            "kind": "page",
+            "title": "補足：エージェントの事故・インシデント事例の最新動向",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 70,
+            "content": "補足：エージェントの事故・インシデント事例の最新動向"
+          },
+          {
+            "id": "lec03-main-p071",
+            "kind": "page",
+            "title": "補足：動向を追うための一次情報",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "page": 71,
+            "content": "補足：動向を追うための一次情報"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_2670253308658749877",
+      "content": {
+        "node": {
+          "id": "lec03-main-p066",
+          "kind": "page",
+          "title": "補足：設定ファイルの標準化（AGENTS.md・Skills）の最新動向",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Appendix",
+          "page": 66,
+          "content": "補足：設定ファイルの標準化（AGENTS.md・Skills）の最新動向\n指示ファイルは AGENTS.md、手順のまとまりは Agent Skills として、ツールをまたぐ共通形式が広がった。\n何が変わったか\n項目 更新内容 時点\nAGENTS.md OpenAI が Linux Foundation 傘下の Agentic AI Foundation に寄贈。6万を超える公\n開プロジェクトが採用\n2025/12/9\nClaude Code の対応 CLAUDE.md がないリポジトリでは、AGENTS.md を指示として直接読む（\nv2.1.277 以降）\n2026/10 時点の文書\nAgent Skills SKILL.md を置いたフォルダの形式。名前と説明だけを先に読み、必要なときに本\n文を読む。Claude API では Skills API がベータを終了\n2026/8/19\n講義の内容との関係。本編「設定ファイルもモデルへの指示になる」\nへの補足。同じ役割のファイルは AGENTS.md として共通化が進み\n、Claude Code も読めるようになった。\n使うときの注意。共通形式になるほど、外で書かれた指示を取り込み\nやすくなる。他者の AGENTS.md や Skill は、境界の内側に入れる前\nに中身を読む。\n出典）Linux Foundation の Agentic AI Foundation 設立発表（2025/12/9）、AGENTS.md・Agent Skills の各公式サイト、Anthropic「Claude Platform release notes\n」（2026/8/19）、「How Claude remembers your project」。情報確認日：2026/10/9\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO"
+        },
+        "children": []
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec03-main-p032",
+    "lec03-main-p066"
+  ],
+  "preview_page_ids": [
+    "lec03-main-p001",
+    "lec03-main-p002",
+    "lec03-main-p003",
+    "lec03-main-p004",
+    "lec03-main-p005",
+    "lec03-main-p006",
+    "lec03-main-p007",
+    "lec03-main-p008",
+    "lec03-main-p009",
+    "lec03-main-p010",
+    "lec03-main-p011",
+    "lec03-main-p012",
+    "lec03-main-p013",
+    "lec03-main-p014",
+    "lec03-main-p015",
+    "lec03-main-p016",
+    "lec03-main-p017",
+    "lec03-main-p018",
+    "lec03-main-p019",
+    "lec03-main-p020",
+    "lec03-main-p021",
+    "lec03-main-p022",
+    "lec03-main-p023",
+    "lec03-main-p024",
+    "lec03-main-p025",
+    "lec03-main-p026",
+    "lec03-main-p027",
+    "lec03-main-p028",
+    "lec03-main-p029",
+    "lec03-main-p030",
+    "lec03-main-p031",
+    "lec03-main-p032",
+    "lec03-main-p033",
+    "lec03-main-p034",
+    "lec03-main-p035",
+    "lec03-main-p036",
+    "lec03-main-p060",
+    "lec03-main-p061",
+    "lec03-main-p062",
+    "lec03-main-p063",
+    "lec03-main-p064",
+    "lec03-main-p065",
+    "lec03-main-p066",
+    "lec03-main-p067",
+    "lec03-main-p068",
+    "lec03-main-p069",
+    "lec03-main-p070",
+    "lec03-main-p071"
+  ],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:27:16+00:00",
+  "attempt_wall_seconds": 13.353510286000528,
+  "process_return_code": 0
+}

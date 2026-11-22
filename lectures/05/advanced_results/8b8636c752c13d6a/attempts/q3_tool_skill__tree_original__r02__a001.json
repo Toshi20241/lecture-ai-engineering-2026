@@ -1,0 +1,23 @@
+{
+  "case_id": "q3_tool_skill",
+  "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+  "split": "validation",
+  "mode": "tree_original",
+  "repeat": 2,
+  "trial_id": "q3_tool_skill__tree_original__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:25:12+00:00",
+  "status": "failed",
+  "http_status": 429,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "error_type": "ModelHTTPError",
+  "error": "status_code: 429, model_name: gemini-3.5-flash-lite, body: {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite, description: Generate content requests per minute limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\\nPlease retry in 37.337679383s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://aistudio.google.com/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'description': 'Generate content requests per minute limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.', 'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '37s'}]}}",
+  "finished_utc": "2026-11-22T08:25:23+00:00",
+  "attempt_wall_seconds": 10.347429700000248,
+  "process_return_code": 1
+}

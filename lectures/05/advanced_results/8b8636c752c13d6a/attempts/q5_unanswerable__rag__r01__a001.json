@@ -1,0 +1,185 @@
+{
+  "case_id": "q5_unanswerable",
+  "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+  "split": "validation",
+  "mode": "rag",
+  "repeat": 1,
+  "trial_id": "q5_unanswerable__rag__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:23:05+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "ご提示いただいた環境やプログラムにおける「改良版Tree」の実測した平均応答時間および正答率については、第1〜3回の講義資料内には記載がありませんでした。そのため、この場でお答えすることはできません。\n\nお使いのコードや実験環境における実際の計測結果をご確認ください。",
+  "elapsed_seconds": 4.231409113000154,
+  "input_tokens": 8804,
+  "output_tokens": 109,
+  "model_responses": 3,
+  "generation_cost_usd": 0.0029137,
+  "tool_call_count": 2,
+  "tool_calls": [
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "改良版Tree 平均応答時間 正答率"
+      },
+      "tool_call_id": "call_4539817837865954492"
+    },
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "Tree 平均応答時間 正答率"
+      },
+      "tool_call_id": "call_9306801633753986524"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_4539817837865954492",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p064",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "title": "補足：長時間タスクの実行能力の最新動向",
+            "page": 64,
+            "content": "補足：長時間タスクの実行能力の最新動向\nMETR の測定では、公開モデルの最前線の 50% 時間地平は約12時間（2026年2〜3月）。16時間を超える値は、現行の課題群\nでは信頼できない。\n何が変わったか\n項目 更新内容 時点\n50% 時間地平 公開モデルの最前線で約12時間（推定の幅 5〜61時間）。半分の確率で完了できる課\n題の、人間の所要時間で表した長さ\n2026/2〜3 の評価\n80% 時間地平 同じ時点で約1.5時間（推定の幅 50分〜2時間40分）。求める成功率を上げると、任\nせられる長さは大きく縮む\n2026/2〜3 の評価\n測定の限界 GPT-5.6 Sol の推定は約11.3時間。不正な解法を成功に数えると270時間超になり、\nMETR は頑健な測定ではないとした\n2026/6/26\n講義の内容との関係。本編の「1回95%でも20回続くと約36%」は説\n明用の計算。実測でも、50% と 80% の差は大きい。長く動かせるこ\nとと、確実に終えることは別である。\n使うときの注意。時間地平は課題の長さの指標で、連続して稼働でき\nる時間ではない。Claude Opus 5.5 の評価要約（2026/9/22）に、時\n間地平の数値は載っていない。\n出典）METR「Frontier Risk Report (February to March 2026)」（2026/5/19）、「Summary of METR's predeployment evaluation of GPT-5.6 Sol」（2026/6/26）\n、「Task-Completion Time Horizons of Frontier AI Models」（2026/5/8 更新）。情報確認日：2026/10/9\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.32816728949546814
+          },
+          {
+            "page_id": "lec02-main-p061",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "選んだモデルを、いつ・どう直すか",
+            "title": "演習の進め方と提出物（仮）",
+            "page": 61,
+            "content": "演習\n演習の進め方と提出物（仮）\n時間は目安。前後で「同じ質問・同じ温度・同じ回数」で測ることが大事\n1 準備 10 分 事前宿題の不具合を直し、 API が動くことを確かめる\n2 FT 前を測る 10 分\n評価用 30 問 ×3 回で形式遵守率。普通の質問 10 問の\n答えも保存\n3 QLoRA で学習 20 分 手本 200 件で学習（ Colab の GPU で十数分）\n4 FT 後を測る 10 分 モデルを差し替え、 2 と同じ質問・温度・回数で測る\n5 対照：知識の質問 5 分\n手本に事実を入れていないので、変わらないはず。変わったら\n評価か学習の誤りを疑う\n提出物\n• 前後の比較表（形式遵守率・普通の\n質問の答え）\n• 直らなかった質問の例を 2 つ\n• 考察を 3 行：何が直り、何が直らず、\nなぜか\n評価用の 30 問は学習用と重ならないものを使う。差が小さいときは誤差の範囲かもしれないので、 3 回分のばらつきも書く\n© Matsuo-Iwasawa Lab, The University of Tokyo 61",
+            "distance": 0.3371119201183319
+          },
+          {
+            "page_id": "lec02-main-p027",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "渡す・選ぶ／直す／考えさせる",
+            "title": "クイズ 2 ：どこを動かす？（答え）",
+            "page": 27,
+            "content": "クイズ 2/4\nクイズ 2 ：どこを動かす？（答え）\n答え： C\nチャットボットが、今年発表された新しい手法について聞かれると、古い情報で答えてしまう。最初の打ち手は？\nA 温度を上げて、多様な答えを出させる B 考える量（推論時計算）を増やす\nC 新しい資料を検索して渡す。必要なら新しいモデルを選ぶ D 口調を直すために、 Fine-Tuning する\n原因は知識の締め切り。考えさせても、知らないことは出ない。資料を渡す（ RAG ）か新しいモデルを選ぶ。検索させるのも同じ打ち手（第 3 回）\n塊 2 の芯：困りごとで動かす場所が決まる。知識は渡す・選ぶ、答え方は直す（まずプロンプト）、難問は考えさせる\n© Matsuo-Iwasawa Lab, The University of Tokyo 27",
+            "distance": 0.33811789751052856
+          },
+          {
+            "page_id": "lec03-main-p019",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 3 ループ",
+            "title": "誤差の累積",
+            "page": 19,
+            "content": "誤差の累積\nエージェントはツールの結果でループを回す。1回の成功率が95%でも、20回続けてすべて成功するのは約36%。\n出典）計算は各ステップが独立と仮定した単純化。METR「Time Horizon 1.1」（2026年1月。Claude Opus 4.6 は3月の計算修正後の値）。第1回 9ページと同じ。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30\n最後まで成功する確率（%）\nステップ数\n1ステップ 99% 1ステップ 95%\n20ステップで 36%\n任せられる仕事の長さ（METR）\n約4か月ごとに倍増\nMETR：AI の能力を測る米国の研究機関\nGPT-4\nGPT-5\n1分\n4分\n15分\n1時間\n4時間\n16時間\n2023 2024 2025 2026\nClaude Opus 4.6\n約12時間",
+            "distance": 0.33881282806396484
+          },
+          {
+            "page_id": "lec02-main-p025",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "渡す・選ぶ／直す／考えさせる",
+            "title": "推論時計算：使うときに「考えさせる」と、難問に強くなる",
+            "page": 25,
+            "content": "2/4 　渡す・選ぶ／直す／考えさせる\n推論時計算：使うときに「考えさせる」と、難問に強くなる\n途中の考えを書かせる（ CoT ： Chain of Thought ）、候補を複数作って選ぶ。モデルを変えずに賢さを買える\n出典： Wei+ 「 Chain-of-Thought Prompting 」 NeurIPS 2022 Fig.1 ／ OpenAI 「 Learning to reason with LLMs 」 2024 。 o1 ＝ OpenAI の推論モデル\n考えを書かせる（ CoT ）：左は答えだけ→誤り、右は途中式を書く→正解\n候補を作って選ぶ：同じ o1 の正答率（数学競技 AIME ）\n※93% は 1,000 候補を採点器で選んだ研究用の設定。計算量は約 1,000 倍\n1 回で答える 74%\n1,000 候補から選ぶ 93%\nAPI では「考える量」を選べる\nbudget_tokens＝考える量の上限（書き方は API・時\n期で異なる）\nmsg = client.messages.create(\n    model=\"claude-...\",\n    max_tokens=16000,\n    thinking={\"type\": \"enabled\",\n              \"budget_tokens\": 8000},\n    messages=[...])\n• 難しい質問だけ考える量を増やす、と使い分ける\n• その代わり、料金（出力トークン）と待ち時間が増える\n• 演習で使う小さな公開モデルには、この設定はない\n© Matsuo-Iwasawa Lab, The University of Tokyo 25\n\n【図表・画像内の補足文字起こし】\nStandard Prompting / Chain-of-Thought Prompting\nQ: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?\nStandard A: The answer is 11.\nCoT A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11.\nQ: The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, how many apples do they have?\nStandard A: The answer is 27. [図では不正解の印]\nCoT A: The cafeteria had 23 apples originally. They used 20 to make lunch. So they had 23 - 20 = 3. They bought 6 more apples, so they have 3 + 6 = 9. The answer is 9.",
+            "distance": 0.33994951844215393
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_9306801633753986524",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p064",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Appendix",
+            "title": "補足：長時間タスクの実行能力の最新動向",
+            "page": 64,
+            "content": "補足：長時間タスクの実行能力の最新動向\nMETR の測定では、公開モデルの最前線の 50% 時間地平は約12時間（2026年2〜3月）。16時間を超える値は、現行の課題群\nでは信頼できない。\n何が変わったか\n項目 更新内容 時点\n50% 時間地平 公開モデルの最前線で約12時間（推定の幅 5〜61時間）。半分の確率で完了できる課\n題の、人間の所要時間で表した長さ\n2026/2〜3 の評価\n80% 時間地平 同じ時点で約1.5時間（推定の幅 50分〜2時間40分）。求める成功率を上げると、任\nせられる長さは大きく縮む\n2026/2〜3 の評価\n測定の限界 GPT-5.6 Sol の推定は約11.3時間。不正な解法を成功に数えると270時間超になり、\nMETR は頑健な測定ではないとした\n2026/6/26\n講義の内容との関係。本編の「1回95%でも20回続くと約36%」は説\n明用の計算。実測でも、50% と 80% の差は大きい。長く動かせるこ\nとと、確実に終えることは別である。\n使うときの注意。時間地平は課題の長さの指標で、連続して稼働でき\nる時間ではない。Claude Opus 5.5 の評価要約（2026/9/22）に、時\n間地平の数値は載っていない。\n出典）METR「Frontier Risk Report (February to March 2026)」（2026/5/19）、「Summary of METR's predeployment evaluation of GPT-5.6 Sol」（2026/6/26）\n、「Task-Completion Time Horizons of Frontier AI Models」（2026/5/8 更新）。情報確認日：2026/10/9\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.3407924473285675
+          },
+          {
+            "page_id": "lec03-main-p019",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 3 ループ",
+            "title": "誤差の累積",
+            "page": 19,
+            "content": "誤差の累積\nエージェントはツールの結果でループを回す。1回の成功率が95%でも、20回続けてすべて成功するのは約36%。\n出典）計算は各ステップが独立と仮定した単純化。METR「Time Horizon 1.1」（2026年1月。Claude Opus 4.6 は3月の計算修正後の値）。第1回 9ページと同じ。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30\n最後まで成功する確率（%）\nステップ数\n1ステップ 99% 1ステップ 95%\n20ステップで 36%\n任せられる仕事の長さ（METR）\n約4か月ごとに倍増\nMETR：AI の能力を測る米国の研究機関\nGPT-4\nGPT-5\n1分\n4分\n15分\n1時間\n4時間\n16時間\n2023 2024 2025 2026\nClaude Opus 4.6\n約12時間",
+            "distance": 0.3424311876296997
+          },
+          {
+            "page_id": "lec02-main-p043",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "基盤モデルの地図と選び方",
+            "title": "クイズ 3 ： 1 日 1 万件の振り分け（答え）",
+            "page": 43,
+            "content": "クイズ 3/4\nクイズ 3 ： 1 日 1 万件の振り分け（答え）\n答え： B\n受講生からの問い合わせ（ 1 日 1 万件）を「事務手続き／講義内容／その他」に振り分けたい。最初に試すべきは？\nA\nベンチマーク 1 位の最大のモデルで、毎回じっくり\n考えさせる\nB\n小さなモデル（特化モデルや FT 済み）で分類し、\n評価セットで精度とコストを確かめる\nC 画像生成モデルで、問い合わせを図にしてから分類する D 温度を高くして、いろいろな分類を出させる\n決まった判断を大量にこなすなら、用途に足りる小さなモデルが「コスト＜効果」を満たしやすい。どれで足りるかは、自分の評価セットで決める\n塊 3 の芯：地図を持ち、自分の評価と「コスト＜効果」で選ぶ\n© Matsuo-Iwasawa Lab, The University of Tokyo 43",
+            "distance": 0.35679763555526733
+          },
+          {
+            "page_id": "lec02-main-p013",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "LLM は、確率で次の言葉を選ぶ",
+            "title": "帰結①：同じ質問でも、答えは毎回変わる",
+            "page": 13,
+            "content": "1/4 　 LLM は確率で次の言葉を選ぶ\n帰結①：同じ質問でも、答えは毎回変わる\n1 回試して「動いた」は評価にならない。同じ質問を複数回聞いて、ばらつきごと測る\n例：「 RAG って何ですか？」を 5 回聞く（説明用）　右端：✓正しい 誤り ！不十分✗\n1 質問に関係する資料を検索し、それを根拠に回答を作る方法です\n2\n外部の文書を検索して、 LLM への入力に加えてから答えさせる\n仕組みです\n3 検索（ Retrieval ）で知識を補いながら文章を生成する手法です\n4 モデルを追加学習して、新しい知識を覚えさせる方法です\n5 検索した資料を要約して表示する機能です\n5 回中\n3 回 正しい\n• 1 回目だけ見れば「完璧」でも、実際の\n正答率は分からない\n• 評価は同じ質問を複数回。平均とばらつきを\n見る（第 4 回）\n• 温度を下げる・根拠資料を渡すなどで、\n揺れは減らせる\n© Matsuo-Iwasawa Lab, The University of Tokyo 13",
+            "distance": 0.35715198516845703
+          },
+          {
+            "page_id": "lec02-main-p025",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "渡す・選ぶ／直す／考えさせる",
+            "title": "推論時計算：使うときに「考えさせる」と、難問に強くなる",
+            "page": 25,
+            "content": "2/4 　渡す・選ぶ／直す／考えさせる\n推論時計算：使うときに「考えさせる」と、難問に強くなる\n途中の考えを書かせる（ CoT ： Chain of Thought ）、候補を複数作って選ぶ。モデルを変えずに賢さを買える\n出典： Wei+ 「 Chain-of-Thought Prompting 」 NeurIPS 2022 Fig.1 ／ OpenAI 「 Learning to reason with LLMs 」 2024 。 o1 ＝ OpenAI の推論モデル\n考えを書かせる（ CoT ）：左は答えだけ→誤り、右は途中式を書く→正解\n候補を作って選ぶ：同じ o1 の正答率（数学競技 AIME ）\n※93% は 1,000 候補を採点器で選んだ研究用の設定。計算量は約 1,000 倍\n1 回で答える 74%\n1,000 候補から選ぶ 93%\nAPI では「考える量」を選べる\nbudget_tokens＝考える量の上限（書き方は API・時\n期で異なる）\nmsg = client.messages.create(\n    model=\"claude-...\",\n    max_tokens=16000,\n    thinking={\"type\": \"enabled\",\n              \"budget_tokens\": 8000},\n    messages=[...])\n• 難しい質問だけ考える量を増やす、と使い分ける\n• その代わり、料金（出力トークン）と待ち時間が増える\n• 演習で使う小さな公開モデルには、この設定はない\n© Matsuo-Iwasawa Lab, The University of Tokyo 25\n\n【図表・画像内の補足文字起こし】\nStandard Prompting / Chain-of-Thought Prompting\nQ: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?\nStandard A: The answer is 11.\nCoT A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11.\nQ: The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, how many apples do they have?\nStandard A: The answer is 27. [図では不正解の印]\nCoT A: The cafeteria had 23 apples originally. They used 20 to make lunch. So they had 23 - 20 = 3. They bought 6 more apples, so they have 3 + 6 = 9. The answer is 9.",
+            "distance": 0.3573303818702698
+          }
+        ]
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec02-main-p013",
+    "lec02-main-p025",
+    "lec02-main-p027",
+    "lec02-main-p043",
+    "lec02-main-p061",
+    "lec03-main-p019",
+    "lec03-main-p064"
+  ],
+  "preview_page_ids": [],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:23:12+00:00",
+  "attempt_wall_seconds": 6.587789208000686,
+  "process_return_code": 0
+}

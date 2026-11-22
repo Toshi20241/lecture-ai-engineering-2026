@@ -1,0 +1,341 @@
+{
+  "case_id": "q4_retry",
+  "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+  "split": "validation",
+  "mode": "tree_original",
+  "repeat": 2,
+  "trial_id": "q4_retry__tree_original__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 2,
+  "started_utc": "2026-11-22T08:28:51+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際の二重実行や再試行に関する考え方のヒントを以下に整理します。\n\n### 1. ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由\n* **根拠:** 第3回・PDF p.48\n* **ヒント:** AIエージェントの内部的な会話や作業状態（チェックポイントなど）がエラー発生前の時点に巻き戻って再開された場合、**「エージェント側から外部へ送った操作（外部システムへのリクエスト等）」の履歴や状態は一緒に巻き戻らない**という問題があります。そのため、再開後にエージェントが同じ操作を再び実行してしまうと、外部システム側では同じ処理が2回行われてしまい、二重実行（二重払いなど）につながります（p.48）。\n\n### 2. その対策\n* **根拠:** 第3回・PDF p.48\n* **ヒント:** 外部への操作結果や状態を記録（永続化・トラッキング）しておき、再開後に同じ操作が再び送られてきた場合には、実際に再実行するのではなく、**「すでに記録されている過去の実行結果をそのまま返す」**という仕組み（冪等性の担保）が必要になります（p.48）。\n\n### 3. 失敗した処理をいつまでも再試行しないために、誰が何を管理すべきか\n* **根拠:** 第3回・PDF p.45\n* **ヒント:** 資料（p.45）では、失敗から立ち直る際の課題として「タイムアウトのたびに同じ処理を延々と再実行してしまう」ことが挙げられています。これを防ぐためには、**「エージェントシステム（またはハーネスなどの制御層）」が「再試行の回数や履歴（ステート）」を適切に管理**し、無限ループや無制限の再試行に陥らない仕組みを持たせる必要があります。",
+  "elapsed_seconds": 11.156203966999783,
+  "input_tokens": 9044,
+  "output_tokens": 541,
+  "model_responses": 6,
+  "generation_cost_usd": 0.0040657,
+  "tool_call_count": 5,
+  "tool_calls": [
+    {
+      "tool_name": "browse_tree",
+      "args": {},
+      "tool_call_id": "call_10316770517221105100"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main"
+      },
+      "tool_call_id": "call_14986543278969377728"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s042"
+      },
+      "tool_call_id": "call_14562519322743435037"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p045"
+      },
+      "tool_call_id": "call_6995536419063393182"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p048"
+      },
+      "tool_call_id": "call_8238503821682232366"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_10316770517221105100",
+      "content": {
+        "node": {
+          "id": "aie2026-materials",
+          "kind": "collection",
+          "title": "AIエンジニアリング実践講座2026 資料"
+        },
+        "children": [
+          {
+            "id": "lec01-main",
+            "kind": "document",
+            "title": "AIエンジニアリング概論とAIコーディング"
+          },
+          {
+            "id": "lec02-main",
+            "kind": "document",
+            "title": "基盤モデルの仕組み"
+          },
+          {
+            "id": "lec03-main",
+            "kind": "document",
+            "title": "AIエージェント"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_14986543278969377728",
+      "content": {
+        "node": {
+          "id": "lec03-main",
+          "kind": "document",
+          "title": "AIエージェント"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p001",
+            "kind": "page",
+            "title": "AIエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 1,
+            "content": "AIエンジニアリング実践講座 2026"
+          },
+          {
+            "id": "lec03-main-p002",
+            "kind": "page",
+            "title": "自己紹介",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 2,
+            "content": "自己紹介"
+          },
+          {
+            "id": "lec03-main-p003",
+            "kind": "page",
+            "title": "第2回で見たモデルの性質が、今日の設計の前提になる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 3,
+            "content": "第2回で見たモデルの性質が、今日の設計の前提になる"
+          },
+          {
+            "id": "lec03-main-p004",
+            "kind": "page",
+            "title": "アジェンダ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 4,
+            "content": "アジェンダ"
+          },
+          {
+            "id": "lec03-main-s005",
+            "kind": "section",
+            "title": "Part 2 エージェントを組み立てる"
+          },
+          {
+            "id": "lec03-main-s018",
+            "kind": "section",
+            "title": "Part 3 ループ"
+          },
+          {
+            "id": "lec03-main-s022",
+            "kind": "section",
+            "title": "Part 4 ツール"
+          },
+          {
+            "id": "lec03-main-s033",
+            "kind": "section",
+            "title": "Part 5 構造化出力とツール呼び出し"
+          },
+          {
+            "id": "lec03-main-s037",
+            "kind": "section",
+            "title": "Part 6 メモリ"
+          },
+          {
+            "id": "lec03-main-s042",
+            "kind": "section",
+            "title": "Part 7 停止条件・失敗時の振る舞い"
+          },
+          {
+            "id": "lec03-main-s049",
+            "kind": "section",
+            "title": "Part 9 信頼境界とハーネス"
+          },
+          {
+            "id": "lec03-main-s054",
+            "kind": "section",
+            "title": "Part 10 RSI とエージェント"
+          },
+          {
+            "id": "lec03-main-s060",
+            "kind": "section",
+            "title": "Appendix"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_14562519322743435037",
+      "content": {
+        "node": {
+          "id": "lec03-main-s042",
+          "kind": "section",
+          "title": "Part 7 停止条件・失敗時の振る舞い"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p042",
+            "kind": "page",
+            "title": "Part 7 停止条件・失敗時の振る舞い",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 42,
+            "content": "Part 7"
+          },
+          {
+            "id": "lec03-main-p043",
+            "kind": "page",
+            "title": "ループを止める3つの仕組み",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 43,
+            "content": "ループを止める3つの仕組み"
+          },
+          {
+            "id": "lec03-main-p044",
+            "kind": "page",
+            "title": "「終わった」かどうかは、作業したモデル以外が決める",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 44,
+            "content": "「終わった」かどうかは、作業したモデル以外が決める"
+          },
+          {
+            "id": "lec03-main-p045",
+            "kind": "page",
+            "title": "ツールが失敗したときに確かめる3つのこと",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 45,
+            "content": "ツールが失敗したときに確かめる3つのこと"
+          },
+          {
+            "id": "lec03-main-p046",
+            "kind": "page",
+            "title": "失敗しても「できた」と言ってしまう",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 46,
+            "content": "失敗しても「できた」と言ってしまう"
+          },
+          {
+            "id": "lec03-main-p047",
+            "kind": "page",
+            "title": "プロンプトで不正は減る",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 47,
+            "content": "プロンプトで不正は減る"
+          },
+          {
+            "id": "lec03-main-p048",
+            "kind": "page",
+            "title": "冪等性の担保",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "page": 48,
+            "content": "冪等性の担保"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_6995536419063393182",
+      "content": {
+        "node": {
+          "id": "lec03-main-p045",
+          "kind": "page",
+          "title": "ツールが失敗したときに確かめる3つのこと",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 7 停止条件・失敗時の振る舞い",
+          "page": 45,
+          "content": "ツールが失敗したときに確かめる3つのこと\n「失敗しているテストを直して」で、いちばん困る失敗はどれでしょうか？\n出典）3つの観点は本講義での整理。例は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n①立ち直る\n失敗から\n立ち直れるか\n困る例\nタイムアウトのたびに\n同じテストを延々と再実行\n②正直に言う\n失敗を\n正直に言うか\n困る例\nテストを書き換えて、\n「直りました」と言う\n③安全にやり直す\nやり直しで\n二重にしないか\n困る例\n途中から再開して、同じ\nプルリクエストをもう一度作る"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_8238503821682232366",
+      "content": {
+        "node": {
+          "id": "lec03-main-p048",
+          "kind": "page",
+          "title": "冪等性の担保",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 7 停止条件・失敗時の振る舞い",
+          "page": 48,
+          "content": "冪等性の担保\n会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\n出典）Zheng et al. ACRFence（arXiv:2603.20625、2026年3月、CoDAIM workshop 2026）。例は同論文の送金の例。概念実証は Claude Code CLI（Qwen3-32B）のチェックポイント機能と、模擬の送金サー\nビスで行われた。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべてで二重に実行された。再開なしでは0回。"
+        },
+        "children": []
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec03-main-p045",
+    "lec03-main-p048"
+  ],
+  "preview_page_ids": [
+    "lec03-main-p001",
+    "lec03-main-p002",
+    "lec03-main-p003",
+    "lec03-main-p004",
+    "lec03-main-p042",
+    "lec03-main-p043",
+    "lec03-main-p044",
+    "lec03-main-p045",
+    "lec03-main-p046",
+    "lec03-main-p047",
+    "lec03-main-p048"
+  ],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:29:05+00:00",
+  "attempt_wall_seconds": 13.653611087000172,
+  "process_return_code": 0
+}

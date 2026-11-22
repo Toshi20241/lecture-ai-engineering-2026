@@ -1,0 +1,11 @@
+{
+  "case_id": "q3_tool_skill",
+  "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+  "split": "validation",
+  "mode": "tree_improved",
+  "repeat": 2,
+  "trial_id": "q3_tool_skill__tree_improved__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:27:29+00:00"
+}

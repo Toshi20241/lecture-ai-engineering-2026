@@ -1,0 +1,186 @@
+{
+  "case_id": "q4_retry",
+  "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+  "split": "validation",
+  "mode": "rag",
+  "repeat": 1,
+  "trial_id": "q4_retry__rag__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:21:03+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料に基づき、ご質問の内容について解説します。\n\n### 1. ツール呼び出しのタイムアウト時に再試行で二重実行が起きる理由\nメール送信や注文、送金などのツールでは、送信自体は成功して相手側に処理が届いていたものの、接続が切れてエージェント側に応答が届かない（タイムアウトする）場合があります（第3回・PDF p.27, p.48）。\nエージェント側からは実行の成功・失敗が見分けられないため、「失敗した」と判断して同じ操作をもう一度やり直してしまい、結果として同じ処理が2回行われてしまいます（第3回・PDF p.27, p.48）。\n\n### 2. その対策\n講義資料では、外部への操作に対する対策として以下の方法が挙げられています。\n* **外への操作を記録しておく**：再開後や再試行時に同じ操作が来た際、実際に実行せず、記録した結果を返すようにする（第3回・PDF p.48）。\n\n### 3. いつまでも再試行しないための管理方法（ヒント）\n「失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきか」という点については、エージェントが無限にリトライし続けるのを防ぐ仕組みを考えてみましょう。\n* **再試行回数（試行回数）** や **タイムアウトまでの制限時間** をどこで保持・管理すべきか、またエージェント自身の状態や外部の管理機構のどちらがそれを追跡すべきかを考えてヒントにしてください。",
+  "elapsed_seconds": 4.971153348999906,
+  "input_tokens": 6267,
+  "output_tokens": 398,
+  "model_responses": 3,
+  "generation_cost_usd": 0.0028751,
+  "tool_call_count": 2,
+  "tool_calls": [
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "ツール呼び出し タイムアウト 再試行 二重実行"
+      },
+      "tool_call_id": "call_17771647053295940208"
+    },
+    {
+      "tool_name": "search_materials",
+      "args": {
+        "query": "冪等性の担保 対策 管理"
+      },
+      "tool_call_id": "call_14823077394403913790"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_17771647053295940208",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p027",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "冪等性がないツール",
+            "page": 27,
+            "content": "冪等性がないツール\n送信は成功していた。応答が届く前に接続が切れ、エージェントは失敗と判断してやり直した\n出典）Stripe API Reference「Idempotent requests」（2026/10/24 確認。接続エラーの後に再送すると、同じ操作が2回行われうると説明）を基に作成。メールの場面は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント メールサービス 相手の受信箱\n① send_email（見積書）\n1通目が届く\n×\n成功の応答が届かない（タイムアウト）\n②失敗したと判断\n③もう一度 send_email\n2通目が届く\n同じような問題が起こりうるツ\nール\n注文する\n→ 2回注文される\n送金する\n→ 2回払う\n投稿する\n→ 同じ投稿が2つ並ぶ\nエージェントからは、成功か失敗か見分けられない。接続が切れて\nも、向こうでは実行済みのことがある。",
+            "distance": 0.27731868624687195
+          },
+          {
+            "page_id": "lec03-main-p030",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "ツールのバッチコール",
+            "page": 30,
+            "content": "ツールのバッチコール\n前の結果を使わない呼び出しは1回の応答でまとめて（バッチで）呼び、使うものは順に呼ぶ\n出典）Anthropic「Parallel tool use」（Claude Platform Docs）、OpenAI「Function calling」、Google「Function calling with the Gemini API」（いずれも 2026/10/24 確認）。ツール名と例は説明用。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n結果を使わない → まとめて呼ぶ\nモデルの\n応答（1回）\nread_file(\"utils.py\")\nread_file(\"test_utils.py\")\nsearch(\"parse_date\")\n結果を使う → 順に呼ぶ\nrun_tests(\"tests/\")\ntest_parse_date が失敗\nread_file(\"test_utils.py\")\n期待する日付の形がわかる\nedit_file(\"utils.py\", ...)",
+            "distance": 0.30047962069511414
+          },
+          {
+            "page_id": "lec03-main-p029",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "ツールをバックグラウンドで実行",
+            "page": 29,
+            "content": "ツールをバックグラウンドで実行\n全テストに20分かかるなら、待つ間にモデルは別のツールで作業を進め、終わったら結果を受け取る\n出典）Anthropic Claude Code Docs「Interactive mode」「Tools reference」「Headless」「Subagents」のバックグラウンド実行の説明（2026/10/24 確認）。時間とツールの並びは説明用。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n待つ場合 開始 結果が返るまで、何もできない（20分） 結果を読む\nバックグラウンドで走らせる場合\nツール 全テストを実行中（20分）\nモデル 開始\n→ ID\nread_file\nutils.py\nsearch\nparse_date\n修正案を\n考える\n完了の通知\n結果がコンテキストに入り、\n続きから再開\n例：Claude Code run_in_backgroundで開始 → すぐにタスク ID が返る → 終わると、結果を受けて再開\n課題：バックグラウンドのタスクが失敗・止まってしまうことをエージェントが検知できるか。\nClaude Code を終了すると、バックグラウンドのタスクも止まる。数日かかる処理は常駐型（Part２）が受け持つ。",
+            "distance": 0.318343847990036
+          },
+          {
+            "page_id": "lec03-main-p048",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "冪等性の担保",
+            "page": 48,
+            "content": "冪等性の担保\n会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\n出典）Zheng et al. ACRFence（arXiv:2603.20625、2026年3月、CoDAIM workshop 2026）。例は同論文の送金の例。概念実証は Claude Code CLI（Qwen3-32B）のチェックポイント機能と、模擬の送金サー\nビスで行われた。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべてで二重に実行された。再開なしでは0回。",
+            "distance": 0.3192167580127716
+          },
+          {
+            "page_id": "lec03-main-p022",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "Part 4 ツール",
+            "page": 22,
+            "content": "Part 4\nツール\nMCP ・長い処理と並列化・評価\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO",
+            "distance": 0.3258204162120819
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "search_materials",
+      "tool_call_id": "call_14823077394403913790",
+      "content": {
+        "results": [
+          {
+            "page_id": "lec03-main-p048",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "冪等性の担保",
+            "page": 48,
+            "content": "冪等性の担保\n会話と作業状態は巻き戻せるが、外に送った操作は巻き戻らない\n出典）Zheng et al. ACRFence（arXiv:2603.20625、2026年3月、CoDAIM workshop 2026）。例は同論文の送金の例。概念実証は Claude Code CLI（Qwen3-32B）のチェックポイント機能と、模擬の送金サー\nビスで行われた。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント\n銀行\n①送金する ②途中で落ちる ③保存した時点\nから再開\n④もう一度送金\n（参照IDが新しい）\n会話と作業状態だけが、ここまで戻る\n1件目：成立 2件目：成立送金の記録は戻らない → 二重払い\n対策 外への操作を\n記録しておく\n再開後に、\n同じ操作が来る\n実行せず、\n記録した結果を返す\n実験では、再開を挟んだ10回すべてで二重に実行された。再開なしでは0回。",
+            "distance": 0.23641464114189148
+          },
+          {
+            "page_id": "lec03-main-p027",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "冪等性がないツール",
+            "page": 27,
+            "content": "冪等性がないツール\n送信は成功していた。応答が届く前に接続が切れ、エージェントは失敗と判断してやり直した\n出典）Stripe API Reference「Idempotent requests」（2026/10/24 確認。接続エラーの後に再送すると、同じ操作が2回行われうると説明）を基に作成。メールの場面は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nエージェント メールサービス 相手の受信箱\n① send_email（見積書）\n1通目が届く\n×\n成功の応答が届かない（タイムアウト）\n②失敗したと判断\n③もう一度 send_email\n2通目が届く\n同じような問題が起こりうるツ\nール\n注文する\n→ 2回注文される\n送金する\n→ 2回払う\n投稿する\n→ 同じ投稿が2つ並ぶ\nエージェントからは、成功か失敗か見分けられない。接続が切れて\nも、向こうでは実行済みのことがある。",
+            "distance": 0.26602238416671753
+          },
+          {
+            "page_id": "lec03-main-p025",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 4 ツール",
+            "title": "Human in the loop",
+            "page": 25,
+            "content": "Human in the loop\nメール送信やファイルの削除のように戻せない操作は、実行前に人に確認させる。\n出典）Claude Code Docs「Settings」「Permission modes」「Configure auto mode」（2026/10 確認）。承認画面は Claude Code の表示内容をもとに再現したもの。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nClaude Code の承認画面\nBash(git push origin main)\nPush local commits to remote\nDo you want to proceed?\n> 1. Yes\n2. Yes, and don't ask again for git push\n3. No, and tell Claude what to do differently\n（Claude Codeの場合）どこまで聞くかは設定で決める\n毎回聞く（default モード）\n新しい種類の操作のたびに人に確認する。\nルールで決めておく（settings.json）\nallow＝聞かずに実行、ask＝毎回聞く、deny＝禁止。\ndeny はどのモードでも効く。\n別のモデルが判定する（auto モード）\n人の代わりに分類器（別のモデル）が毎回確かめる。\n戻せない操作や、頼まれていない操作だけ止める。\n聞かない（bypassPermissions）\n確認なしで全部実行する。",
+            "distance": 0.34244558215141296
+          },
+          {
+            "page_id": "lec03-main-p047",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 7 停止条件・失敗時の振る舞い",
+            "title": "プロンプトで不正は減る",
+            "page": 47,
+            "content": "プロンプトで不正は減る\nただしゼロにはならない。判定に使うテストは書き換えられないようにする\n出典）Anthropic「Claude Opus 4.7 System Card」図 6.2.2.2.A（2026/4）、指示文は同社「Claude Opus 4.6 System Card」6.2.3.2 節。Zhong, Raghunathan & Carlini. ImpossibleBench（arXiv:2510.20270、\nICLR 2026）。2026/10/24 確認。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nずるを控え、無理なら伝えるよう指示\n解けないコーディング課題で、ずるをした割合\n45%\n指示なし\n12.5%\n指示あり\nClaude Opus 4.7（Anthropic、2026年4月）\nテストを読み取り専用にする\n読み書き可 読み取り専用 隠蔽\n不正 多い 書き換え\nを防ぐ ほぼゼロ\n本来の性能 保つ 保つ 下がる\nImpossibleBench（2025年10月）",
+            "distance": 0.35189563035964966
+          },
+          {
+            "page_id": "lec02-main-p018",
+            "document_id": "lec02-main",
+            "lecture": 2,
+            "document_title": "基盤モデルの仕組み",
+            "section": "LLM は、確率で次の言葉を選ぶ",
+            "title": "揺れと誤りに、こう付き合う",
+            "page": 18,
+            "content": "1/4 　 LLM は確率で次の言葉を選ぶ\n揺れと誤りに、こう付き合う\n原理（確率で選ぶ）から、公開前に確かめることが決まる\n実践ガイド 1/4\nやること なぜ（塊 1 の原理）\n1 同じ質問を複数回聞いて測る（例：各 5 回） ← 答えは確率で揺れる\n2 温度は用途で決めて固定する（事実は低め、発想は高め） ← 選び方で答えの性格が変わる\n3 答えられない質問も入れ、「分かりません」と言えるか測る ← 知らなくても、それらしく答える\n4 根拠も出させ、その根拠が実在するか確かめる ← 正しさをモデル自身は確かめない\n5 資料は丸ごと渡さず、関係する部分だけ渡す ← 長い文脈の真ん中は見落とす\n6 取れる API なら、確率（ logprobs ）の低い答えを要確認に ← 目安。確率と正しさはずれることも\n講義チャットボットの設定例\n• 温度： 0.2 で固定\n• 評価： 50 問 ×5 回。うち 10 問は資料に\nない質問\n• 指示：「資料にないことは『分かりません』と\n答える。根拠のスライド番号を添える」\n• 資料：質問に関係する 3 枚だけを渡す\n（ RAG ）\n合言葉： 1 回の正解を信じない。複数回・答えられない質問込みで測ってから公開する\n© Matsuo-Iwasawa Lab, The University of Tokyo 18",
+            "distance": 0.3568807542324066
+          }
+        ]
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec02-main-p018",
+    "lec03-main-p022",
+    "lec03-main-p025",
+    "lec03-main-p027",
+    "lec03-main-p029",
+    "lec03-main-p030",
+    "lec03-main-p047",
+    "lec03-main-p048"
+  ],
+  "preview_page_ids": [],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:21:10+00:00",
+  "attempt_wall_seconds": 7.550705088000541,
+  "process_return_code": 0
+}

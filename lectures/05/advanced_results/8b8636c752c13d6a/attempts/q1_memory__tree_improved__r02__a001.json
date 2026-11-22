@@ -1,0 +1,264 @@
+{
+  "case_id": "q1_memory",
+  "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+  "split": "development",
+  "mode": "tree_improved",
+  "repeat": 2,
+  "trial_id": "q1_memory__tree_improved__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:23:14+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の講義資料「Part 6 メモリ」では、メモリの仕組みについて以下のように解説されています。\n\n### 1. コンパクションとセッションをまたぐメモリの違い\n* **コンパクション（コンテキストの中・同じセッション内）**\n  * 1つのセッション（会話の継続中）において、コンテキスト長の上限に近づいた際、**古い履歴を要約して縮める（詰める）**仕組みです（第3回・PDF p.39）。\n* **セッションをまたぐメモリ（外の保存先）**\n  * セッションが終了しても消えず、別の会話（セッション）に引き継ぐための長期的な保存先です。モデルがツールや自動処理を通じて外部のファイル（例: `MEMORY.md` など）に書き込み、次の会話の最初に読み込ませる仕組みです（第3回・PDF p.39, p.40）。\n\n### 2. 日々のメモはすべて長期メモリに入りますか\nOpenClawの例を振り返ってみましょう。日々のメモ（例: `memory/日付.md`）がそのまますべて長期メモリ（`MEMORY.md`）に入るわけではありません（第3回・PDF p.40）。\n\n資料では、毎晩自動で行われる見直し（dreaming）のプロセスとして以下のように説明されています。\n1. **集める**：重複を除いて候補を並べる\n2. **見比べる**：何度も出てくるテーマを探す\n3. **移す**：**基準を超えたものだけ残す**\n\n日々のすべての細かなやり取りやメモをそのまま残すと、古い情報や不要な誤りまで蓄積されてしまいます（第3回・PDF p.38）。そのため、重要な情報や繰り返し登場するテーマなど、**「基準を超えたものだけ」**が選別されて長期メモリに移されます（第3回・PDF p.40）。",
+  "elapsed_seconds": 4.889082810999753,
+  "input_tokens": 4772,
+  "output_tokens": 476,
+  "model_responses": 4,
+  "generation_cost_usd": 0.0026216,
+  "tool_call_count": 3,
+  "tool_calls": [
+    {
+      "tool_name": "browse_tree",
+      "args": {},
+      "tool_call_id": "call_9633730144193109372"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main"
+      },
+      "tool_call_id": "call_15516348093695872309"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s037"
+      },
+      "tool_call_id": "call_551301109028478101"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_9633730144193109372",
+      "content": {
+        "node": {
+          "id": "aie2026-materials",
+          "kind": "collection",
+          "title": "AIエンジニアリング実践講座2026 資料"
+        },
+        "children": [
+          {
+            "id": "lec01-main",
+            "kind": "document",
+            "title": "AIエンジニアリング概論とAIコーディング"
+          },
+          {
+            "id": "lec02-main",
+            "kind": "document",
+            "title": "基盤モデルの仕組み"
+          },
+          {
+            "id": "lec03-main",
+            "kind": "document",
+            "title": "AIエージェント"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_15516348093695872309",
+      "content": {
+        "node": {
+          "id": "lec03-main",
+          "kind": "document",
+          "title": "AIエージェント"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p001",
+            "kind": "page",
+            "title": "AIエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 1,
+            "content": "第3回\n2026年11月2日 渡辺倫世\n許諾なく撮影や第三者への開示\nを禁止します\nロゴ：松尾・岩澤研究室 / MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO"
+          },
+          {
+            "id": "lec03-main-p002",
+            "kind": "page",
+            "title": "自己紹介",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 2,
+            "content": "渡辺 倫世（わたなべ りんぜ）\n東京大学大学院 工学系研究科 松尾・岩澤研究室\n業務・活動\nAX推進、計算基盤・インフラ\n普段使っているエージェント\nDots・Openclaw的な自作エージェント\n[ 写真・画面 ]"
+          },
+          {
+            "id": "lec03-main-p003",
+            "kind": "page",
+            "title": "第2回で見たモデルの性質が、今日の設計の前提になる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 3,
+            "content": "エージェントは、モデルにツール・ループ・メモリを付けたもの。モデルの性質は、そのまま残る。\n第2回で見た性質 エージェントで起きること 今日の Part\n① 同じ質問でも、答えは毎回変わる 同じ依頼でも毎回ちがう手順になり、誤りが積み重なる Part 3 ループ\n② 知らないことも、それらしく答える ない関数を呼ぶ。ツールの結果を読み違える Part 8 失敗時\n③ 知識には締め切りがある 新し…"
+          },
+          {
+            "id": "lec03-main-p004",
+            "kind": "page",
+            "title": "アジェンダ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 4,
+            "content": "エージェントの構成\nPart 2 エージェントを組み立てる\nゼロから作る AI エージェント\n部品を設計する\nPart 3 ループ\n誤差の累積と戻れるループ\nPart 4 ツール\nMCP・実行前の承認・並列化\nPart 5 構造化出力とツール呼び出し\n形式に合う出力だけを作る・Jev\nPart 6 メモリ\n長期記録・Skill\n安全性\nPart 7 停止条件\n止める仕組みをループの外側に置く\nP…"
+          },
+          {
+            "id": "lec03-main-s005",
+            "kind": "section",
+            "title": "Part 2 エージェントを組み立てる"
+          },
+          {
+            "id": "lec03-main-s018",
+            "kind": "section",
+            "title": "Part 3 ループ"
+          },
+          {
+            "id": "lec03-main-s022",
+            "kind": "section",
+            "title": "Part 4 ツール"
+          },
+          {
+            "id": "lec03-main-s033",
+            "kind": "section",
+            "title": "Part 5 構造化出力とツール呼び出し"
+          },
+          {
+            "id": "lec03-main-s037",
+            "kind": "section",
+            "title": "Part 6 メモリ"
+          },
+          {
+            "id": "lec03-main-s042",
+            "kind": "section",
+            "title": "Part 7 停止条件・失敗時の振る舞い"
+          },
+          {
+            "id": "lec03-main-s049",
+            "kind": "section",
+            "title": "Part 9 信頼境界とハーネス"
+          },
+          {
+            "id": "lec03-main-s054",
+            "kind": "section",
+            "title": "Part 10 RSI とエージェント"
+          },
+          {
+            "id": "lec03-main-s060",
+            "kind": "section",
+            "title": "Appendix"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_551301109028478101",
+      "content": {
+        "node": {
+          "id": "lec03-main-s037",
+          "kind": "section",
+          "title": "Part 6 メモリ"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p037",
+            "kind": "page",
+            "title": "Part 6 メモリ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 37,
+            "content": "メモリ\n実装例・ Skill"
+          },
+          {
+            "id": "lec03-main-p038",
+            "kind": "page",
+            "title": "メモリがないと、毎回ゼロからやり直しになる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 38,
+            "content": "「失敗しているテストを直して」を翌日また頼んだら、前回見つけた原因は使えるでしょうか？\n1\n毎回ゼロから始める\n前に決めたことを\nまた説明する\n2\n同じ失敗を繰り返す\n前回突き止めた原因を\nまた探す\n3\n長い作業が途切れる\nコンテキストの上限で\n途中経過が落ちる\nすべてを蓄積すると、古い情報や誤りも一緒に戻ってくる。何を残し、何を消すかを設計する。"
+          },
+          {
+            "id": "lec03-main-p039",
+            "kind": "page",
+            "title": "実装例：Claude",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 39,
+            "content": "Claude の例。1つのセッションの中で効くものと、セッションをまたいで効くものがある\nコンテキストの中（同じセッション）\nコンパクション（履歴を要約して詰める）\n古い履歴を、要約に置き換える。\n外の保存先（セッションをまたぐ）\nメモリツール（Claude API）\n/memories のファイルを、モデルが要求し\nアプリが自分の保存先で実行する\n自動メモリ（Claude Code）\nClau…"
+          },
+          {
+            "id": "lec03-main-p040",
+            "kind": "page",
+            "title": "実装例：OpenClaw",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 40,
+            "content": "毎晩過去のやり取りを読み直し、残すものだけを長期メモリに移す。\n日々のメモ（memory/日付.md）\n10/24 のメモ 10/25 のメモ 10/26 のメモ\n毎晩、自動で\n見直し（dreaming）\n1 集める：重複を除いて、候補を並べる\n2 見比べる：何度も出てくるテーマを探す\n3 移す：基準を超えたものだけ残す\nMEMORY.md（長期メモリ） 次の会話の最初に読み込む\n人が手で整理し…"
+          },
+          {
+            "id": "lec03-main-p041",
+            "kind": "page",
+            "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 41,
+            "content": "メモリは「何があったか」を残す。Skillは「どうやるか」を残す。\nSkill の中身（例：週報を作る）\nweekly-report/\nSKILL.md ← 手順を書く\ntemplate.docx ← ひな形\nscripts/collect.py ← 集計する\n---\nname: weekly-report\ndescription: 週報を作るときに使う\n---\n1. 今週のチケットを集める\n2…"
+          }
+        ]
+      }
+    }
+  ],
+  "full_page_ids": [],
+  "preview_page_ids": [
+    "lec03-main-p001",
+    "lec03-main-p002",
+    "lec03-main-p003",
+    "lec03-main-p004",
+    "lec03-main-p037",
+    "lec03-main-p038",
+    "lec03-main-p039",
+    "lec03-main-p040",
+    "lec03-main-p041"
+  ],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:23:21+00:00",
+  "attempt_wall_seconds": 7.439871829999902,
+  "process_return_code": 0
+}

@@ -1,0 +1,343 @@
+{
+  "case_id": "q1_memory",
+  "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+  "split": "development",
+  "mode": "tree_original",
+  "repeat": 1,
+  "trial_id": "q1_memory__tree_original__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:17:56+00:00",
+  "status": "success",
+  "http_status": null,
+  "document_ids": [
+    "lec01-main",
+    "lec02-main",
+    "lec03-main"
+  ],
+  "answer": "第3回の資料における「コンパクション」と「セッションをまたぐメモリ」の違い、および日々のメモの扱いについて、講義資料の該当箇所を元に解説します。\n\n---\n\n### 1. コンパクションとセッションをまたぐメモリの違い\n\n* **コンパクション（同じセッション内）**\n  * **仕組み**: 1つのセッションが長くなり、コンテキストウィンドウが溢れそうなときに、**古い会話の履歴を「要約」に置き換えて圧縮する**仕組みです（第3回・PDF p.39）。\n  * **目的**: 同じセッションを継続できるようにコンテキストのサイズを抑えること。したがって、セッションが終了するとこの履歴は消えます。\n* **セッションをまたぐメモリ（外の保存先）**\n  * **仕組み**: セッションが終了しても消えない外部の保存先（ファイルやメモリツールなど）に情報を書き出し、次回のセッション等で読み戻す仕組みです（第3回・PDF p.39）。\n  * **目的**: 過去のやり取りや重要な知識、設定などを新しいセッションにも引き継ぐこと。\n\n---\n\n### 2. 日々のメモはすべて長期メモリに入りますか？\n\nOpenClawの例（第3回・PDF p.40）では、日々の細かいメモや一度きりの調べものは「日々のメモ（`memory/日付.md`）」にそのまま残りますが、**すべてが長期メモリ（`MEMORY.md`）に入るわけではありません**。\n\n* **選別のプロセス**: \n  毎晩の自動見直し（dreaming）の段階で、以下のようなフィルタリングが行われます（第3回・PDF p.40）。\n  1. 重複を除いて候補を並べる\n  2. 何度も出てくるテーマを探す\n  3. **基準を超えたものだけ**を残す\n* **残さない理由**: \n  一度きりの調べものなどは日々のメモに留めておき、長期メモリに移さないことで、長期メモリが不要に膨らまないように設計されています（第3回・PDF p.40）。\n\n---\n**参照資料**: \n* 第3回・PDF p.39（実装例：Claude / コンパクションとメモリの違い）\n* 第3回・PDF p.40（実装例：OpenClaw / 日々のメモと長期メモリの選別）",
+  "elapsed_seconds": 8.428472180999961,
+  "input_tokens": 11045,
+  "output_tokens": 669,
+  "model_responses": 7,
+  "generation_cost_usd": 0.004986,
+  "tool_call_count": 6,
+  "tool_calls": [
+    {
+      "tool_name": "browse_tree",
+      "args": {},
+      "tool_call_id": "call_945127028935693808"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main"
+      },
+      "tool_call_id": "call_11227701807503855874"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-s037"
+      },
+      "tool_call_id": "call_15884123456689291892"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p039"
+      },
+      "tool_call_id": "call_8556918446619295893"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p040"
+      },
+      "tool_call_id": "call_17267686763570540909"
+    },
+    {
+      "tool_name": "browse_tree",
+      "args": {
+        "node_id": "lec03-main-p041"
+      },
+      "tool_call_id": "call_11994496288065990966"
+    }
+  ],
+  "tool_returns": [
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_945127028935693808",
+      "content": {
+        "node": {
+          "id": "aie2026-materials",
+          "kind": "collection",
+          "title": "AIエンジニアリング実践講座2026 資料"
+        },
+        "children": [
+          {
+            "id": "lec01-main",
+            "kind": "document",
+            "title": "AIエンジニアリング概論とAIコーディング"
+          },
+          {
+            "id": "lec02-main",
+            "kind": "document",
+            "title": "基盤モデルの仕組み"
+          },
+          {
+            "id": "lec03-main",
+            "kind": "document",
+            "title": "AIエージェント"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_11227701807503855874",
+      "content": {
+        "node": {
+          "id": "lec03-main",
+          "kind": "document",
+          "title": "AIエージェント"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p001",
+            "kind": "page",
+            "title": "AIエージェント",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 1,
+            "content": "AIエンジニアリング実践講座 2026"
+          },
+          {
+            "id": "lec03-main-p002",
+            "kind": "page",
+            "title": "自己紹介",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 2,
+            "content": "自己紹介"
+          },
+          {
+            "id": "lec03-main-p003",
+            "kind": "page",
+            "title": "第2回で見たモデルの性質が、今日の設計の前提になる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 3,
+            "content": "第2回で見たモデルの性質が、今日の設計の前提になる"
+          },
+          {
+            "id": "lec03-main-p004",
+            "kind": "page",
+            "title": "アジェンダ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "冒頭",
+            "page": 4,
+            "content": "アジェンダ"
+          },
+          {
+            "id": "lec03-main-s005",
+            "kind": "section",
+            "title": "Part 2 エージェントを組み立てる"
+          },
+          {
+            "id": "lec03-main-s018",
+            "kind": "section",
+            "title": "Part 3 ループ"
+          },
+          {
+            "id": "lec03-main-s022",
+            "kind": "section",
+            "title": "Part 4 ツール"
+          },
+          {
+            "id": "lec03-main-s033",
+            "kind": "section",
+            "title": "Part 5 構造化出力とツール呼び出し"
+          },
+          {
+            "id": "lec03-main-s037",
+            "kind": "section",
+            "title": "Part 6 メモリ"
+          },
+          {
+            "id": "lec03-main-s042",
+            "kind": "section",
+            "title": "Part 7 停止条件・失敗時の振る舞い"
+          },
+          {
+            "id": "lec03-main-s049",
+            "kind": "section",
+            "title": "Part 9 信頼境界とハーネス"
+          },
+          {
+            "id": "lec03-main-s054",
+            "kind": "section",
+            "title": "Part 10 RSI とエージェント"
+          },
+          {
+            "id": "lec03-main-s060",
+            "kind": "section",
+            "title": "Appendix"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_15884123456689291892",
+      "content": {
+        "node": {
+          "id": "lec03-main-s037",
+          "kind": "section",
+          "title": "Part 6 メモリ"
+        },
+        "children": [
+          {
+            "id": "lec03-main-p037",
+            "kind": "page",
+            "title": "Part 6 メモリ",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 37,
+            "content": "Part 6"
+          },
+          {
+            "id": "lec03-main-p038",
+            "kind": "page",
+            "title": "メモリがないと、毎回ゼロからやり直しになる",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 38,
+            "content": "メモリがないと、毎回ゼロからやり直しになる"
+          },
+          {
+            "id": "lec03-main-p039",
+            "kind": "page",
+            "title": "実装例：Claude",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 39,
+            "content": "実装例：Claude"
+          },
+          {
+            "id": "lec03-main-p040",
+            "kind": "page",
+            "title": "実装例：OpenClaw",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 40,
+            "content": "実装例：OpenClaw"
+          },
+          {
+            "id": "lec03-main-p041",
+            "kind": "page",
+            "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+            "document_id": "lec03-main",
+            "lecture": 3,
+            "document_title": "AIエージェント",
+            "section": "Part 6 メモリ",
+            "page": 41,
+            "content": "Skill：繰り返す作業の手順をファイルに保存しておく"
+          }
+        ]
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_8556918446619295893",
+      "content": {
+        "node": {
+          "id": "lec03-main-p039",
+          "kind": "page",
+          "title": "実装例：Claude",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 6 メモリ",
+          "page": 39,
+          "content": "実装例：Claude\nClaude の例。1つのセッションの中で効くものと、セッションをまたいで効くものがある\n出典）Anthropic「Compaction overview」「Memory tool」（Claude Platform Docs）、「How Claude remembers your project」（Claude Code Docs）、いずれも 2026/10/21 確認。Packer et al.（2023）\narXiv:2310.08560。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nコンテキストの中（同じセッション）\nコンパクション（履歴を要約して詰める）\n古い履歴を、要約に置き換える。\n外の保存先（セッションをまたぐ）\nメモリツール（Claude API）\n/memories のファイルを、モデルが要求し\nアプリが自分の保存先で実行する\n自動メモリ（Claude Code）\nClaude が自分でメモを書き、\n毎回先頭200行か25KBまで読む\n書き出す\n必要に応じて\nエージェントが読み戻\nす\n書いたメモリは次回のコンテキストに入る。中身を人が確かめる。 外から書き込まれる危険もある。"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_17267686763570540909",
+      "content": {
+        "node": {
+          "id": "lec03-main-p040",
+          "kind": "page",
+          "title": "実装例：OpenClaw",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 6 メモリ",
+          "page": 40,
+          "content": "実装例：OpenClaw\n毎晩過去のやり取りを読み直し、残すものだけを長期メモリに移す。\n出典）OpenClaw Docs「Memory overview」「Memory architecture」。2026/10 時点。各段階の説明は要約。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\n日々のメモ（memory/日付.md）\n10/24 のメモ 10/25 のメモ 10/26 のメモ\n毎晩、自動で\n見直し（dreaming）\n1 集める：重複を除いて、候補を並べる\n2 見比べる：何度も出てくるテーマを探す\n3 移す：基準を超えたものだけ残す\nMEMORY.md（長期メモリ） 次の会話の最初に読み込む\n人が手で整理しなくていい\n全部は残さない\n一度きりの調べものは、日々のメモに残るだけ。長期メ\nモリが膨らまない。"
+        },
+        "children": []
+      }
+    },
+    {
+      "tool_name": "browse_tree",
+      "tool_call_id": "call_11994496288065990966",
+      "content": {
+        "node": {
+          "id": "lec03-main-p041",
+          "kind": "page",
+          "title": "Skill：繰り返す作業の手順をファイルに保存しておく",
+          "document_id": "lec03-main",
+          "lecture": 3,
+          "document_title": "AIエージェント",
+          "section": "Part 6 メモリ",
+          "page": 41,
+          "content": "Skill：繰り返す作業の手順をファイルに保存しておく\nメモリは「何があったか」を残す。Skillは「どうやるか」を残す。\n出典）Anthropic「Agent Skills」「Skill authoring best practices」（Claude Platform Docs）。トークン数は目安。例の Skill は説明用の架空例。\n©MATSUO-IWASAWA LAB, THE UNIVERSITY OF TOKYO\nSkill の中身（例：週報を作る）\nweekly-report/\nSKILL.md ← 手順を書く\ntemplate.docx ← ひな形\nscripts/collect.py ← 集計する\n---\nname: weekly-report\ndescription: 週報を作るときに使う\n---\n1. 今週のチケットを集める\n2. template.docx に沿って書く\n①コンテキストには名前と説明だけを入れる\n1つあたり約100トークン。本文を入れないので、コンテキス\nトを圧迫しない\n② Skillを使う依頼が来たら読み込む\n手順の本文がここで初めてコンテキストに入る。"
+        },
+        "children": []
+      }
+    }
+  ],
+  "full_page_ids": [
+    "lec03-main-p039",
+    "lec03-main-p040",
+    "lec03-main-p041"
+  ],
+  "preview_page_ids": [
+    "lec03-main-p001",
+    "lec03-main-p002",
+    "lec03-main-p003",
+    "lec03-main-p004",
+    "lec03-main-p037",
+    "lec03-main-p038",
+    "lec03-main-p039",
+    "lec03-main-p040",
+    "lec03-main-p041"
+  ],
+  "trace_warnings": [],
+  "tool_errors": [],
+  "quality_status": "未評価",
+  "finished_utc": "2026-11-22T08:18:07+00:00",
+  "attempt_wall_seconds": 11.043443954000395,
+  "process_return_code": 0
+}

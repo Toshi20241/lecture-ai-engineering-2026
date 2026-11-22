@@ -1,0 +1,572 @@
+[
+  {
+    "case_id": "q1_memory",
+    "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+    "split": "development",
+    "mode": "rag",
+    "repeat": 1,
+    "trial_id": "q1_memory__rag__r01",
+    "criteria": [
+      "コンパクションを、同一セッション内の古い履歴を要約に置き換えてコンテキストを圧縮する処理として説明している。",
+      "セッションをまたぐメモリを、情報を外部の保存先に記録し、後のセッションのコンテキストへ読み戻す仕組みとして説明している。",
+      "OpenClawの例では日々のメモを全部長期メモリにせず、重複除去や繰り返し現れるテーマなどを見直し、基準を満たす内容を選別して残すと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q1_memory",
+    "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+    "split": "development",
+    "mode": "tree_original",
+    "repeat": 1,
+    "trial_id": "q1_memory__tree_original__r01",
+    "criteria": [
+      "コンパクションを、同一セッション内の古い履歴を要約に置き換えてコンテキストを圧縮する処理として説明している。",
+      "セッションをまたぐメモリを、情報を外部の保存先に記録し、後のセッションのコンテキストへ読み戻す仕組みとして説明している。",
+      "OpenClawの例では日々のメモを全部長期メモリにせず、重複除去や繰り返し現れるテーマなどを見直し、基準を満たす内容を選別して残すと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q1_memory",
+    "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+    "split": "development",
+    "mode": "tree_improved",
+    "repeat": 1,
+    "trial_id": "q1_memory__tree_improved__r01",
+    "criteria": [
+      "コンパクションを、同一セッション内の古い履歴を要約に置き換えてコンテキストを圧縮する処理として説明している。",
+      "セッションをまたぐメモリを、情報を外部の保存先に記録し、後のセッションのコンテキストへ読み戻す仕組みとして説明している。",
+      "OpenClawの例では日々のメモを全部長期メモリにせず、重複除去や繰り返し現れるテーマなどを見直し、基準を満たす内容を選別して残すと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q2_lora",
+    "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 1,
+    "trial_id": "q2_lora__tree_original__r01",
+    "criteria": [
+      "LoRAでは元のモデルの重みを固定して学習しないと説明している。",
+      "LoRAでは小さな差分、低ランク行列A・Bなどの追加部分を学習すると説明している。",
+      "QLoRAでは元の重みを4bitに量子化・圧縮して、さらに少ないメモリで調整できるようにすると説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q2_lora",
+    "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 1,
+    "trial_id": "q2_lora__tree_improved__r01",
+    "criteria": [
+      "LoRAでは元のモデルの重みを固定して学習しないと説明している。",
+      "LoRAでは小さな差分、低ランク行列A・Bなどの追加部分を学習すると説明している。",
+      "QLoRAでは元の重みを4bitに量子化・圧縮して、さらに少ないメモリで調整できるようにすると説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q2_lora",
+    "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 1,
+    "trial_id": "q2_lora__rag__r01",
+    "criteria": [
+      "LoRAでは元のモデルの重みを固定して学習しないと説明している。",
+      "LoRAでは小さな差分、低ランク行列A・Bなどの追加部分を学習すると説明している。",
+      "QLoRAでは元の重みを4bitに量子化・圧縮して、さらに少ないメモリで調整できるようにすると説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q3_tool_skill",
+    "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 1,
+    "trial_id": "q3_tool_skill__tree_improved__r01",
+    "criteria": [
+      "ツール検索は、多数のツール定義を最初からすべて入力せず、必要なツールを検索して、その定義をコンテキストへ入れると説明している。",
+      "Skillは、名前と説明を先に入れ、使う必要が生じたときに手順の本文を読み込むと説明している。",
+      "両者の共通点を、不要な定義や手順でコンテキストを圧迫せず、必要な情報を必要なときに渡すこととして説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q3_tool_skill",
+    "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 1,
+    "trial_id": "q3_tool_skill__rag__r01",
+    "criteria": [
+      "ツール検索は、多数のツール定義を最初からすべて入力せず、必要なツールを検索して、その定義をコンテキストへ入れると説明している。",
+      "Skillは、名前と説明を先に入れ、使う必要が生じたときに手順の本文を読み込むと説明している。",
+      "両者の共通点を、不要な定義や手順でコンテキストを圧迫せず、必要な情報を必要なときに渡すこととして説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q3_tool_skill",
+    "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 1,
+    "trial_id": "q3_tool_skill__tree_original__r01",
+    "criteria": [
+      "ツール検索は、多数のツール定義を最初からすべて入力せず、必要なツールを検索して、その定義をコンテキストへ入れると説明している。",
+      "Skillは、名前と説明を先に入れ、使う必要が生じたときに手順の本文を読み込むと説明している。",
+      "両者の共通点を、不要な定義や手順でコンテキストを圧迫せず、必要な情報を必要なときに渡すこととして説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q4_retry",
+    "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 1,
+    "trial_id": "q4_retry__rag__r01",
+    "criteria": [
+      "外部側では処理が実行済みでも成功応答だけが届かない場合があり、失敗と判断して再試行すると同じ操作が重複し得ると説明している。",
+      "外部操作と結果を記録し、同じ操作が再び要求されても重複実行せず記録済みの結果を返すなど、冪等性を確保する具体策を説明している。",
+      "ハーネスが試行・失敗回数、時間、予算などの上限を管理して停止し、モデルの自己申告だけに委ねないと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q4_retry",
+    "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 1,
+    "trial_id": "q4_retry__tree_original__r01",
+    "criteria": [
+      "外部側では処理が実行済みでも成功応答だけが届かない場合があり、失敗と判断して再試行すると同じ操作が重複し得ると説明している。",
+      "外部操作と結果を記録し、同じ操作が再び要求されても重複実行せず記録済みの結果を返すなど、冪等性を確保する具体策を説明している。",
+      "ハーネスが試行・失敗回数、時間、予算などの上限を管理して停止し、モデルの自己申告だけに委ねないと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q4_retry",
+    "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 1,
+    "trial_id": "q4_retry__tree_improved__r01",
+    "criteria": [
+      "外部側では処理が実行済みでも成功応答だけが届かない場合があり、失敗と判断して再試行すると同じ操作が重複し得ると説明している。",
+      "外部操作と結果を記録し、同じ操作が再び要求されても重複実行せず記録済みの結果を返すなど、冪等性を確保する具体策を説明している。",
+      "ハーネスが試行・失敗回数、時間、予算などの上限を管理して停止し、モデルの自己申告だけに委ねないと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q5_unanswerable",
+    "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 1,
+    "trial_id": "q5_unanswerable__tree_original__r01",
+    "criteria": [
+      "講義資料だけからは、この環境で実行した改良版Treeの実測平均応答時間を確認できないと扱い、数値を創作しない。",
+      "講義資料だけからは、この環境で実行した改良版Treeの実測正答率を確認できないと扱い、数値を創作しない。",
+      "教材中の例示値や他の実験の結果を現在の実測値と取り違えず、実行ログや評価結果が必要である旨、または資料からは判断できない旨を明示している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q5_unanswerable",
+    "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 1,
+    "trial_id": "q5_unanswerable__tree_improved__r01",
+    "criteria": [
+      "講義資料だけからは、この環境で実行した改良版Treeの実測平均応答時間を確認できないと扱い、数値を創作しない。",
+      "講義資料だけからは、この環境で実行した改良版Treeの実測正答率を確認できないと扱い、数値を創作しない。",
+      "教材中の例示値や他の実験の結果を現在の実測値と取り違えず、実行ログや評価結果が必要である旨、または資料からは判断できない旨を明示している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q5_unanswerable",
+    "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 1,
+    "trial_id": "q5_unanswerable__rag__r01",
+    "criteria": [
+      "講義資料だけからは、この環境で実行した改良版Treeの実測平均応答時間を確認できないと扱い、数値を創作しない。",
+      "講義資料だけからは、この環境で実行した改良版Treeの実測正答率を確認できないと扱い、数値を創作しない。",
+      "教材中の例示値や他の実験の結果を現在の実測値と取り違えず、実行ログや評価結果が必要である旨、または資料からは判断できない旨を明示している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q1_memory",
+    "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+    "split": "development",
+    "mode": "tree_improved",
+    "repeat": 2,
+    "trial_id": "q1_memory__tree_improved__r02",
+    "criteria": [
+      "コンパクションを、同一セッション内の古い履歴を要約に置き換えてコンテキストを圧縮する処理として説明している。",
+      "セッションをまたぐメモリを、情報を外部の保存先に記録し、後のセッションのコンテキストへ読み戻す仕組みとして説明している。",
+      "OpenClawの例では日々のメモを全部長期メモリにせず、重複除去や繰り返し現れるテーマなどを見直し、基準を満たす内容を選別して残すと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q1_memory",
+    "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+    "split": "development",
+    "mode": "tree_original",
+    "repeat": 2,
+    "trial_id": "q1_memory__tree_original__r02",
+    "criteria": [
+      "コンパクションを、同一セッション内の古い履歴を要約に置き換えてコンテキストを圧縮する処理として説明している。",
+      "セッションをまたぐメモリを、情報を外部の保存先に記録し、後のセッションのコンテキストへ読み戻す仕組みとして説明している。",
+      "OpenClawの例では日々のメモを全部長期メモリにせず、重複除去や繰り返し現れるテーマなどを見直し、基準を満たす内容を選別して残すと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q1_memory",
+    "question": "第3回の例では、コンパクションとセッションをまたぐメモリはどう違いますか。日々のメモはすべて長期メモリに入りますか",
+    "split": "development",
+    "mode": "rag",
+    "repeat": 2,
+    "trial_id": "q1_memory__rag__r02",
+    "criteria": [
+      "コンパクションを、同一セッション内の古い履歴を要約に置き換えてコンテキストを圧縮する処理として説明している。",
+      "セッションをまたぐメモリを、情報を外部の保存先に記録し、後のセッションのコンテキストへ読み戻す仕組みとして説明している。",
+      "OpenClawの例では日々のメモを全部長期メモリにせず、重複除去や繰り返し現れるテーマなどを見直し、基準を満たす内容を選別して残すと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q2_lora",
+    "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 2,
+    "trial_id": "q2_lora__rag__r02",
+    "criteria": [
+      "LoRAでは元のモデルの重みを固定して学習しないと説明している。",
+      "LoRAでは小さな差分、低ランク行列A・Bなどの追加部分を学習すると説明している。",
+      "QLoRAでは元の重みを4bitに量子化・圧縮して、さらに少ないメモリで調整できるようにすると説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q2_lora",
+    "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 2,
+    "trial_id": "q2_lora__tree_improved__r02",
+    "criteria": [
+      "LoRAでは元のモデルの重みを固定して学習しないと説明している。",
+      "LoRAでは小さな差分、低ランク行列A・Bなどの追加部分を学習すると説明している。",
+      "QLoRAでは元の重みを4bitに量子化・圧縮して、さらに少ないメモリで調整できるようにすると説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q2_lora",
+    "question": "第2回の講義資料では、LoRAは何を固定し、何を学習しますか。QLoRAはLoRAに何を加えますか。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 2,
+    "trial_id": "q2_lora__tree_original__r02",
+    "criteria": [
+      "LoRAでは元のモデルの重みを固定して学習しないと説明している。",
+      "LoRAでは小さな差分、低ランク行列A・Bなどの追加部分を学習すると説明している。",
+      "QLoRAでは元の重みを4bitに量子化・圧縮して、さらに少ないメモリで調整できるようにすると説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q3_tool_skill",
+    "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 2,
+    "trial_id": "q3_tool_skill__tree_original__r02",
+    "criteria": [
+      "ツール検索は、多数のツール定義を最初からすべて入力せず、必要なツールを検索して、その定義をコンテキストへ入れると説明している。",
+      "Skillは、名前と説明を先に入れ、使う必要が生じたときに手順の本文を読み込むと説明している。",
+      "両者の共通点を、不要な定義や手順でコンテキストを圧迫せず、必要な情報を必要なときに渡すこととして説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q3_tool_skill",
+    "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 2,
+    "trial_id": "q3_tool_skill__rag__r02",
+    "criteria": [
+      "ツール検索は、多数のツール定義を最初からすべて入力せず、必要なツールを検索して、その定義をコンテキストへ入れると説明している。",
+      "Skillは、名前と説明を先に入れ、使う必要が生じたときに手順の本文を読み込むと説明している。",
+      "両者の共通点を、不要な定義や手順でコンテキストを圧迫せず、必要な情報を必要なときに渡すこととして説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q3_tool_skill",
+    "question": "第3回の講義資料では、ツール検索とSkillは、それぞれ何を最初から全部読み込まず、必要なときに何を読み込む仕組みですか。両者に共通する目的も説明してください。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 2,
+    "trial_id": "q3_tool_skill__tree_improved__r02",
+    "criteria": [
+      "ツール検索は、多数のツール定義を最初からすべて入力せず、必要なツールを検索して、その定義をコンテキストへ入れると説明している。",
+      "Skillは、名前と説明を先に入れ、使う必要が生じたときに手順の本文を読み込むと説明している。",
+      "両者の共通点を、不要な定義や手順でコンテキストを圧迫せず、必要な情報を必要なときに渡すこととして説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q4_retry",
+    "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 2,
+    "trial_id": "q4_retry__tree_improved__r02",
+    "criteria": [
+      "外部側では処理が実行済みでも成功応答だけが届かない場合があり、失敗と判断して再試行すると同じ操作が重複し得ると説明している。",
+      "外部操作と結果を記録し、同じ操作が再び要求されても重複実行せず記録済みの結果を返すなど、冪等性を確保する具体策を説明している。",
+      "ハーネスが試行・失敗回数、時間、予算などの上限を管理して停止し、モデルの自己申告だけに委ねないと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q4_retry",
+    "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 2,
+    "trial_id": "q4_retry__tree_original__r02",
+    "criteria": [
+      "外部側では処理が実行済みでも成功応答だけが届かない場合があり、失敗と判断して再試行すると同じ操作が重複し得ると説明している。",
+      "外部操作と結果を記録し、同じ操作が再び要求されても重複実行せず記録済みの結果を返すなど、冪等性を確保する具体策を説明している。",
+      "ハーネスが試行・失敗回数、時間、予算などの上限を管理して停止し、モデルの自己申告だけに委ねないと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q4_retry",
+    "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 2,
+    "trial_id": "q4_retry__rag__r02",
+    "criteria": [
+      "外部側では処理が実行済みでも成功応答だけが届かない場合があり、失敗と判断して再試行すると同じ操作が重複し得ると説明している。",
+      "外部操作と結果を記録し、同じ操作が再び要求されても重複実行せず記録済みの結果を返すなど、冪等性を確保する具体策を説明している。",
+      "ハーネスが試行・失敗回数、時間、予算などの上限を管理して停止し、モデルの自己申告だけに委ねないと説明している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q5_unanswerable",
+    "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+    "split": "validation",
+    "mode": "rag",
+    "repeat": 2,
+    "trial_id": "q5_unanswerable__rag__r02",
+    "criteria": [
+      "講義資料だけからは、この環境で実行した改良版Treeの実測平均応答時間を確認できないと扱い、数値を創作しない。",
+      "講義資料だけからは、この環境で実行した改良版Treeの実測正答率を確認できないと扱い、数値を創作しない。",
+      "教材中の例示値や他の実験の結果を現在の実測値と取り違えず、実行ログや評価結果が必要である旨、または資料からは判断できない旨を明示している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q5_unanswerable",
+    "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+    "split": "validation",
+    "mode": "tree_improved",
+    "repeat": 2,
+    "trial_id": "q5_unanswerable__tree_improved__r02",
+    "criteria": [
+      "講義資料だけからは、この環境で実行した改良版Treeの実測平均応答時間を確認できないと扱い、数値を創作しない。",
+      "講義資料だけからは、この環境で実行した改良版Treeの実測正答率を確認できないと扱い、数値を創作しない。",
+      "教材中の例示値や他の実験の結果を現在の実測値と取り違えず、実行ログや評価結果が必要である旨、または資料からは判断できない旨を明示している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  },
+  {
+    "case_id": "q5_unanswerable",
+    "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+    "split": "validation",
+    "mode": "tree_original",
+    "repeat": 2,
+    "trial_id": "q5_unanswerable__tree_original__r02",
+    "criteria": [
+      "講義資料だけからは、この環境で実行した改良版Treeの実測平均応答時間を確認できないと扱い、数値を創作しない。",
+      "講義資料だけからは、この環境で実行した改良版Treeの実測正答率を確認できないと扱い、数値を創作しない。",
+      "教材中の例示値や他の実験の結果を現在の実測値と取り違えず、実行ログや評価結果が必要である旨、または資料からは判断できない旨を明示している。"
+    ],
+    "criterion_scores": null,
+    "citation_validity": null,
+    "grounding_retrieved": null,
+    "correct": null,
+    "quality_status": "未評価",
+    "notes": ""
+  }
+]

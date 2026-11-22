@@ -1,0 +1,11 @@
+{
+  "case_id": "q5_unanswerable",
+  "question": "今この環境で実行した改良版Treeについて、実測した平均応答時間と正答率を教えてください。",
+  "split": "validation",
+  "mode": "tree_original",
+  "repeat": 2,
+  "trial_id": "q5_unanswerable__tree_original__r02",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:30:00+00:00"
+}

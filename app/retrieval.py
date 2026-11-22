@@ -8,6 +8,7 @@ import sqlite3
 from contextlib import contextmanager
 from collections import defaultdict, deque
 from pathlib import Path
+from app.tree_preview import tree_candidate_text
 
 from google import genai
 from google.genai import types
@@ -61,7 +62,7 @@ def browse_tree(node_id: str | None = None) -> dict:
         if node["kind"] == "page":
             info.update({key: value for key, value in pages[node["id"]].items() if key != "page_id"})
             if not full:
-                info["content"] = re.split(r"(?<=[。！？])|\n", info["content"].strip(), maxsplit=1)[0]
+                info["content"] = tree_candidate_text(info["content"], info["title"], info.get("section", ""))
         return info
 
     remaining = [tree]

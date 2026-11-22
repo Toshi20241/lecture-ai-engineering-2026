@@ -1,0 +1,11 @@
+{
+  "case_id": "q4_retry",
+  "question": "第3回の講義資料に基づき、ツール呼び出しがタイムアウトした際、再試行で二重実行が起きる理由と、その対策を説明してください。また、失敗した処理をいつまでも再試行しないためには、誰が何を管理すべきですか。",
+  "split": "validation",
+  "mode": "tree_original",
+  "repeat": 1,
+  "trial_id": "q4_retry__tree_original__r01",
+  "model": "gemini-3.5-flash-lite",
+  "attempt": 1,
+  "started_utc": "2026-11-22T08:21:12+00:00"
+}
